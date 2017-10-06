@@ -1,8 +1,6 @@
 package com.silverdev.ilg.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by narcizo on 05/10/17.
@@ -15,5 +13,9 @@ public class Login {
 
     @Column(name = "login_password")
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "login_acesso")
+    private char acesso;
 
 }
