@@ -1,0 +1,1 @@
+Classes de Entidade (representam o banco de dados)
