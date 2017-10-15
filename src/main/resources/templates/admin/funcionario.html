@@ -11,26 +11,58 @@
             <img class="navbar-brand" th:href="@{/}"/>
             <img th:src="@{/img/favicon.png}" alt="ILG"/>
         </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admin/turma}"> Turmas </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admin/curso}"> Cursos </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admin/funcionarios}"> Funcionários </a>
+                </li>
+            </ul>
+        </div>
     </nav>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{admin/turma}"> Turmas </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{admin/curso}"> Cursos </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{admin/funcionarios}"> Funcionários </a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
 </header>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>#Id</th>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Sexo</th>
+        <th>Data de Nascimento</th>
+        <th>RG</th>
+        <th>CPF</th>
+        <th>Telefone</th>
+        <th>Tipo</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="funcio: ${funcionarios}">
+        <td th:text="${funcio.id}"></td>
+        <td th:text="${funcio.nome}"></td>
+        <td th:text="${funcio.sobrenome}"></td>
+        <td th:text="${funcio.sexo}"></td>
+        <td th:text="${funcio.nascimento}"></td>
+        <td th:text="${funcio.rg}"></td>
+        <td th:text="${funcio.cpf}"></td>
+        <td th:text="${funcio.telefone}"></td>
+        <td th:text="${funcio.acesso}"></td>
+        <td>
+            <button type="button" class="btn btn-warning btn-sm" th:href="/admin/":"">Editar</button>
+            <button type="button" class="btn btn-danger btn-sm"  th:href="""">Excluir</button>
+        </td>
+
+
+
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>
