@@ -1,11 +1,11 @@
 package com.silverdev.ilg.model.enums;
 
 public enum Acesso {
-    S("Secretaria"),
-    P("Professor"),
-    I("Ingressante"),
-    A("Aluno"),
-    M("Admin");
+    S("SECRETARIA"),
+    P("PROFESSOR"),
+    I("INGRESSANTE"),
+    A("ALUNO"),
+    M("ADMIN");
 
     private String acesso;
 

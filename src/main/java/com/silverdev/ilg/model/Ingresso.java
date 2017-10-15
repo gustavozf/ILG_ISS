@@ -13,7 +13,7 @@ public class Ingresso {
 
     @CPF
     @Column(unique = true, name = "ingresso_cpf")
-    private CPF cpf;
+    private String cpf;
 
     @Column(name = "ingresso_codcurso")
     private Integer codcurso;
@@ -35,11 +35,11 @@ public class Ingresso {
         this.numinscricao = numinscricao;
     }
 
-    public CPF getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(CPF cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

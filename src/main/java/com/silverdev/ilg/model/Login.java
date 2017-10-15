@@ -1,5 +1,7 @@
 package com.silverdev.ilg.model;
 
+import com.silverdev.ilg.model.enums.Acesso;
+
 import javax.persistence.*;
 
 /**
@@ -16,6 +18,6 @@ public class Login {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "login_acesso")
-    private char acesso;
+    private Acesso acesso;
 
 }
