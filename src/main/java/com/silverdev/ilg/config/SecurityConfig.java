@@ -28,11 +28,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.authorizeRequests()
+            /*http.authorizeRequests()
                     .antMatchers("/").permitAll()
-                    .antMatchers("/admin").permitAll();
+                    .antMatchers("/admin").permitAll();*/
 
-            /*http
+            http
+                    .authorizeRequests()
+                    .antMatchers("/").permitAll()
+                    .antMatchers("/admin","/admin/*").permitAll()
+                    .antMatchers("/aluno","/aluno/*").permitAll()
+                    .and()
                     .formLogin()
                     .loginPage("/login")
                     .usernameParameter("username")
@@ -40,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .defaultSuccessUrl("/redirectTipoUsuario", true)
                     .permitAll();
             http
-                    .logout().logoutUrl("/logout").permitAll(); */
+                    .logout().logoutUrl("/logout").permitAll();
             http
                     .authorizeRequests()
                     .antMatchers("/register", "/js/**", "/css/**", "/img/**", "/register/username")
@@ -51,9 +56,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .csrf()
                     .disable();
 
-            /*http
-                    .authorizeRequests()
-                    .antMatchers("/").permitAll();*/
         }
 
         @Bean

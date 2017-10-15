@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+//@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 @RequestMapping("/admin")
 public class AdminController {
     private final TurmaRepository turmaRepository;
@@ -30,14 +30,14 @@ public class AdminController {
 
     @GetMapping
     public String abreTelaAdmin(){
-        return "admin/index";
+        return "/admin/index";
     }
 
     @GetMapping("/turmas")
     public String abreTelaTurmas(Model model){
         model.addAttribute("turmas", turmaRepository.findAll());
 
-        return "admin/turma";
+        return "/admin/turma";
 
     }
 
@@ -45,7 +45,14 @@ public class AdminController {
     public String abreTelaCursos(Model model){
         model.addAttribute("cursos", cursoRepository.findAll());
 
-        return "admin/curso";
+        return "/admin/curso";
+    }
+
+    @GetMapping("/funcionarios")
+    public String abreTelaFuncionarios(Model model){
+        model.addAttribute("funcionarios", funcionarioRepository.findAll());
+
+        return "/admin/funcionario";
     }
 
 }
