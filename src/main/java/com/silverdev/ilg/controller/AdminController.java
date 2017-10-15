@@ -4,12 +4,14 @@ import com.silverdev.ilg.repository.CursoRepository;
 import com.silverdev.ilg.repository.FuncionarioRepository;
 import com.silverdev.ilg.repository.TurmaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 @RequestMapping("/admin")
 public class AdminController {
     private final TurmaRepository turmaRepository;
@@ -27,10 +29,15 @@ public class AdminController {
     }
 
     @GetMapping
-    public String abreTelaTurma(Model model){
-        String retorno = "";
+    public String abreTelaAdmin(){
+        return "admin/index";
+    }
 
-        return retorno;
+    @GetMapping("/turmas")
+    public String abreTelaTurmas(Model model){
+        model.addAttribute("turmas", turmaRepository.findAll());
+
+        return "";
 
     }
 

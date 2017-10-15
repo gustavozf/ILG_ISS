@@ -1,6 +1,6 @@
 package com.silverdev.ilg.controller;
 
-import com.silverdev.ilg.model.enums.Acesso;
+import com.silverdev.ilg.model.enums.Role;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -17,9 +17,9 @@ public class LoginController {
         acesso = acesso.replace("]","");
 
         String retorno = "";
-        if(acesso.equals(Acesso.ROLE_ADMIN.toString())){
+        if(acesso.equals(Role.ROLE_ADMIN.toString())){
             retorno = "redirect:/aluno";
-        } else if (acesso.equals(Acesso.ROLE_PROFESSOR.toString())){
+        } else if (acesso.equals(Role.ROLE_PROFESSOR.toString())){
             retorno = "redirect:/professor";
         } //...
 

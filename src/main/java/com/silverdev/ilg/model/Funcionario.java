@@ -1,6 +1,6 @@
 package com.silverdev.ilg.model;
 
-import com.silverdev.ilg.model.enums.Acesso;
+import com.silverdev.ilg.model.enums.Role;
 import com.silverdev.ilg.model.enums.Sexo;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -43,7 +43,7 @@ public class Funcionario {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_acesso")
-    private Acesso acesso;
+    private Role acesso;
 
     public Integer getId() {
         return id;
@@ -117,11 +117,11 @@ public class Funcionario {
         this.nascimento = nascimento;
     }
 
-    public Acesso getAcesso() {
+    public Role getAcesso() {
         return acesso;
     }
 
-    public void setAcesso(Acesso acesso) {
+    public void setAcesso(Role acesso) {
         this.acesso = acesso;
     }
 }

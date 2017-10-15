@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ILG - Home</title>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+</head>
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">ILG</a>
+                <!--<a class="navbar-brand" href="#">
+                  <img alt="Brand" src="images/favicon.png">
+                </a>-->
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Funcionário<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/admin">Inserir</a></li>
+                            <li><a href="/admin/visua">Visualizar</a></li>
+                            <li><a href="/admin/update">Atualizar</a></li>
+                            <li><a href="/admin/delete">Excluir</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cursos<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/admin/cursos">Inserir</a></li>
+                            <li><a href="/admin/cursos/visua">Visualizar</a></li>
+                            <li><a href="/admin/cursos/update">Atualizar</a></li>
+                            <li><a href="/admin/cursos/delete">Excluir</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Turma<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/admin/turma">Inserir</a></li>
+                            <li><a href="/admin/turma/visua">Visualizar</a></li>
+                            <li><a href="/admin/turma/update">Atualizar</a></li>
+                            <li><a href="/admin/turma/delete">Excluir</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="/admin/habilita">Habilitar</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a th:href="@{'/'}">Sair</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+    </nav>
+    <!--End-Navbar-->
+</body>
+</html>

@@ -1,6 +1,6 @@
 package com.silverdev.ilg.model;
 
-import com.silverdev.ilg.model.enums.Acesso;
+import com.silverdev.ilg.model.enums.Role;
 
 import javax.persistence.*;
 
@@ -18,6 +18,6 @@ public class Login {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "login_acesso")
-    private Acesso acesso;
+    private Role acesso;
 
 }

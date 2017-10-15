@@ -1,10 +1,10 @@
 package com.silverdev.ilg.model.enums;
 
-public enum Acesso {
+public enum Role {
     ROLE_SECRETARIA("Secretaria"),
     ROLE_PROFESSOR("Professor"),
     ROLE_INGRESSANTE("Ingressante"),
-    ROLE_ALUNO("Aluno"),
+    ROLE_ALUNO("aluno"),
     ROLE_ADMIN("Admin");
 
     private String acesso;
@@ -13,7 +13,7 @@ public enum Acesso {
         return acesso;
     }
 
-    Acesso(String acesso){
+    Role(String acesso){
         this.acesso=acesso;
     }
 
