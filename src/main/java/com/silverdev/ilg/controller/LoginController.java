@@ -17,9 +17,9 @@ public class LoginController {
         acesso = acesso.replace("]","");
 
         String retorno = "";
-        if(acesso.equals(Acesso.A.toString())){
+        if(acesso.equals(Acesso.ROLE_ADMIN.toString())){
             retorno = "redirect:/aluno";
-        } else if (acesso.equals(Acesso.P.toString())){
+        } else if (acesso.equals(Acesso.ROLE_PROFESSOR.toString())){
             retorno = "redirect:/professor";
         } //...
 
