@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/").permitAll()
                     .antMatchers("/admin").permitAll();
 
-            http
+            /*http
                     .formLogin()
                     .loginPage("/login")
                     .usernameParameter("username")
@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .defaultSuccessUrl("/redirectTipoUsuario", true)
                     .permitAll();
             http
-                    .logout().logoutUrl("/logout").permitAll();
+                    .logout().logoutUrl("/logout").permitAll(); */
             http
                     .authorizeRequests()
                     .antMatchers("/register", "/js/**", "/css/**", "/img/**", "/register/username")

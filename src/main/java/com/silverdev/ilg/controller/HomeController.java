@@ -11,11 +11,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(){
-        return "aluno";
+        return "index";
     }
 
-    @GetMapping("/login")
-    public String redirecionaLogin(){
-        return "login";
-    }
 }

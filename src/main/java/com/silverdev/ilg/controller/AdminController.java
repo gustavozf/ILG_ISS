@@ -37,8 +37,15 @@ public class AdminController {
     public String abreTelaTurmas(Model model){
         model.addAttribute("turmas", turmaRepository.findAll());
 
-        return "";
+        return "admin/turma";
 
+    }
+
+    @GetMapping("/cursos")
+    public String abreTelaCursos(Model model){
+        model.addAttribute("cursos", cursoRepository.findAll());
+
+        return "admin/curso";
     }
 
 }
