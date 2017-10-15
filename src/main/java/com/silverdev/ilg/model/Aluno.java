@@ -1,5 +1,7 @@
 package com.silverdev.ilg.model;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +14,7 @@ public class Aluno {
     @Column(name = "aluno_nome")
     private String nome;
 
+    @CPF
     @Column(name = "aluno_cpf")
     private String cpf;
 

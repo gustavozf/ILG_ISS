@@ -1,5 +1,7 @@
 package com.silverdev.ilg.model;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,6 +10,9 @@ import javax.persistence.Id;
 public class Salas {
 
     @Id
+    @Column(name = "salas_id")
+    private Integer salas_id;
+
     @Column(name = "salas_inscricao")
     private Integer num_inscricao;
 
@@ -17,6 +22,7 @@ public class Salas {
     @Column(name = "salas_turma")
     private Integer cod_turma;
 
+    @CPF
     @Column(name = "salas_cpf")
     private String cpf;
 
@@ -116,5 +122,13 @@ public class Salas {
 
     public void setFaltas(Integer faltas) {
         this.faltas = faltas;
+    }
+
+    public Integer getSalas_id() {
+        return salas_id;
+    }
+
+    public void setSalas_id(Integer salas_id) {
+        this.salas_id = salas_id;
     }
 }
