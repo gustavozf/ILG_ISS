@@ -11,12 +11,15 @@ public class Aluno {
     @Column(name = "aluno_id")
     private Integer id;
 
-    @Column(name = "aluno_nome")
-    private String nome;
-
     @CPF
     @Column(name = "aluno_cpf")
     private String cpf;
+
+    @Column(name = "aluno_posicao")
+    private Integer posicao_uem;
+
+    /*@Column(name = "aluno_nome")
+    private String nome;
 
     @Column(name = "aluno_rg")
     private Integer rg;
@@ -31,13 +34,11 @@ public class Aluno {
     private String telefone;
 
     @Column(name = "aluno_nascimento")
-    private String data_nascimento;
+    private String data_nascimento;*/
 
-    @Column(name = "aluno_posicao")
-    private Integer posicao_uem;
 
-    @Column(name = "aluno_inscricao")
-    private Integer num_inscricao;
+    /*@Column(name = "aluno_inscricao")
+    private Integer num_inscricao;*/
 
     public Integer getId() {
         return id;
@@ -47,20 +48,28 @@ public class Aluno {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getCpf() {
         return cpf;
     }
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public Integer getPosicao_uem() {
+        return posicao_uem;
+    }
+
+    public void setPosicao_uem(Integer posicao_uem) {
+        this.posicao_uem = posicao_uem;
+    }
+
+    /*public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Integer getRg() {
@@ -103,19 +112,26 @@ public class Aluno {
         this.data_nascimento = data_nascimento;
     }
 
-    public Integer getPosicao_uem() {
-        return posicao_uem;
-    }
-
-    public void setPosicao_uem(Integer posicao_uem) {
-        this.posicao_uem = posicao_uem;
-    }
-
     public Integer getNum_inscricao() {
         return num_inscricao;
     }
 
     public void setNum_inscricao(Integer num_inscricao) {
         this.num_inscricao = num_inscricao;
+    }*/
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Aluno aluno = (Aluno) o;
+
+        return id != null ? id.equals(aluno.id) : aluno.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }

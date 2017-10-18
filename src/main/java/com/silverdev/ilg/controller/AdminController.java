@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -28,10 +29,13 @@ public class AdminController {
         this.funcionarioRepository = funcionarioRepository;
     }
 
+
     @GetMapping
     public String abreTelaAdmin(){
         return "/admin/index";
     }
+
+    //CRUDs em relacao a turma!
 
     @GetMapping("/turmas")
     public String abreTelaTurmas(Model model){
@@ -41,6 +45,15 @@ public class AdminController {
 
     }
 
+    @GetMapping("/turmas/delete/{id}")
+    public String deletaTurma(@PathVariable("id") Integer id){
+        turmaRepository.delete(id);
+
+        return "redirect:/admin/turmas";
+    }
+
+    //CRUDs em relacao ao curso!
+
     @GetMapping("/cursos")
     public String abreTelaCursos(Model model){
         model.addAttribute("cursos", cursoRepository.findAll());
@@ -48,11 +61,27 @@ public class AdminController {
         return "/admin/curso";
     }
 
+    @GetMapping("/cursos/delete/{id}")
+    public String deletaCurso(@PathVariable("id") Integer id){
+        cursoRepository.delete(id);
+
+        return "redirect:/admin/cursos";
+    }
+
+    //CRUDs em relacao ao funcionario!
+
     @GetMapping("/funcionarios")
     public String abreTelaFuncionarios(Model model){
         model.addAttribute("funcionarios", funcionarioRepository.findAll());
 
         return "/admin/funcionario";
+    }
+
+    @GetMapping("/funcionarios/delete/{id}")
+    public String deletaFuncionario(@PathVariable("id") Integer id){
+        funcionarioRepository.delete(id);
+
+        return "redirect:/admin/funcionarios";
     }
 
 }

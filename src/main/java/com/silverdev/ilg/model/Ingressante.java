@@ -20,7 +20,19 @@ public class Ingressante {
     @Column(unique = true, name = "ingressante_cpf")
     private String cpf;
 
-    @Column(unique = true, name = "ingressante_rg")
+    @Column(name = "ingressante_pos_uem")
+    private Integer posUem;
+
+    @Column(name = "ingressante_media")
+    private float media;
+
+    @Column(name = "ingressante_sit_entrega")
+    private Boolean sit_entrega;
+
+    @Column(name = "ingressante_sit_pagamento")
+    private Boolean sit_pagamento;
+
+    /*@Column(unique = true, name = "ingressante_rg")
     private String rg;
 
     @Column(name = "ingressante_nome")
@@ -38,16 +50,55 @@ public class Ingressante {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "ingressante_data_nasc")
-    private Date data_nasc;
+    private Date data_nasc;*/
 
-    @Column(name = "ingressante_pos_uem")
-    private Integer posUem;
+    public Integer getId() {
+        return id;
+    }
 
-    @Column(name = "ingressante_media")
-    private float media;
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-    @Column(name = "ingressante_sit_entrega")
-    private Integer sit_entrega;
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Integer getPosUem() {
+        return posUem;
+    }
+
+    public void setPosUem(Integer posUem) {
+        this.posUem = posUem;
+    }
+
+    public float getMedia() {
+        return media;
+    }
+
+    public void setMedia(float media) {
+        this.media = media;
+    }
+
+    public Boolean getSit_entrega() {
+        return sit_entrega;
+    }
+
+    public void setSit_entrega(Boolean sit_entrega) {
+        this.sit_entrega = sit_entrega;
+    }
+
+    public Boolean getSit_pagamento() {
+        return sit_pagamento;
+    }
+
+    public void setSit_pagamento(Boolean sit_pagamento) {
+        this.sit_pagamento = sit_pagamento;
+    }
 
     @Override
     public boolean equals(Object o) {
