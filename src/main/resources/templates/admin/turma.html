@@ -6,21 +6,26 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
         <a>
             <img class="navbar-brand" th:href="@{/}"/>
             <img th:src="@{/img/favicon.png}" alt="ILG"/>
         </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/admin/turma}"> Turmas </a>
+                <li class="nav-item  active">
+                    <a class="nav-link" th:href="@{/admin/turmas}"> TURMAS </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/admin/curso}"> Cursos </a>
+                    <a class="nav-link" th:href="@{/admin/cursos}"> CURSOS </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/admin/funcionarios}"> Funcionários </a>
+                    <a class="nav-link" th:href="@{/admin/funcionarios}"> FUNCIONÁRIOS </a>
                 </li>
             </ul>
         </div>
