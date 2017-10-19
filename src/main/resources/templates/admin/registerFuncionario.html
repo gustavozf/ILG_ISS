@@ -42,14 +42,14 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-header text-center bg-info">
-                        <b>Novo Funcionário</b>
+                    <div class="card-header text-center bg-secondary">
+                        <b>NOVO FUNCIONÁRIO</b>
                     </div>
                     <div class="card-body">
                         <h4 class="card-title text-center">
                             Entre com os dados para registrar um novo funcionário!
                         </h4>
-                        <form th:action="@{/register}" th:object="${usuario}" method="post">
+                        <form th:action="@{/admFuncionarios/register}" th:object="${usuario}" method="post">
                             <div class="form-row">
                                 <div class="form-group col-12 col-lg-6">
                                     <label for="nome">Nome<span class="obrigatorio">*</span></label>
@@ -63,15 +63,15 @@
                                     <label>Sexo<span class="obrigatorio">*</span></label><br/>
                                     <div th:each="sexo : ${T(com.silverdev.ilg.model.enums.Sexo).values()}" class="form-check form-check-inline">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="sexo" th:value="${role}" th:text="${sexo.sexo}"/>
+                                            <input class="form-check-input" type="radio" th:field="sexo" name="sexo" th:value="${role}" th:text="${sexo.sexo}"/>
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group col-12 col-lg-6">
-                                    <label for="nascimento" class="col-form-label">Data de nascimento<span class="obrigatorio">*</span></label>
-                                    <input id="nascimento" type="text" class="form-control" th:field="*{nascimento}"
-                                           placeholder="dd/mm/yyyy" required="required" th:classappend="${#fields.hasErrors('nascimento')} ? 'is-invalid'"/>
-                                    <div th:if="${#fields.hasErrors('nascimento')}" th:errors="*{nascimento}"
+                                    <label for="data_nascimento" class="col-form-label">Data de nascimento<span class="obrigatorio">*</span></label>
+                                    <input id="data_nascimento" type="text" class="form-control" th:field="*{data_nascimento}"
+                                           placeholder="dd/mm/yyyy" required="required" th:classappend="${#fields.hasErrors('data_nascimento')} ? 'is-invalid'"/>
+                                    <div th:if="${#fields.hasErrors('data_nascimento')}" th:errors="*{data_nascimento}"
                                          class="invalid-feedback"></div>
                                 </div>
                                 <div class="form-group col-12 col-lg-4">
@@ -82,21 +82,13 @@
                                     <span id="CPFerror" class="invalid-feedback" role="alert"></span>
                                 </div>
                                 <div class="form-group col-12 col-lg-4">
-                                    <label class="col-form-label">Estado<span class="obrigatorio">*</span></label>
-                                    <select class="form-control" th:field="*{estado}">
-                                        <option th:each="sigla : ${T(com.secomp.clinica.model.enums.Estado).values()}"
-                                                th:value="${sigla}"
-                                                th:text="${sigla.estado}"></option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-12 col-lg-4">
                                     <label for="role">Tipo de Usuário<span class="obrigatorio">*</span></label><br/>
                                     <div class="form-check form-check-inline">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="role" th:value="${T(com.silverdev.ilg.model.enums.Role).ROLE_SECRETARIA.getAcesso()}" th:text="${T(com.silverdev.ilg.model.enums.Role).ROLE_SECRETARIA}"/>
+                                            <input class="form-check-input" type="radio" name="acesso" th:field="*{acesso}" th:value="${T(com.silverdev.ilg.model.enums.Role).ROLE_SECRETARIA}" th:text="${T(com.silverdev.ilg.model.enums.Role).ROLE_SECRETARIA.getAcesso()}"/>
                                         </label>
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="role" th:value="${T(com.silverdev.ilg.model.enums.Role).ROLE_PROFESSOR.getAcesso()}" th:text="${T(com.silverdev.ilg.model.enums.Role).ROLE_PROFESSOR}"/>
+                                            <input class="form-check-input" type="radio" name="acesso" th:field="*{acesso}" th:value="${T(com.silverdev.ilg.model.enums.Role).ROLE_PROFESSOR}" th:text="${T(com.silverdev.ilg.model.enums.Role).ROLE_PROFESSOR.getAcesso()}"/>
                                         </label>
                                     </div>
                                 </div>
@@ -111,9 +103,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <a th:href="@{/login}" class="btn btn-secondary" style="float: left;">Voltar</a>
                                 <button id="btn-subimit" style="float: right" type="submit" class="btn btn-primary">Cadastrar</button>
-                                <div style="clear: both"></div>
                             </div>
                         </form>
                         <script>
@@ -127,7 +117,7 @@
                                         $(this).mask('(00) 00000-0000')
                                 });
                             });
-                            $('#nascimento').datepicker({
+                            $('#data_nascimento').datepicker({
                                 format: 'dd/mm/yyyy',
                                 autoclose: true,
                                 language: 'pt-BR'

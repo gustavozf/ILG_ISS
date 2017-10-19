@@ -49,6 +49,22 @@ public class Usuario {
     @Column(name = "tipo_acesso")
     private Role acesso;
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Date getData_nascimento() {
+        return data_nascimento;
+    }
+
+    public void setData_nascimento(Date data_nascimento) {
+        this.data_nascimento = data_nascimento;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -111,14 +127,6 @@ public class Usuario {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }
-
-    public Date getNascimento() {
-        return data_nascimento;
-    }
-
-    public void setNascimento(Date nascimento) {
-        this.data_nascimento = nascimento;
     }
 
     public Role getAcesso() {
