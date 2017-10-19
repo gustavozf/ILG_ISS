@@ -1,67 +1,53 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <link rel="icon" th:href="@{/img/favicon.png}"/>
-    <title>Instituto de Línguas</title>
-    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+<html>
+<head>
+  <title>ILG - Alunos</title>
+  <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+</head>
 
-    <link th:href="@{/css/aluno.css}" rel="stylesheet"/>
+<body>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <a class="navbar-brand" th:href="@{/}">
+      <img th:src="@{/img/aluno.png}" alt="ILG" />
+    </a>
 
-    <!-- Bootstrap -->
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-    <!--Navbar-->
-    <nav class="navbar navbar-default navbar-fixed-top bg-primary">
-      <div class="container">
-        <div class="navbar-header">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <a class="nav-link" th:href="@{/}">ILG </a>
-          </ul>
-          <ul class="nav navbar-nav">
-            <a class="nav-link" th:href="@{aluno/visuaNotas}"> NOTAS </a>
-          </ul>
-          <ul class="nav navbar-nav">
-          <a class="nav-link" th:href="@{aluno/visaAprova}"> APROVAÇÃO </a>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a th:href="@{/}">Sair</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!--End-Navbar-->
-    <div class="container">
-      <b><legend>Dados Pessoais</legend></b>
-      <h4><br>Nome:</br>
-        <br>CPF:</br>
-        <br>RG:</br>
-        <br>Telefone:</br>
-        <br>Aniversário:</br>
-      </h4>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="btn btn-primary" th:href="@{/aluno/notas}"> NOTAS </a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-primary" th:href="@{/aluno/aprovacao}"> APROVAÇÃO </a>
+        </li>
+        <li class="nav navbar-nav navbar-right">
+          <a class="btn btn-primary" th:href="@{/}">SAIR</a>
+        </li>
+      </ul>
     </div>
-          <!-- <tr th:each="post : ${posts}">
-            <td th:text="${sala.id}"></td>
-            <td th:text="${sala.prova1}"></td>
-            <td th:text="${sala.prova_aux1}"></td>
-            <td th:text="${#dates.format(post.data, 'dd/MM/yyyy')}"></td>
-            <td>
-            </td>
-          </tr>-->
+  </nav>
+</header>
+  <!--End-Navbar-->
+  <div class="container">
+    <b><br><legend>Dados Pessoais</legend></br></b>
+    <h5><br>Nome:</br>
+      <br>CPF:</br>
+      <br>RG:</br>
+      <br>Telefone:</br>
+      <br>Aniversário:</br>
+    </h5>
+  </div>
+  <!-- <tr th:each="post : ${posts}">
+    <td th:text="${sala.id}"></td>
+    <td th:text="${sala.prova1}"></td>
+    <td th:text="${sala.prova_aux1}"></td>
+    <td th:text="${#dates.format(post.data, 'dd/MM/yyyy')}"></td>
+    <td>
+    </td>
+  </tr>-->
   </body>
 </html>
