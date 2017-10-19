@@ -4,7 +4,7 @@ public enum Role {
     ROLE_SECRETARIA("Secretaria"),
     ROLE_PROFESSOR("Professor"),
     ROLE_INGRESSANTE("Ingressante"),
-    ROLE_ALUNO("aluno"),
+    ROLE_ALUNO("Aluno"),
     ROLE_ADMIN("Admin");
 
     private String acesso;
