@@ -28,11 +28,23 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
-    <img th:src="@{/img/favicon.png}" alt="ILG" />
-    <span>INSTITUTO DE LÍNGUAS</span>
-    <i class="fa fa-twitter" align="left"></i>
-    <i class="fa fa-facebook-f fa-fw"></i>
-    <i class="fa fa-google-plus fa-fw"></i>
+    <a class="navbar-brand" href="#">
+      <img th:src="@{/img/favicon.png}" alt="ILG" />
+      INSTITUTO DE LÍNGUAS
+    </a>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <i class="fa fa-twitter" align="left"></i>
+        </li>
+        <li class="nav-item">
+          <i class="fa fa-facebook-f fa-fw"></i>
+        </li>
+        <li class="nav-item">
+          <i class="fa fa-google-plus fa-fw"></i>
+        </li>
+      </ul>
+    </div>
     <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
