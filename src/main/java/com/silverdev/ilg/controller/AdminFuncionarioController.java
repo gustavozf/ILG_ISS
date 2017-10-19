@@ -1,25 +1,22 @@
 package com.silverdev.ilg.controller;
 
 import com.silverdev.ilg.model.Usuario;
-import com.silverdev.ilg.repository.CursoRepository;
-import com.silverdev.ilg.repository.FuncionarioRepository;
-import com.silverdev.ilg.repository.TurmaRepository;
 import com.silverdev.ilg.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 //@PreAuthorize("hasAuthority('ROLE_ADMIN')")
@@ -32,8 +29,14 @@ public class AdminFuncionarioController {
         this.usuarioRepository = usuarioRepository;
     }
 
-    //CRUDs em relacao ao funcionario!
+    @InitBinder
+    public void formataData(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
 
+    //CRUDs em relacao ao funcionario!
     @GetMapping
     public String abreTelaFuncionarios(Model model){
         model.addAttribute("funcionarios", usuarioRepository.findAll());
@@ -54,14 +57,14 @@ public class AdminFuncionarioController {
         usuarioRepository.save(usuario);
 
 
-        return "redirect:/admin";
+        return "redirect:/admFuncionarios";
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/delete")
     public String deletaFuncionario(@PathVariable("id") Integer id){
         usuarioRepository.delete(id);
 
-        return "redirect:/admin/funcionarios";
+        return "redirect:/admFuncionarios";
     }
 
 
