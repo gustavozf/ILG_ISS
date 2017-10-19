@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ILG - Admin</title>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand" th:href="@{/}">
+            <img th:src="@{/img/aluno.png}" alt="ILG" />
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="btn btn-primary" th:href="@{/aluno/visuaNotas}"> NOTAS </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary" th:href="@{/aluno/visuaAprovacao}"> APROVAÇÃO </a>
+                </li>
+                <li class="nav navbar-nav navbar-right">
+                    <a class="btn btn-primary" th:href="@{/}">SAIR</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!--End-Navbar-->
+
+<br/>
+<br/>
+<br/>
+
+<div class = "card" style="width: 80%; margin: auto">
+    <div class="card-header text-center bg-info">
+        <b>Notas</b>
+    </div>
+    <div class="card-body">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Num_Ins</th>
+                <th>Curso</th>
+                <th>Nota 1-1</th>
+                <th>Nota 1-2</th>
+                <th>Nota 2-1</th>
+                <th>Nota 2-2</th>
+                <th>Faltas</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="funcio: ${funcionarios}">
+                <td th:text="${funcio.id}"></td>
+                <td th:text="${funcio.nome} ${funcio.sobrenome}"></td>
+                <td th:text="${funcio.nascimento}"></td>
+                <td th:text="${funcio.cpf}"></td>
+                <td th:text="${funcio.acesso}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
