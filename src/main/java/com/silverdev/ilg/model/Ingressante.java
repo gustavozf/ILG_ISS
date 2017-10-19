@@ -1,10 +1,9 @@
 package com.silverdev.ilg.model;
 
-import com.silverdev.ilg.model.enums.Sexo;
+import com.silverdev.ilg.model.enums.PosicaoUEM;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * Created by narcizo on 04/10/17.
@@ -20,8 +19,9 @@ public class Ingressante {
     @Column(unique = true, name = "ingressante_cpf")
     private String cpf;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "ingressante_pos_uem")
-    private Integer posUem;
+    private PosicaoUEM posUem;
 
     @Column(name = "ingressante_media")
     private float media;
@@ -68,11 +68,11 @@ public class Ingressante {
         this.cpf = cpf;
     }
 
-    public Integer getPosUem() {
+    public PosicaoUEM getPosUem() {
         return posUem;
     }
 
-    public void setPosUem(Integer posUem) {
+    public void setPosUem(PosicaoUEM posUem) {
         this.posUem = posUem;
     }
 
