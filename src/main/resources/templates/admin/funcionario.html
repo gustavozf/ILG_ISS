@@ -7,9 +7,9 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-        <a>
-            <img class="navbar-brand" th:href="@{/}"/>
-            <img th:src="@{/img/favicon.png}" alt="ILG"/>
+        <a class="navbar-brand" th:href="@{/}">
+            <img th:src="@{/img/admin.png}" alt="ILG" />
+            <span>Administrador </span>
         </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,13 +19,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/admin/turmas}"> TURMAS </a>
+                    <a class="btn btn-primary" th:href="@{/admin/turmas}"> TURMAS </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/admin/cursos}"> CURSOS </a>
+                    <a class="btn btn-primary" th:href="@{/admin/cursos}"> CURSOS </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/admin/funcionarios}"> FUNCIONÁRIOS </a>
+                    <a class="btn btn-primary active" th:href="@{/admin/funcionarios}"> FUNCIONÁRIOS </a>
                 </li>
             </ul>
         </div>
@@ -38,12 +38,8 @@
     <tr>
         <th>#Id</th>
         <th>Nome</th>
-        <--th>Sobrenome</--th>
-        <--th>Sexo</--th>
         <th>Data de Nascimento</th>
-        <--th>RG</--th>
         <th>CPF</th>
-        <--th>Telefone</--th>
         <th>Tipo</th>
         <th></th>
         <th></th>
@@ -54,12 +50,8 @@
     <tr th:each="funcio: ${funcionarios}">
         <td th:text="${funcio.id}"></td>
         <td th:text="${funcio.nome} ${funcio.sobrenome}"></td>
-        <--td th:text="${funcio.sobrenome}"></--td>
-        <--td th:text="${funcio.sexo}"></--td>
         <td th:text="${funcio.nascimento}"></td>
-        <--td th:text="${funcio.rg}"></--td>
         <td th:text="${funcio.cpf}"></td>
-        <--td th:text="${funcio.telefone}"></--td>
         <td th:text="${funcio.acesso}"></td>
         <td>
             <!-- Button trigger modal -->
@@ -78,7 +70,10 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            ...
+                            <p class="text-left" th:text="${funcio.sexo}">Sexo: </p>
+                            <p class="text-left" th:text="${funcio.rg}">RG: </p>
+                            <p class="text-left" th:text="${funcio.telefone}">Telefone: </p>
+
                         </div>
                     </div>
                 </div>
