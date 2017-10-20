@@ -67,9 +67,9 @@
                 <td th:text="${funcio.acesso}"></td>
                 <td>
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         +
-                    </button>
+                    </a>
 
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -91,12 +91,12 @@
                     </div>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-warning btn-sm"
-                            th:href="@{/admFuncionarios/edit/{id} (id=${funcio.id})}">Editar</button>
+                    <a class="btn btn-warning btn-sm"
+                            th:href="@{/admFuncionarios/edit/{id} (id=${funcio.id})}">Editar</a>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-sm"
-                            th:href="@{/admFuncionarios/delete/{id} (id=${funcio.id})}">Excluir</button>
+                    <a type="button" class="btn btn-danger btn-sm"
+                            th:href="@{/admFuncionarios/delete/{id} (id=${funcio.id})}">Excluir</a>
                 </td>
             </tr>
             </tbody>

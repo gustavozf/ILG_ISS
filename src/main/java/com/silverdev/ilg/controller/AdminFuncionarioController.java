@@ -29,12 +29,12 @@ public class AdminFuncionarioController {
         this.usuarioRepository = usuarioRepository;
     }
 
-    @InitBinder
+    /*@InitBinder
     public void formataData(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
-    }
+    }*/
 
     //CRUDs em relacao ao funcionario!
     @GetMapping
@@ -52,7 +52,7 @@ public class AdminFuncionarioController {
     }
 
     @PostMapping("/register")
-    public String registraFunciionario(@Valid Usuario usuario, BindingResult br, RedirectAttributes ra){
+    public String registraFuncionario(@Valid Usuario usuario, BindingResult br, RedirectAttributes ra){
         usuario.setPassword(pe().encode(usuario.getPassword()));
         usuarioRepository.save(usuario);
 
@@ -60,7 +60,23 @@ public class AdminFuncionarioController {
         return "redirect:/admFuncionarios";
     }
 
-    @GetMapping("/delete")
+    @GetMapping("/edit/{id}")
+    public String telaEditaFuncionario(@PathVariable("id") Integer id, Model model){
+        //model.addAttribute("usuario", new Usuario());
+        model.addAttribute("funcionario", usuarioRepository.getOne(id));
+
+        return "/admin/editFuncionario";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String editaFuncionario(@PathVariable("id") Integer id, @Valid Usuario usuario, Model model){
+        usuario.setPassword(pe().encode(usuario.getPassword()));
+        usuarioRepository.saveAndFlush(usuario);
+
+        return "redirect:/admFuncionarios";
+    }
+
+    @GetMapping("/delete/{id}")
     public String deletaFuncionario(@PathVariable("id") Integer id){
         usuarioRepository.delete(id);
 
