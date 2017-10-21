@@ -29,12 +29,12 @@ public class AdminFuncionarioController {
         this.usuarioRepository = usuarioRepository;
     }
 
-    /*@InitBinder
+    @InitBinder
     public void formataData(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
-    }*/
+    }
 
     //CRUDs em relacao ao funcionario!
     @GetMapping
@@ -52,7 +52,7 @@ public class AdminFuncionarioController {
     }
 
     @PostMapping("/register")
-    public String registraFuncionario(@Valid Usuario usuario, BindingResult br, RedirectAttributes ra){
+    public String registraFuncionario(@Valid Usuario usuario, RedirectAttributes ra){
         usuario.setPassword(pe().encode(usuario.getPassword()));
         usuarioRepository.save(usuario);
 

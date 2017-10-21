@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
+    List<Usuario> findByCpf(String cpf);
     Optional<Usuario> findByUsername(String username);
     List<Usuario> findAllByAcesso(Role acesso);
 }
