@@ -3,6 +3,7 @@ package com.silverdev.ilg.model;
 import com.silverdev.ilg.model.enums.Role;
 import com.silverdev.ilg.model.enums.Sexo;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -42,6 +43,7 @@ public class Usuario {
     private String telefone;
 
     @Temporal(TemporalType.DATE)
+    //@DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "usuario_data_nascimento")
     private Date data_nascimento;
 
