@@ -36,7 +36,7 @@
 <br/>
 <br/>
 
-<div class = "card" style="width: 80%; margin: auto">
+<div class = "card" style="width: 70%; margin: auto">
     <div class="card-header text-center bg-info">
         <b>Cursos</b>
     </div>
@@ -50,7 +50,6 @@
                 <th>Carga Horária</th>
                 <th>Preço</th>
                 <th></th>
-                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -60,12 +59,12 @@
                 <td th:text="${curso.carga_horaria}"></td>
                 <td th:text="${curso.preco}"></td>
                 <td>
-                    <a class="btn btn-warning btn-sm"
-                       th:href="@{/admCursos/edit/{id} (id=${curso.id})}">Editar</a>
-                </td>
-                <td>
-                    <a type="button" class="btn btn-danger btn-sm"
-                       th:href="@{/admCursos/delete/{id} (id=${curso.id})}">Excluir</a>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-warning btn-sm"
+                            th:href="@{/admCursos/edit/{id} (id=${curso.id})}">Editar</a>
+                        <a type="button" class="btn btn-danger btn-sm"
+                           th:href="@{/admCursos/delete/{id} (id=${curso.id})}">Excluir</a>
+                    </div>
                 </td>
             </tr>
             </tbody>

@@ -57,11 +57,18 @@
                             </div>
                             <div class="form-group col-12 col-lg-6">
                                 <label for="carga_horaria">Carga Horária<span class="obrigatorio">*</span></label>
-                                <input class="form-control" type="text" th:field="*{carga_horaria}" placeholder="Insira uma carga horária" required="required"/>
+                                <div class="input-group">
+                                    <input class="form-control" type="text" th:field="*{carga_horaria}" placeholder="Insira uma carga horária" required="required"/>
+                                    <span class="input-group-addon">h</span>
+                                </div>
                             </div>
                             <div class="form-group col-12 col-lg-6">
                                 <label for="preco" class="col-form-label">Preço<span class="obrigatorio">*</span></label>
-                                <input id="preco" type="text" class="form-control" th:field="*{preco}" placeholder="Insira um preço" required="required"/>
+                                <div class="input-group">
+                                    <span class="input-group-addon">$</span>
+                                    <input id="preco" type="text" class="form-control" th:field="*{preco}" placeholder="Insira um preço" required="required"/>
+                                    <span class="input-group-addon">.00</span>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -70,6 +77,12 @@
                     </form>
                 </div>
             </div>
+            <script>
+                jQuery(function($){
+                    $('#preco').mask("000");
+                    $('#carga_horaria').mask("000");
+                });
+            </script>
         </div>
     </div>
 </div>
