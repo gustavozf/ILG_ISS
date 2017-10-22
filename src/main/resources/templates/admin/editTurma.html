@@ -41,9 +41,9 @@
                     <span th:text="${erro}"></span>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" style="width: 70%; margin: auto">
                 <div class="card-header text-center bg-info">
-                    <b>Atualizar TURMA</b>
+                    <b>ATUALIZAR TURMA</b>
                 </div>
                 <div class="card-body">
                     <h4 class="card-title text-center">
@@ -68,7 +68,7 @@
                                     <option value="19:40 às 21:10">19:40 às 21:10</option>
                                 </select>
                             </div>
-                            <div class="form-group col-12 col-lg-5">
+                            <div class="form-group col-12 col-lg-4">
                                 <label>Professor<span class="obrigatorio">*</span></label>
                                 <div class="input-group">
                                     <select class="custom-select" th:field="*{professor}">
@@ -88,7 +88,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group col-12 col-lg-4">
+                            <div class="form-group col-12 col-lg-3">
                                 <label for="num_vagas" class="col-form-label">Nº Vagas<span class="obrigatorio">*</span></label>
                                 <div class="input-group">
                                     <input id="num_vagas" name="num_vagas" type="text" class="form-control" placeholder="Insira um número de vagas" required="required"/>
@@ -107,7 +107,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <button id="btn-subimit" style="float: right" type="submit" class="btn btn-primary">Cadastrar</button>
+                            <button id="btn-subimit" style="float: right" type="submit" class="btn btn-primary">Atualizar</button>
                         </div>
                     </form>
                 </div>

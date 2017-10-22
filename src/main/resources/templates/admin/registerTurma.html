@@ -41,7 +41,7 @@
                     <span th:text="${erro}"></span>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" style="width: 70%; margin: auto">
                 <div class="card-header text-center bg-info">
                     <b>NOVA TURMA</b>
                 </div>
@@ -51,7 +51,7 @@
                     </h4>
                     <form th:action="@{/admTurmas/register}" th:object="${turma}" method="post">
                         <div class="form-row">
-                            <div class="form-group col-12 col-lg-6">
+                            <div class="form-group col-12 col-lg-3">
                                 <label for="dias">Dias<span class="obrigatorio">*</span></label>
                                 <select class="custom-select" th:field="*{dias}">
                                     <option value="Segunda/Terça">Segunda/Terça</option>
@@ -59,7 +59,7 @@
                                     <option value="Quarta/Sexta">Quarta/Sexta</option>
                                 </select>
                             </div>
-                            <div class="form-group col-12 col-lg-6">
+                            <div class="form-group col-12 col-lg-3">
                                 <label for="horarios">Horários<span class="obrigatorio">*</span></label>
                                 <select class="custom-select" th:field="*{horarios}">
                                     <option value="13:30 às 15:10">13:30 às 15:10</option>
@@ -68,7 +68,7 @@
                                     <option value="19:40 às 21:10">19:40 às 21:10</option>
                                 </select>
                             </div>
-                            <div class="form-group col-12 col-lg-3">
+                            <div class="form-group col-12 col-lg-4">
                                 <label>Professor<span class="obrigatorio">*</span></label>
                                 <div class="input-group">
                                     <select class="custom-select" th:field="*{professor}">

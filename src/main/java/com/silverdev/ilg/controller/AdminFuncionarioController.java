@@ -115,6 +115,12 @@ public class AdminFuncionarioController {
         return "redirect:/admFuncionarios";
     }
 
+    @GetMapping("/readMore/{id}")
+    public String telaReadMore(@PathVariable("id") Integer id, Model model){
+        model.addAttribute("funcionario", usuarioRepository.getOne(id));
+
+        return "/admin/moreFuncionario";
+    }
 
     @Bean
     public PasswordEncoder pe() {

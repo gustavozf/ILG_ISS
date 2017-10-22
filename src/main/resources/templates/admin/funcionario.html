@@ -94,7 +94,8 @@
                 <td th:text="${funcio.cpf}"></td>
                 <td th:text="${funcio.acesso.getAcesso()}"></td>
                 <td>
-
+                    <a class="btn btn-primary btn-sm" th:target="_blank"
+                       th:href="@{/admFuncionarios/readMore/{id} (id=${funcio.id})}">+</a>
                 </td>
                 <td>
                     <div class="btn-group" role="group">
@@ -111,10 +112,14 @@
     </div>
 </div>
 
-<footer style="position: absolute; bottom: 5%; left: 3%">
-    <div class="panel-footer">
+<br/>
+<br/>
+<br/>
+
+<footer>
+    <nav class="navbar fixed-bottom navbar-light bg-light">
         <a class="btn btn-sm btn-success" th:href="@{/admFuncionarios/register}" >Adicionar</a>
-    </div>
+    </nav>
 </footer>
 
 </body>

@@ -56,6 +56,15 @@ public class AdminTurmaController {
         return "admin/registerTurma";
     }
 
+    @PostMapping("/register")
+    public String registroTurma(@Valid Turma turma, RedirectAttributes ra){
+        turma.setData_criacao(getMonthAndYear());
+        turmaRepository.save(turma);
+        ra.addFlashAttribute("sucesso", "Turma registrada com sucesso!");
+
+        return "redirect:/admTurmas";
+    }
+
     @GetMapping("/edit/{id}")
     public String telaEditaTurma(@PathVariable("id") Integer id, Model model){
         model.addAttribute("professores", usuarioRepository.findAllByAcesso(Role.ROLE_PROFESSOR));
@@ -65,17 +74,11 @@ public class AdminTurmaController {
         return "admin/editTurma";
     }
 
-    @PostMapping("/register")
-    public String registroTurma(@Valid Turma turma, RedirectAttributes ra){
-        Calendar cal = Calendar.getInstance();
-        int year, month;
-
-        year = cal.get(Calendar.YEAR);
-        month = cal.get(Calendar.MONTH) +1;
-
-        turma.setData_criacao(month + "/" + year);
-        turmaRepository.save(turma);
-        ra.addFlashAttribute("sucesso", "Turma registrada com sucesso!");
+    @PostMapping("/edit/{id}")
+    public String editaTurma(@PathVariable("id") Integer id, @Valid Turma turma, RedirectAttributes ra){
+        turma.setData_criacao(getMonthAndYear());
+        turmaRepository.saveAndFlush(turma);
+        ra.addFlashAttribute("editado", "Turma atualizada com sucesso!");
 
         return "redirect:/admTurmas";
     }
@@ -88,5 +91,15 @@ public class AdminTurmaController {
         ra.addFlashAttribute("excluido", "Turma excluída com sucesso!");
 
         return "redirect:/admTurmas";
+    }
+
+    private String getMonthAndYear(){
+        Calendar cal = Calendar.getInstance();
+        int year, month;
+
+        year = cal.get(Calendar.YEAR);
+        month = cal.get(Calendar.MONTH) +1;
+
+        return month + "/" + year;
     }
 }

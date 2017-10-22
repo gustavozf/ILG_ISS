@@ -35,7 +35,7 @@
 <br/>
 <br/>
 <br/>
-<div style="width: 70%; margin: auto">
+<div style="width: 80%; margin: auto">
     <div th:if="${sucesso}">
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -45,7 +45,7 @@
         </div>
     </div>
 </div>
-<div style="width: 70%; margin: auto">
+<div style="width: 80%; margin: auto">
     <div th:if="${excluido}">
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -55,7 +55,7 @@
         </div>
     </div>
 </div>
-<div style="width: 70%; margin: auto">
+<div style="width: 80%; margin: auto">
     <div th:if="${editado}">
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -65,7 +65,7 @@
         </div>
     </div>
 </div>
-<div class = "card" style="width: 70%; margin: auto">
+<div class = "card" style="width: 80%; margin: auto">
     <div class="card-header text-center bg-info">
         <b>Turmas</b>
     </div>
@@ -96,7 +96,12 @@
                 <td th:text="${turmas.professor}"></td>
                 <td th:text="${turmas.num_vagas}"></td>
                 <td th:text="${turmas.data_criacao}"></td>
-                <td th:text="${turmas.disponivel}"></td>
+                <div th:if="${turmas.disponivel}">
+                    <td>Disponível</td>
+                </div>
+                <div th:unless="${turmas.disponivel}">
+                    <td>Indisponível</td>
+                </div>
                 <td>
                     <div class="btn-group" role="group">
                         <a class="btn btn-warning btn-sm"
@@ -112,10 +117,14 @@
     </div>
 </div>
 
-<footer style="position: absolute; bottom: 5%; left: 3%">
-    <div class="panel-footer">
+<br/>
+<br/>
+<br/>
+
+<footer>
+    <nav class="navbar fixed-bottom navbar-light bg-light">
         <a class="btn btn-sm btn-success" th:href="@{/admTurmas/register}" >Adicionar</a>
-    </div>
+    </nav>
 </footer>
 
 
