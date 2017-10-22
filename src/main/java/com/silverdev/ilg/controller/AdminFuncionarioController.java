@@ -39,7 +39,7 @@ public class AdminFuncionarioController {
     //CRUDs em relacao ao funcionario!
     @GetMapping
     public String abreTelaFuncionarios(Model model){
-        model.addAttribute("funcionarios", usuarioRepository.findAll());
+        model.addAttribute("funcionarios", usuarioRepository.findByAtivo(true));
 
         return "/admin/funcionario";
     }
@@ -78,7 +78,10 @@ public class AdminFuncionarioController {
 
     @GetMapping("/delete/{id}")
     public String deletaFuncionario(@PathVariable("id") Integer id){
-        usuarioRepository.delete(id);
+        //usuarioRepository.delete(id);
+        Usuario usuario = usuarioRepository.getOne(id);
+        usuario.setAtivo(false);
+        usuarioRepository.saveAndFlush(usuario);
 
         return "redirect:/admFuncionarios";
     }
