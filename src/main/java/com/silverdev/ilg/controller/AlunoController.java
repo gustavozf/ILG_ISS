@@ -37,6 +37,6 @@ public class AlunoController {
         model.addAttribute("notas", alunoRepository.findByCpf(cpf));
         model.addAttribute("aluno", usuarioRepository.getOne(id));
 
-        return  "/aluno/visuaNotas";
+        return  "/aluno/notas";
     }
 }
