@@ -2,7 +2,6 @@ package com.silverdev.ilg.repository;
 
 import com.silverdev.ilg.model.Usuario;
 import com.silverdev.ilg.model.enums.Role;
-import com.sun.prism.Texture;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
