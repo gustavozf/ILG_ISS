@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ILG - Admin</title>
+    <title>ILG - Alunos</title>
     <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
 </head>
 <body>
@@ -18,10 +18,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="btn btn-primary" th:href="@{/aluno/visuaNotas}"> NOTAS </a>
+                    <a class="btn btn-primary" th:href="@{/aluno/notas/{id} (id = ${aluno.id})}"> NOTAS </a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-primary" th:href="@{/aluno/visuaAprovacao}"> APROVAÇÃO </a>
+                    <a class="btn btn-primary" th:href="@{/aluno/visuaAprovacao/{id} (id = ${aluno.id})}"> APROVAÇÃO </a>
                 </li>
                 <li class="nav navbar-nav navbar-right">
                     <a class="btn btn-primary" th:href="@{/}">SAIR</a>
@@ -45,23 +45,22 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Num_Ins</th>
                 <th>Curso</th>
                 <th>Nota 1-1</th>
                 <th>Nota 1-2</th>
                 <th>Nota 2-1</th>
                 <th>Nota 2-2</th>
                 <th>Faltas</th>
-                <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="funcio: ${funcionarios}">
-                <td th:text="${funcio.id}"></td>
-                <td th:text="${funcio.nome} ${funcio.sobrenome}"></td>
-                <td th:text="${funcio.nascimento}"></td>
-                <td th:text="${funcio.cpf}"></td>
-                <td th:text="${funcio.acesso}"></td>
+            <tr th:each="notas: ${notas}">
+                <td th:text="${notas.nome_curso}"></td>
+                <td th:text="${notas.prova1}"></td>
+                <td th:text="${notas.prova_aux1}"></td>
+                <td th:text="${notas.prova2}"></td>
+                <td th:text="${notas.prova_aux2}"></td>
+                <td th:text="${notas.faltas}"></td>
             </tr>
             </tbody>
         </table>

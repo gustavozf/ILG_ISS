@@ -23,6 +23,9 @@ public class Aluno {
     @Column(name = "aluno_curso")
     private Integer cod_curso;
 
+    @Column(name = "aluno_nomecurso")
+    private String nome_curso;
+
     @Column(name = "aluno_turma")
     private Integer cod_turma;
 
@@ -50,6 +53,14 @@ public class Aluno {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getNome_curso() {
+        return nome_curso;
+    }
+
+    public void setNome_curso(String nome_curso) {
+        this.nome_curso = nome_curso;
     }
 
     public String getCpf() {

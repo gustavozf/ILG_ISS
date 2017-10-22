@@ -51,14 +51,14 @@ body, h1, h2, h3, h4, h5, h6 {
 
 @media(max-width:767px) {
   .intro-message {
-    padding-bottom: 15%;
+    padding-bottom: 50%;
   }
   .intro-message>h1 {
     font-size: 3em;
   }
   ul.intro-social-buttons>li {
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     padding: 0;
   }
   ul.intro-social-buttons>li:last-child {
@@ -100,7 +100,7 @@ body, h1, h2, h3, h4, h5, h6 {
 .banner {
   padding: 100px 0;
   color: #f8f8f8;
-  background: url(../img/earth.gif) no-repeat center center;
+  background: url(../img/04.png) no-repeat center center;
   background-size: cover;
 }
 
