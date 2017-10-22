@@ -1,5 +1,6 @@
 package com.silverdev.ilg.controller;
 
+import com.silverdev.ilg.model.Usuario;
 import com.silverdev.ilg.repository.AlunoRepository;
 import com.silverdev.ilg.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +33,11 @@ public class AlunoController {
 
     @GetMapping("/notas/{id}")
     public String visuaNotas(@PathVariable("id") Integer id, Model model){
-        String cpf = usuarioRepository.getOne(id).getCpf();
+        Usuario aluno = usuarioRepository.getOne(id);
+        String cpf = aluno.getCpf();
 
+        model.addAttribute("aluno", aluno);
         model.addAttribute("notas", alunoRepository.findByCpf(cpf));
-        model.addAttribute("aluno", usuarioRepository.getOne(id));
 
         return  "/aluno/notas";
     }

@@ -52,12 +52,39 @@ public class AdminFuncionarioController {
     }
 
     @PostMapping("/register")
-    public String registraFuncionario(@Valid Usuario usuario, RedirectAttributes ra){
+    public String registraFuncionario(@Valid Usuario usuario, RedirectAttributes ra) {
+        String redirecionamento = "redirect:/admFuncionarios";
+
+        //Checa se existe o CPF no BD
+        boolean condicao1 = existeCpf(usuario.getCpf());
+        //Checa se existe um mesmo usuario inativo
+        boolean condicao2 = false;
+        if (condicao1){
+            condicao2 = usuarioRepository.getOneByCpf(usuario.getCpf()).getAtivo();
+        }
+        //Checa se existe o username
+        boolean condicao3 = existeUsername(usuario.getUsername());
+
         usuario.setPassword(pe().encode(usuario.getPassword()));
-        usuarioRepository.save(usuario);
+
+        if(condicao1 && !condicao2){
+            ra.addFlashAttribute("sucesso", "Funcionário registrado com sucesso!");
+            usuario.setAtivo(true);
+            usuario.setId( usuarioRepository.getOneByCpf(usuario.getCpf()).getId());
+            usuarioRepository.saveAndFlush(usuario);
+        }else if(condicao1 && condicao2){
+            ra.addFlashAttribute("error_cpf", "Erro! CPF '"+usuario.getCpf() +"' já cadastrado!");
+            redirecionamento = "redirect:/admFuncionarios/register";
+        } else if(condicao3) {
+            ra.addFlashAttribute("error_user", "Erro! Username '"+usuario.getUsername() +"' já cadastrado!");
+            redirecionamento = "redirect:/admFuncionarios/register";
+        } else {
+            ra.addFlashAttribute("sucesso", "Funcionário '"+usuario.getNome() +"' registrado com sucesso!");
+            usuarioRepository.save(usuario);
+        }
 
 
-        return "redirect:/admFuncionarios";
+        return redirecionamento;
     }
 
     @GetMapping("/edit/{id}")
@@ -69,19 +96,21 @@ public class AdminFuncionarioController {
     }
 
     @PostMapping("/edit/{id}")
-    public String editaFuncionario(@PathVariable("id") Integer id, @Valid Usuario usuario, Model model){
+    public String editaFuncionario(@PathVariable("id") Integer id, @Valid Usuario usuario, RedirectAttributes ra){
         usuario.setPassword(pe().encode(usuario.getPassword()));
         usuarioRepository.saveAndFlush(usuario);
+        ra.addFlashAttribute("editado", "Funcionario editado com sucesso!");
 
         return "redirect:/admFuncionarios";
     }
 
     @GetMapping("/delete/{id}")
-    public String deletaFuncionario(@PathVariable("id") Integer id){
+    public String deletaFuncionario(@PathVariable("id") Integer id, RedirectAttributes ra){
         //usuarioRepository.delete(id);
         Usuario usuario = usuarioRepository.getOne(id);
         usuario.setAtivo(false);
         usuarioRepository.saveAndFlush(usuario);
+        ra.addFlashAttribute("excluido", "Funcionario excluído com sucesso!");
 
         return "redirect:/admFuncionarios";
     }
@@ -90,5 +119,13 @@ public class AdminFuncionarioController {
     @Bean
     public PasswordEncoder pe() {
         return new BCryptPasswordEncoder();
+    }
+
+    private boolean existeCpf(String cpf){
+        return usuarioRepository.findByCpf(cpf).isPresent();
+    }
+
+    private boolean existeUsername(String username){
+        return usuarioRepository.findByUsername(username).isPresent();
     }
 }

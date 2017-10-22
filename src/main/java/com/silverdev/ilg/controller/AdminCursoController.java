@@ -42,6 +42,7 @@ public class AdminCursoController {
     @PostMapping("/register")
     public String registroCurso(@Valid Curso curso, RedirectAttributes ra){
         cursoRepository.save(curso);
+        ra.addFlashAttribute("sucesso", "Curso '"+curso.getNome()+"' criado com sucesso!");
 
         return "redirect:/admCursos";
     }
@@ -55,16 +56,18 @@ public class AdminCursoController {
     }
 
     @PostMapping("/edit/{id}")
-    public String editaCurso(@PathVariable("id") Integer id, @Valid Curso curso, Model model){
+    public String editaCurso(@PathVariable("id") Integer id, @Valid Curso curso, RedirectAttributes ra){
         cursoRepository.saveAndFlush(curso);
+        ra.addFlashAttribute("editado", "Curso editado com sucesso!");
 
         return "redirect:/admCursos";
     }
 
 
     @GetMapping("/delete/{id}")
-    public String deletaCurso(@PathVariable("id") Integer id){
+    public String deletaCurso(@PathVariable("id") Integer id, RedirectAttributes ra){
         cursoRepository.delete(id);
+        ra.addFlashAttribute("excluido", "Curso excluído com sucesso!");
 
         return "redirect:/admCursos";
     }

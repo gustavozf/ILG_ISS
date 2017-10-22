@@ -33,12 +33,20 @@
     <div class="container">
         <div class="row">
             <div class="col-12 align-middle registro">
-                <div th:if="${erro}">
+                <div th:if="${error_cpf}">
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <span th:text="${erro}"></span>
+                        <span th:text="${error_cpf}"></span>
+                    </div>
+                </div>
+                <div th:if="${error_user}">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <span th:text="${error_user}"></span>
                     </div>
                 </div>
                 <div class="card">
@@ -53,11 +61,11 @@
                             <div class="form-row">
                                 <div class="form-group col-12 col-lg-6">
                                     <label for="nome">Nome<span class="obrigatorio">*</span></label>
-                                    <input class="form-control" type="text" th:field="*{nome}" required="required"/>
+                                    <input class="form-control" type="text" th:field="*{nome}" placeholder="Insira seu Nome " required="required"/>
                                 </div>
                                 <div class="form-group col-12 col-lg-6">
                                     <label for="sobrenome">Sobrenome<span class="obrigatorio">*</span></label>
-                                    <input class="form-control" type="text" th:field="*{sobrenome}" required="required"/>
+                                    <input class="form-control" type="text" th:field="*{sobrenome}" placeholder="Insira seu Sobrenome " required="required"/>
                                 </div>
                                 <div class="form-group col-12 col-lg-6">
                                     <label>Sexo<span class="obrigatorio">*</span></label><br/>
@@ -69,22 +77,22 @@
                                 </div>
                                 <div class="form-group col-12 col-lg-6">
                                     <label for="data_nascimento" class="col-form-label">Data de nascimento<span class="obrigatorio">*</span></label>
-                                    <input id="data_nascimento" name="data_nascimento" type="date" class="form-control"
+                                    <input id="data_nascimento" name="data_nascimento" placeholder="Insira sua Data de Nascimento " type="date" class="form-control"
                                             required="required"/>
                                 </div>
                                 <div class="form-group col-12 col-lg-4">
                                     <label for="cpf" class="col-form-label">CPF<span class="obrigatorio">*</span></label>
-                                    <input id="cpf" class="form-control"  type="text"
+                                    <input id="cpf" class="form-control"  type="text" placeholder="Insira seu CPF "
                                            th:field="*{cpf}" required="required"/>
                                 </div>
                                 <div class="form-group col-12 col-lg-4">
                                     <label for="rg" class="col-form-label">RG<span class="obrigatorio">*</span></label>
-                                    <input id="rg" class="form-control" placeholder="Digite o RG" type="text"
+                                    <input id="rg" class="form-control" type="text" placeholder="Insira seu RG "
                                            th:field="*{rg}" required="required"/>
                                 </div>
                                 <div class="form-group col-12 col-lg-4">
                                     <label for="telefone" class="col-form-label">Telefone<span class="obrigatorio">*</span></label>
-                                    <input id="telefone" class="form-control" type="text"
+                                    <input id="telefone" class="form-control" type="text" placeholder="Insira um telefone"
                                            th:field="*{telefone}" required="required"/>
                                 </div>
                                 <div class="form-group col-12 col-lg-4">
@@ -100,12 +108,12 @@
                                 </div>
                                 <div class="form-group col-12 col-lg-4">
                                     <label for="username">Username<span class="obrigatorio">*</span></label>
-                                    <input class="form-control" type="text" th:field="*{username}" required="required"/>
+                                    <input class="form-control" type="text" th:field="*{username}" placeholder="Insira um Username" required="required"/>
                                     <span id="userErro" class="invalid-feedback" role="alert"></span>
                                 </div>
                                 <div class="form-group col-12 col-lg-4">
                                     <label for="password">Password<span class="obrigatorio">*</span></label>
-                                    <input class="form-control" type="password" th:field="*{password}" required="required"/>
+                                    <input class="form-control" type="password" th:field="*{password}" placeholder="Insira uma Senha " required="required"/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -123,17 +131,6 @@
                                         $(this).mask('(00) 00000-0000')
                                 });
                                 $('#rg').mask('00.000.000-0');
-                            });
-                            $('#cpf').focusout(function () {
-                                var cpf = validaCPF();
-                                if(cpf) {
-                                    $(this).removeClass('is-invalid');
-                                    $('#btn-subimit').attr('disabled', false);
-                                } else {
-                                    $(this).addClass('is-invalid');
-                                    $('#CPFerror').text("CPF Inválido");
-                                    $('#btn-subimit').attr('disabled',true);
-                                }
                             });
                             /* ]]> */
                         </script>
