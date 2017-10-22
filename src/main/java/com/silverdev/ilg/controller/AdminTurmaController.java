@@ -11,7 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
+import java.util.Calendar;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/admTurmas")
@@ -34,7 +40,7 @@ public class AdminTurmaController {
 
     @GetMapping
     public String abreTelaTurmas(Model model){
-        model.addAttribute("turmas", turmaRepository.findAll());
+        model.addAttribute("turmas", turmaRepository.findByAtivo(true));
         model.addAttribute("cursos", cursoRepository.findAll());
 
         return "/admin/turma";
@@ -50,10 +56,37 @@ public class AdminTurmaController {
         return "admin/registerTurma";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deletaTurma(@PathVariable("id") Integer id){
-        turmaRepository.delete(id);
+    @GetMapping("/edit/{id}")
+    public String telaEditaTurma(@PathVariable("id") Integer id, Model model){
+        model.addAttribute("professores", usuarioRepository.findAllByAcesso(Role.ROLE_PROFESSOR));
+        model.addAttribute("cursos", cursoRepository.findAll());
+        model.addAttribute("turma", turmaRepository.findOne(id));
 
-        return "redirect:/admin/turmas";
+        return "admin/editTurma";
+    }
+
+    @PostMapping("/register")
+    public String registroTurma(@Valid Turma turma, RedirectAttributes ra){
+        Calendar cal = Calendar.getInstance();
+        int year, month;
+
+        year = cal.get(Calendar.YEAR);
+        month = cal.get(Calendar.MONTH) +1;
+
+        turma.setData_criacao(month + "/" + year);
+        turmaRepository.save(turma);
+        ra.addFlashAttribute("sucesso", "Turma registrada com sucesso!");
+
+        return "redirect:/admTurmas";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deletaTurma(@PathVariable("id") Integer id, RedirectAttributes ra){
+        Turma turma = turmaRepository.getOne(id);
+        turma.setAtivo(false);
+        turmaRepository.saveAndFlush(turma);
+        ra.addFlashAttribute("excluido", "Turma excluída com sucesso!");
+
+        return "redirect:/admTurmas";
     }
 }

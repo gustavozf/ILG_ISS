@@ -79,7 +79,8 @@ public class AdminFuncionarioController {
             ra.addFlashAttribute("error_user", "Erro! Username '"+usuario.getUsername() +"' já cadastrado!");
             redirecionamento = "redirect:/admFuncionarios/register";
         } else {
-            ra.addFlashAttribute("sucesso", "Funcionário '"+usuario.getNome() +"' registrado com sucesso!");
+            ra.addFlashAttribute("sucesso", "Funcionário '"+usuario.getNome() +" "+
+                    usuario.getSobrenome() + "' registrado com sucesso!");
             usuarioRepository.save(usuario);
         }
 
@@ -89,7 +90,6 @@ public class AdminFuncionarioController {
 
     @GetMapping("/edit/{id}")
     public String telaEditaFuncionario(@PathVariable("id") Integer id, Model model){
-        //model.addAttribute("usuario", new Usuario());
         model.addAttribute("funcionario", usuarioRepository.getOne(id));
 
         return "/admin/editFuncionario";

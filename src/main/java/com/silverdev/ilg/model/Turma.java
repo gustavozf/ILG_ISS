@@ -21,14 +21,20 @@ public class Turma {
     @Column(name="turma_num_vagas")
     private Integer num_vagas;
 
-    @Column(name="turma_descricao")
-    private String descricao;
+    @Column(name="turma_dias")
+    private String dias;
+
+    @Column(name="turma_horarios")
+    private String horarios;
 
     @Column(name="turma_data_criacao")
     private String data_criacao;
 
     @Column(name="turma_disponivel")
     private boolean disponivel;
+
+    @Column(name="turma_ativo")
+    private boolean ativo = true;
 
     public Integer getId() {
         return id;
@@ -62,12 +68,20 @@ public class Turma {
         this.num_vagas = num_vagas;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDias() {
+        return dias;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDias(String dias) {
+        this.dias = dias;
+    }
+
+    public String getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(String horarios) {
+        this.horarios = horarios;
     }
 
     public String getData_criacao() {
@@ -78,12 +92,20 @@ public class Turma {
         this.data_criacao = data_criacao;
     }
 
-    public boolean getDisponivel() {
+    public boolean isDisponivel() {
         return disponivel;
     }
 
     public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 
     @Override

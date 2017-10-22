@@ -92,7 +92,7 @@
                         <td th:text="${cursos.nome}"></td>
                     </div>
                 </div>
-                <td th:text="${turmas.descricao}"></td>
+                <td th:text="${turmas.dias} +' das '+ ${turmas.horarios}"></td>
                 <td th:text="${turmas.professor}"></td>
                 <td th:text="${turmas.num_vagas}"></td>
                 <td th:text="${turmas.data_criacao}"></td>
