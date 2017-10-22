@@ -1,5 +1,8 @@
 package com.silverdev.ilg.controller;
 
+import com.silverdev.ilg.model.Curso;
+import com.silverdev.ilg.model.Turma;
+import com.silverdev.ilg.model.enums.Role;
 import com.silverdev.ilg.repository.CursoRepository;
 import com.silverdev.ilg.repository.TurmaRepository;
 import com.silverdev.ilg.repository.UsuarioRepository;
@@ -14,10 +17,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admTurmas")
 public class AdminTurmaController {
     private final TurmaRepository turmaRepository;
+    private final UsuarioRepository usuarioRepository;
+    private final CursoRepository cursoRepository;
 
     @Autowired
-    public AdminTurmaController(TurmaRepository turmaRepository){
+    public AdminTurmaController(TurmaRepository turmaRepository,
+                                UsuarioRepository usuarioRepository,
+                                CursoRepository cursoRepository){
         this.turmaRepository = turmaRepository;
+        this.usuarioRepository = usuarioRepository;
+        this.cursoRepository = cursoRepository;
     }
 
 
@@ -26,9 +35,19 @@ public class AdminTurmaController {
     @GetMapping
     public String abreTelaTurmas(Model model){
         model.addAttribute("turmas", turmaRepository.findAll());
+        model.addAttribute("cursos", cursoRepository.findAll());
 
         return "/admin/turma";
 
+    }
+
+    @GetMapping("/register")
+    public String telaRegistroTurma(Model model){
+        model.addAttribute("professores", usuarioRepository.findAllByAcesso(Role.ROLE_PROFESSOR));
+        model.addAttribute("cursos", cursoRepository.findAll());
+        model.addAttribute("turma", new Turma());
+
+        return "admin/registerTurma";
     }
 
     @GetMapping("/delete/{id}")
