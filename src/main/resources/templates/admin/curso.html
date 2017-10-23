@@ -32,5 +32,86 @@
     </nav>
 </header>
 
+<br/>
+<br/>
+<br/>
+<div style="width: 70%; margin: auto">
+    <div th:if="${sucesso}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span th:text="${sucesso}"></span>
+        </div>
+    </div>
+</div>
+<div style="width: 70%; margin: auto">
+    <div th:if="${excluido}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span th:text="${excluido}"></span>
+        </div>
+    </div>
+</div>
+<div style="width: 70%; margin: auto">
+    <div th:if="${editado}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span th:text="${editado}"></span>
+        </div>
+    </div>
+</div>
+<div class = "card" style="width: 70%; margin: auto">
+    <div class="card-header text-center bg-info">
+        <b>Cursos</b>
+    </div>
+    <div class="card-body">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#Id</th>
+                <th>Nome</th>
+                <th>Carga Horária</th>
+                <th>Preço</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="curso: ${cursos}">
+                <td th:text="${curso.id}"></td>
+                <td th:text="${curso.nome}"></td>
+                <td th:text="${curso.carga_horaria}"></td>
+                <td th:text="${curso.preco}"></td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-warning btn-sm"
+                            th:href="@{/admCursos/edit/{id} (id=${curso.id})}">Editar</a>
+                        <a type="button" class="btn btn-danger btn-sm"
+                           th:href="@{/admCursos/delete/{id} (id=${curso.id})}">Excluir</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<br/>
+<br/>
+<br/>
+
+<footer>
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+        <a class="btn btn-sm btn-success" th:href="@{/admCursos/register}" >Adicionar</a>
+    </nav>
+</footer>
+
+
 </body>
 </html>

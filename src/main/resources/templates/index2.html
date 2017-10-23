@@ -9,7 +9,7 @@
   <meta name="author" content=""/>
 
   <title>Instituto de Línguas</title>
-  <link rel="icon" th:href="@{/img/favicon.png}"/>
+  <link rel="icon" th:href="@{/img/favi.png}"/>
 
   <!-- Bootstrap core CSS -->
   <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
@@ -29,8 +29,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
     <a class="navbar-brand" href="#">
-      <img th:src="@{/img/favicon.png}" alt="ILG" />
-      INSTITUTO DE LÍNGUAS
+      <img th:src="@{/img/ilg2.png}" alt="ILG" style="max-width: 20%;"/>
+         Instituto de Línguas
     </a>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
@@ -45,22 +45,6 @@
         </li>
       </ul>
     </div>
-    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
-      </ul>
-    </div>-->
   </div>
 </nav>
 
@@ -68,22 +52,16 @@
 <header class="intro-header banner">
   <div class="container">
     <div class="intro-message">
-      <h1>ILG</h1>
-      <hr class="intro-divider">
-      <ul class="list-inline intro-social-buttons">
+      <hr class="intro-divider" >
+      <ul class="list-inline intro-social-buttons" style="position: absolute; bottom: 5%; left: 40%">
         <li class="list-inline-item">
-          <a th:href="@{/inscricao}" class="btn btn-secondary btn-lg">
+          <a th:href="@{/inscricao}" class="btn btn-light btn-lg">
             <span class="network-name">INSCREVA-SE</span>
           </a>
         </li>
         <li class="list-inline-item">
-          <a th:href="@{/login}" class="btn btn-secondary btn-lg">
+          <a th:href="@{/login}" class="btn btn-light btn-lg">
             <span class="network-name">LOGIN</span>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a th:href="@{/admin}" class="btn btn-secondary btn-lg">
-            <span class="network-name">ADMIN</span>
           </a>
         </li>
       </ul>
@@ -91,30 +69,6 @@
     </div>
   </div>
 </header>
-
-<!-- Footer -->
-<footer>
-  <!--<div class="container">
-    <ul class="list-inline">
-      <li class="list-inline-item">
-        <a href="#">Home</a>
-      </li>
-      <li class="footer-menu-divider list-inline-item">&sdot;</li>
-      <li class="list-inline-item">
-        <a href="#about">About</a>
-      </li>
-      <li class="footer-menu-divider list-inline-item">&sdot;</li>
-      <li class="list-inline-item">
-        <a href="#services">Services</a>
-      </li>
-      <li class="footer-menu-divider list-inline-item">&sdot;</li>
-      <li class="list-inline-item">
-        <a href="#contact">Contact</a>
-      </li>
-    </ul>
-    <p class="copyright text-muted small">Copyright &copy; Your Company 2017. All Rights Reserved</p>
-  </div> -->
-</footer>
 
 <!-- Bootstrap core JavaScript -->
 <script th:src="@{/jquery/jquery.min.js}"/>

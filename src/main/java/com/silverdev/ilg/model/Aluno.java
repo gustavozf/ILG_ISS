@@ -1,5 +1,6 @@
 package com.silverdev.ilg.model;
 
+import com.silverdev.ilg.model.enums.PosicaoUEM;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
@@ -15,30 +16,36 @@ public class Aluno {
     @Column(name = "aluno_cpf")
     private String cpf;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "aluno_posicao")
-    private Integer posicao_uem;
+    private PosicaoUEM posicao_uem;
 
-    /*@Column(name = "aluno_nome")
-    private String nome;
+    @Column(name = "aluno_curso")
+    private Integer cod_curso;
 
-    @Column(name = "aluno_rg")
-    private Integer rg;
+    @Column(name = "aluno_nomecurso")
+    private String nome_curso;
 
-    @Column(name = "aluno_sobrenome")
-    private String sobrenome;
+    @Column(name = "aluno_turma")
+    private Integer cod_turma;
 
-    @Column(name = "aluno_sexo")
-    private String sexo;
+    @Column(name = "aluno_prova1")
+    private float prova1;
 
-    @Column(name = "aluno_telefone")
-    private String telefone;
+    @Column(name = "aluno_aux1")
+    private float prova_aux1;
 
-    @Column(name = "aluno_nascimento")
-    private String data_nascimento;*/
+    @Column(name = "aluno_prova2")
+    private float prova2;
 
+    @Column(name = "aluno_aux2")
+    private float prova_aux2;
 
-    /*@Column(name = "aluno_inscricao")
-    private Integer num_inscricao;*/
+    @Column(name = "aluno_aprovacao")
+    private Boolean aprovacao;
+
+    @Column(name = "aluno_faltas")
+    private Integer faltas;
 
     public Integer getId() {
         return id;
@@ -46,6 +53,14 @@ public class Aluno {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getNome_curso() {
+        return nome_curso;
+    }
+
+    public void setNome_curso(String nome_curso) {
+        this.nome_curso = nome_curso;
     }
 
     public String getCpf() {
@@ -56,69 +71,77 @@ public class Aluno {
         this.cpf = cpf;
     }
 
-    public Integer getPosicao_uem() {
+    public PosicaoUEM getPosicao_uem() {
         return posicao_uem;
     }
 
-    public void setPosicao_uem(Integer posicao_uem) {
+    public void setPosicao_uem(PosicaoUEM posicao_uem) {
         this.posicao_uem = posicao_uem;
     }
 
-    /*public String getNome() {
-        return nome;
+    public Integer getCod_curso() {
+        return cod_curso;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setCod_curso(Integer cod_curso) {
+        this.cod_curso = cod_curso;
     }
 
-    public Integer getRg() {
-        return rg;
+    public Integer getCod_turma() {
+        return cod_turma;
     }
 
-    public void setRg(Integer rg) {
-        this.rg = rg;
+    public void setCod_turma(Integer cod_turma) {
+        this.cod_turma = cod_turma;
     }
 
-    public String getSobrenome() {
-        return sobrenome;
+    public float getProva1() {
+        return prova1;
     }
 
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
+    public void setProva1(float prova1) {
+        this.prova1 = prova1;
     }
 
-    public String getSexo() {
-        return sexo;
+    public float getProva_aux1() {
+        return prova_aux1;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public void setProva_aux1(float prova_aux1) {
+        this.prova_aux1 = prova_aux1;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public float getProva2() {
+        return prova2;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setProva2(float prova2) {
+        this.prova2 = prova2;
     }
 
-    public String getData_nascimento() {
-        return data_nascimento;
+    public float getProva_aux2() {
+        return prova_aux2;
     }
 
-    public void setData_nascimento(String data_nascimento) {
-        this.data_nascimento = data_nascimento;
+    public void setProva_aux2(float prova_aux2) {
+        this.prova_aux2 = prova_aux2;
     }
 
-    public Integer getNum_inscricao() {
-        return num_inscricao;
+    public Boolean getAprovacao() {
+        return aprovacao;
     }
 
-    public void setNum_inscricao(Integer num_inscricao) {
-        this.num_inscricao = num_inscricao;
-    }*/
+    public void setAprovacao(Boolean aprovacao) {
+        this.aprovacao = aprovacao;
+    }
+
+    public Integer getFaltas() {
+        return faltas;
+    }
+
+    public void setFaltas(Integer faltas) {
+        this.faltas = faltas;
+    }
 
     @Override
     public boolean equals(Object o) {

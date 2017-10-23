@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ILG - Admin</title>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand" th:href="@{/}">
+            <img th:src="@{/img/admin.png}" alt="ILG" />
+            <span>Administrador </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="btn btn-primary" onclick="window.close();"> VOLTAR </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+</header>
+<br/>
+<br/>
+<br/>
+
+<div class="container" style="max-width: 60%;margin:auto;">
+    <div class="row">
+        <div class="col-12 align-middle registro">
+            <div class="card" th:objetc="${funcionario}" id="card1">
+                <div class="card-header text-center bg-info">
+                    <b th:text="'FUNCIONÁRIO #' +${funcionario.id}"></b>
+                </div>
+                <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col-12 col-lg-6">
+                                <div class="card">
+                                    <div class="card-header text-left">
+                                        <h5 class="card-title">Nome</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p th:text="${funcionario.nome}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-12 col-lg-6">
+                                <div class="card">
+                                    <div class="card-header text-left">
+                                        <h5 class="card-title">Sobrenome</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p th:text="${funcionario.sobrenome}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-12 col-lg-6">
+                                <div class="card">
+                                    <div class="card-header text-left">
+                                        <h5 class="card-title">Sexo</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p th:text="${funcionario.sexo.getSexo()}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-12 col-lg-6">
+                                <div class="card">
+                                    <div class="card-header text-left">
+                                        <h5 class="card-title">Data de Nascimento</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p th:text="${funcionario.data_nascimento}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-12 col-lg-4">
+                                <div class="card">
+                                    <div class="card-header text-left">
+                                        <h5 class="card-title">CPF</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p th:text="${funcionario.cpf}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-12 col-lg-4">
+                                <div class="card">
+                                    <div class="card-header text-left">
+                                        <h5 class="card-title">RG</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p th:text="${funcionario.rg}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-12 col-lg-4">
+                                <div class="card">
+                                    <div class="card-header text-left ">
+                                        <h5 class="card-title">Telefone</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p th:text="${funcionario.telefone}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-12 col-lg-4">
+                                <div class="card">
+                                    <div class="card-header text-left">
+                                        <h5 class="card-title">Tipo</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p th:text="${funcionario.acesso.getAcesso()}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-12 col-lg-4">
+                                <div class="card">
+                                    <div class="card-header text-left">
+                                        <h5 class="card-title">Username</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p th:text="${funcionario.username}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <br/>
+    <br/>
+    <br/>
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+        <a class="btn btn-primary" onclick="window.close();"> VOLTAR </a>
+    </nav>
+</footer>
+
+</body>
+</html>

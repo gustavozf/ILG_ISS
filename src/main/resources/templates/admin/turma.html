@@ -32,5 +32,101 @@
     </nav>
 </header>
 
+<br/>
+<br/>
+<br/>
+<div style="width: 80%; margin: auto">
+    <div th:if="${sucesso}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span th:text="${sucesso}"></span>
+        </div>
+    </div>
+</div>
+<div style="width: 80%; margin: auto">
+    <div th:if="${excluido}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span th:text="${excluido}"></span>
+        </div>
+    </div>
+</div>
+<div style="width: 80%; margin: auto">
+    <div th:if="${editado}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span th:text="${editado}"></span>
+        </div>
+    </div>
+</div>
+<div class = "card" style="width: 80%; margin: auto">
+    <div class="card-header text-center bg-info">
+        <b>Turmas</b>
+    </div>
+    <div class="card-body">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#Id</th>
+                <th>Curso</th>
+                <th>Descrição</th>
+                <th>Professor</th>
+                <th>Nº Vagas</th>
+                <th>Data de Criação</th>
+                <th>Disponibilidade</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="turmas: ${turmas}">
+                <td th:text="${turmas.id}"></td>
+                <div th:each="cursos: ${cursos}">
+                    <div th:if="${turmas.curso_id == cursos.id}">
+                        <td th:text="${cursos.nome}"></td>
+                    </div>
+                </div>
+                <td th:text="${turmas.dias} +' das '+ ${turmas.horarios}"></td>
+                <td th:text="${turmas.professor}"></td>
+                <td th:text="${turmas.num_vagas}"></td>
+                <td th:text="${turmas.data_criacao}"></td>
+                <div th:if="${turmas.disponivel}">
+                    <td>Disponível</td>
+                </div>
+                <div th:unless="${turmas.disponivel}">
+                    <td>Indisponível</td>
+                </div>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-warning btn-sm"
+                           th:href="@{/admTurmas/edit/{id} (id=${turmas.id})}">Editar</a>
+                        <a type="button" class="btn btn-danger btn-sm"
+                           th:href="@{/admTurmas/delete/{id} (id=${turmas.id})}">Excluir</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<br/>
+<br/>
+<br/>
+
+<footer>
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+        <a class="btn btn-sm btn-success" th:href="@{/admTurmas/register}" >Adicionar</a>
+    </nav>
+</footer>
+
+
 </body>
 </html>
