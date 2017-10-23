@@ -24,8 +24,15 @@
         <li class="nav-item">
           <a class="btn btn-primary" th:href="@{/aluno/{id}/aprovacao/{id} (id = ${aluno.id})}"> APROVAÇÃO </a>
         </li>
-        <li class="nav navbar-nav navbar-right">
+        <!--li class="nav navbar-nav navbar-right">
           <a class="btn btn-primary" th:href="@{/}">SAIR</a>
+        </li-->
+      </ul>
+    </div>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="btn btn-primary" th:href="@{/login?logout}"> Sair </a>
         </li>
       </ul>
     </div>

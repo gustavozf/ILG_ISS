@@ -26,7 +26,7 @@ public class HomeController {
 
         String retorno = "";
         if(acesso.equals(Role.ROLE_ADMIN.toString())){
-            retorno = "redirect:/admin";
+            retorno = "redirect:/admFuncionarios";
         } else if (acesso.equals(Role.ROLE_PROFESSOR.toString())){
             retorno = "redirect:/professor";
         } else if (acesso.equals(Role.ROLE_ALUNO.toString())){

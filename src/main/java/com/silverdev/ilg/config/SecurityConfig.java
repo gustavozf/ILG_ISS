@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/admCursos","/admCursos/**").permitAll()
                     .antMatchers("/admTurmas","/admTurmas/**").permitAll()
                     .antMatchers("/aluno","/aluno/**").permitAll()
-                    .antMatchers("/inscricao").permitAll()
+                    .antMatchers("/ingresso", "ingresso/register").permitAll()
                     .and()
                     .formLogin()
                     .loginPage("/login")

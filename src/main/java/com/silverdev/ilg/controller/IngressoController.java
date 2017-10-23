@@ -29,13 +29,13 @@ public class IngressoController {
     @GetMapping
     public String registro(Model model){
         model.addAttribute("ingresso", usuarioRepository.findAll());
-        return "/ingressante/ingresso";
+        return "/ingressante/register";
     }
     @GetMapping("/register")
     public String telaRegistroFuncionario(Model model){
         model.addAttribute("usuario", new Usuario());
 
-        return "/ingressante/register ";
+        return "/ingressante/register";
     }
     @PostMapping("/register")
     public String registraFuncionario(@Valid Usuario usuario, RedirectAttributes ra) {

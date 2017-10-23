@@ -75,8 +75,8 @@
                             </div>
                             <div class="form-group col-12 col-lg-6">
                                 <label for="data_nascimento" class="col-form-label">Data de nascimento<span class="obrigatorio">*</span></label>
-                                <input id="data_nascimento" name="data_nascimento" placeholder="Insira sua Data de Nascimento " type="date" class="form-control"/>
-                                       <!--required="required"/>-->
+                                <input id="data_nascimento" name="data_nascimento" placeholder="Insira sua Data de Nascimento " type="date" class="form-control"
+                                       required="required"/>
                             </div>
                             <div class="form-group col-12 col-lg-4">
                                 <label for="cpf" class="col-form-label">CPF<span class="obrigatorio">*</span></label>
@@ -99,6 +99,9 @@
                                     <label class="form-check-label">
                                         <input class="form-check-input" type="radio" name="acesso" th:field="*{acesso}" th:value="${T(com.silverdev.ilg.model.enums.Role).ROLE_INGRESSANTE}" th:text="${T(com.silverdev.ilg.model.enums.Role).ROLE_INGRESSANTE.getAcesso()}"/>
                                     </label>
+                                    <!--label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="acesso" th:field="*{acesso}" th:value="${T(com.silverdev.ilg.model.enums.Role).ROLE_ADMIN}" th:text="${T(com.silverdev.ilg.model.enums.Role).ROLE_ADMIN.getAcesso()}"/>
+                                    </label-->
                                 </div>
                             </div>
                             <div class="form-group col-12 col-lg-4">
