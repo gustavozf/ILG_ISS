@@ -49,7 +49,7 @@ public class AdminTurmaController {
 
     @GetMapping("/register")
     public String telaRegistroTurma(Model model){
-        model.addAttribute("professores", usuarioRepository.findAllByAcesso(Role.ROLE_PROFESSOR));
+        model.addAttribute("professores", usuarioRepository.findAllByAtivoAndAcesso(true,Role.ROLE_PROFESSOR));
         model.addAttribute("cursos", cursoRepository.findAll());
         model.addAttribute("turma", new Turma());
 
@@ -67,7 +67,7 @@ public class AdminTurmaController {
 
     @GetMapping("/edit/{id}")
     public String telaEditaTurma(@PathVariable("id") Integer id, Model model){
-        model.addAttribute("professores", usuarioRepository.findAllByAcesso(Role.ROLE_PROFESSOR));
+        model.addAttribute("professores", usuarioRepository.findAllByAtivoAndAcesso(true, Role.ROLE_PROFESSOR));
         model.addAttribute("cursos", cursoRepository.findAll());
         model.addAttribute("turma", turmaRepository.findOne(id));
 
