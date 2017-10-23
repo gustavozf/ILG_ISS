@@ -16,20 +16,4 @@ public class LoginController {
         return "/login/login";
     }
 
-    @GetMapping("/redirectTipoUsuario")
-    public String redirecionaUsuario(){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String acesso = auth.getAuthorities().toString();
-        acesso = acesso.replace("[", "");
-        acesso = acesso.replace("]","");
-
-        String retorno = "";
-        if(acesso.equals(Role.ROLE_ADMIN.toString())){
-            retorno = "redirect:/admin";
-        } else if (acesso.equals(Role.ROLE_PROFESSOR.toString())){
-            retorno = "redirect:/professor";
-        } //...
-
-        return retorno;
-    }
 }
