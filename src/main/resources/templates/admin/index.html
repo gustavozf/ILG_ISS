@@ -4,53 +4,41 @@
     <title>ILG - Admin</title>
     <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
 </head>
+
 <body>
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-        <a class="navbar-brand" th:href="@{/}">
-            <img th:src="@{/img/admin.png}" alt="ILG" />
-            <span>Administrador </span>
-        </a>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+            <a class="navbar-brand" th:href="@{/}">
+                <img th:src="@{/img/admin.png}" alt="ILG" />
+                <span>Administrador </span>
+            </a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="btn btn-primary" th:href="@{/admin/admTurmas}"> TURMAS </a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-primary" th:href="@{/admin/admCursos}"> CURSOS </a>
-                </li>
-                <li class="nav-item active">
-                    <a class="btn btn-primary" th:href="@{/admin/admFuncionarios}"> FUNCIONÁRIOS </a>
-                </li>
-            </ul>
-        </div>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="btn btn-primary" th:href="@{/login?logout}"> Sair </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
-
-<br/>
-<br/>
-<br/>
-
-
-<br/>
-<br/>
-<br/>
-
-<footer>
-</footer>
-
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="btn btn-primary" th:href="@{/admin/turmas}"> TURMAS </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary" th:href="@{/admin/cursos}"> CURSOS </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="btn btn-primary" th:href="@{/admin/funcionarios}"> FUNCIONÁRIOS </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="btn btn-primary" th:href="@{logout}"> Sair </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
 </body>
 </html>
