@@ -15,5 +15,4 @@ public class LoginController {
     public String acesso(){
         return "/login/login";
     }
-
 }

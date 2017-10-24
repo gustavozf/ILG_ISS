@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ILG - INSCRIÇAO</title>
+    <title>ILG - Inscriçao</title>
     <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
 </head>
 <body>
@@ -99,9 +99,9 @@
                                     <label class="form-check-label">
                                         <input class="form-check-input" type="radio" name="acesso" th:field="*{acesso}" th:value="${T(com.silverdev.ilg.model.enums.Role).ROLE_INGRESSANTE}" th:text="${T(com.silverdev.ilg.model.enums.Role).ROLE_INGRESSANTE.getAcesso()}"/>
                                     </label>
-                                    <!--label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="acesso" th:field="*{acesso}" th:value="${T(com.silverdev.ilg.model.enums.Role).ROLE_ADMIN}" th:text="${T(com.silverdev.ilg.model.enums.Role).ROLE_ADMIN.getAcesso()}"/>
-                                    </label-->
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="acesso" th:field="*{acesso}" th:value="${T(com.silverdev.ilg.model.enums.Role).ROLE_ALUNO}" th:text="${T(com.silverdev.ilg.model.enums.Role).ROLE_ALUNO.getAcesso()}"/>
+                                    </label>
                                 </div>
                             </div>
                             <div class="form-group col-12 col-lg-4">

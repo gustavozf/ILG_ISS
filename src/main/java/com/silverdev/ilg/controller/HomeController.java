@@ -8,9 +8,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping({"/","/index", "index.html"})
 public class HomeController {
+    private UsuarioRepository usuarioRepository;
+
+    public HomeController(UsuarioRepository usuarioRepository) {
+        this.usuarioRepository = usuarioRepository;
+    }
 
     @GetMapping
     public String home(){
@@ -30,7 +37,8 @@ public class HomeController {
         } else if (acesso.equals(Role.ROLE_PROFESSOR.toString())){
             retorno = "redirect:/professor";
         } else if (acesso.equals(Role.ROLE_ALUNO.toString())){
-            retorno = "redirect:/aluno";
+            Integer id = usuarioRepository.findUsuarioByUsername(auth.getName()).getId();
+            retorno = "redirect:/aluno/" + id;
         } else if (acesso.equals(Role.ROLE_INGRESSANTE.toString())){
             retorno = "redirect:/ingressante";
         }
