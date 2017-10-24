@@ -20,7 +20,7 @@ import java.util.Date;
 
 @Controller
 //@PreAuthorize("hasAuthority('ROLE_ADMIN')")
-@RequestMapping("/admFuncionarios")
+@RequestMapping("/admin/admFuncionarios")
 public class AdminFuncionarioController {
     private final UsuarioRepository usuarioRepository;
 
@@ -53,7 +53,7 @@ public class AdminFuncionarioController {
 
     @PostMapping("/register")
     public String registraFuncionario(@Valid Usuario usuario, RedirectAttributes ra) {
-        String redirecionamento = "redirect:/admFuncionarios";
+        String redirecionamento = "redirect:/admin/admFuncionarios";
 
         //Checa se existe o CPF no BD
         boolean condicao1 = existeCpf(usuario.getCpf());
@@ -74,10 +74,10 @@ public class AdminFuncionarioController {
             usuarioRepository.saveAndFlush(usuario);
         }else if(condicao1 && condicao2){
             ra.addFlashAttribute("error_cpf", "Erro! CPF '"+usuario.getCpf() +"' já cadastrado!");
-            redirecionamento = "redirect:/admFuncionarios/register";
+            redirecionamento = "redirect:/admin/admFuncionarios/register";
         } else if(condicao3) {
             ra.addFlashAttribute("error_user", "Erro! Username '"+usuario.getUsername() +"' já cadastrado!");
-            redirecionamento = "redirect:/admFuncionarios/register";
+            redirecionamento = "redirect:/admin/admFuncionarios/register";
         } else {
             ra.addFlashAttribute("sucesso", "Funcionário '"+usuario.getNome() +" "+
                     usuario.getSobrenome() + "' registrado com sucesso!");
@@ -101,7 +101,7 @@ public class AdminFuncionarioController {
         usuarioRepository.saveAndFlush(usuario);
         ra.addFlashAttribute("editado", "Funcionario editado com sucesso!");
 
-        return "redirect:/admFuncionarios";
+        return "redirect:/admin/admFuncionarios";
     }
 
     @GetMapping("/delete/{id}")
@@ -112,7 +112,7 @@ public class AdminFuncionarioController {
         usuarioRepository.saveAndFlush(usuario);
         ra.addFlashAttribute("excluido", "Funcionario excluído com sucesso!");
 
-        return "redirect:/admFuncionarios";
+        return "redirect:/admin/admFuncionarios";
     }
 
     @GetMapping("/readMore/{id}")

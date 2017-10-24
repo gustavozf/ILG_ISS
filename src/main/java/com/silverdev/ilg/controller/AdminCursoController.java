@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/admCursos")
+@RequestMapping("/admin/admCursos")
 public class AdminCursoController {
     private final CursoRepository cursoRepository;
 
@@ -44,7 +44,7 @@ public class AdminCursoController {
         cursoRepository.save(curso);
         ra.addFlashAttribute("sucesso", "Curso '"+curso.getNome()+"' criado com sucesso!");
 
-        return "redirect:/admCursos";
+        return "redirect:/admin/admCursos";
     }
 
     @GetMapping("/edit/{id}")
@@ -60,7 +60,7 @@ public class AdminCursoController {
         cursoRepository.saveAndFlush(curso);
         ra.addFlashAttribute("editado", "Curso editado com sucesso!");
 
-        return "redirect:/admCursos";
+        return "redirect:/admin/admCursos";
     }
 
 
@@ -69,6 +69,6 @@ public class AdminCursoController {
         cursoRepository.delete(id);
         ra.addFlashAttribute("excluido", "Curso excluído com sucesso!");
 
-        return "redirect:/admCursos";
+        return "redirect:/admin/admCursos";
     }
 }

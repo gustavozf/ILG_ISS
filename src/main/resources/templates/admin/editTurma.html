@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="btn btn-primary" th:href="@{/admTurmas}"> VOLTAR </a>
+                    <a class="btn btn-primary" th:href="@{/admin/admTurmas}"> VOLTAR </a>
                 </li>
             </ul>
         </div>
@@ -49,14 +49,14 @@
                 </div>
             </div>
             <div class="card" style="width: 70%; margin: auto">
-                <div class="card-header text-center bg-info">
+                <div class="card-header text-center" style="background-color: #D3D3D3;">
                     <b>ATUALIZAR TURMA</b>
                 </div>
                 <div class="card-body">
                     <h4 class="card-title text-center">
                         Entre com os dados para atualizar a turma!
                     </h4>
-                    <form th:action="@{/admTurmas/edit/{id} (id=${turma.id})}" th:object="${turma}" method="post">
+                    <form th:action="@{/admin/admTurmas/edit/{id} (id=${turma.id})}" th:object="${turma}" method="post">
                         <div class="form-row">
                             <div class="form-group col-12 col-lg-3">
                                 <label for="dias">Dias<span class="obrigatorio">*</span></label>
