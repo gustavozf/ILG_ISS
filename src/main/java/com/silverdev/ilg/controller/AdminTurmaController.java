@@ -20,7 +20,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 @Controller
-@RequestMapping("/admTurmas")
+@RequestMapping("/admin/admTurmas")
 public class AdminTurmaController {
     private final TurmaRepository turmaRepository;
     private final UsuarioRepository usuarioRepository;
@@ -62,7 +62,7 @@ public class AdminTurmaController {
         turmaRepository.save(turma);
         ra.addFlashAttribute("sucesso", "Turma registrada com sucesso!");
 
-        return "redirect:/admTurmas";
+        return "redirect:/admin/admTurmas";
     }
 
     @GetMapping("/edit/{id}")
@@ -80,7 +80,7 @@ public class AdminTurmaController {
         turmaRepository.saveAndFlush(turma);
         ra.addFlashAttribute("editado", "Turma atualizada com sucesso!");
 
-        return "redirect:/admTurmas";
+        return "redirect:/admin/admTurmas";
     }
 
     @GetMapping("/delete/{id}")
@@ -90,7 +90,7 @@ public class AdminTurmaController {
         turmaRepository.saveAndFlush(turma);
         ra.addFlashAttribute("excluido", "Turma excluída com sucesso!");
 
-        return "redirect:/admTurmas";
+        return "redirect:/admin/admTurmas";
     }
 
     private String getMonthAndYear(){

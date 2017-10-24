@@ -14,7 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
-@Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -46,9 +45,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             http
                     .authorizeRequests()
                     .antMatchers("/").permitAll()
-                    .antMatchers("/admFuncionarios","/admFuncionarios/**").permitAll()
-                    .antMatchers("/admCursos","/admCursos/**").permitAll()
-                    .antMatchers("/admTurmas","/admTurmas/**").permitAll()
+                    .antMatchers("/admin", "/admin/**").permitAll()
+                    //.antMatchers("/admFuncionarios","/admFuncionarios/**").permitAll()
+                    //.antMatchers("/admCursos","/admCursos/**").permitAll()
+                    //.antMatchers("/admTurmas","/admTurmas/**").permitAll()
                     .antMatchers("/aluno","/aluno/**").permitAll()
                     .antMatchers("/ingresso", "/ingresso/**").permitAll()
                     .antMatchers("/ingressante").hasRole("INGRESSANTE")

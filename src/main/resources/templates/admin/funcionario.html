@@ -7,7 +7,7 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-        <a class="navbar-brand" th:href="@{/}">
+        <a class="navbar-brand" th:href="@{/admin}">
             <img th:src="@{/img/admin.png}" alt="ILG" />
             <span>Administrador </span>
         </a>
@@ -19,13 +19,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="btn btn-primary" th:href="@{/admTurmas}"> TURMAS </a>
+                    <a class="btn btn-primary" th:href="@{/admin/admTurmas}"> TURMAS </a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-primary" th:href="@{/admCursos}"> CURSOS </a>
+                    <a class="btn btn-primary" th:href="@{/admin/admCursos}"> CURSOS </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="btn btn-primary active" th:href="@{/admFuncionarios}"> FUNCIONÁRIOS </a>
+                    <a class="btn btn-primary active" th:href="@{/admin/admFuncionarios}"> FUNCIONÁRIOS </a>
                 </li>
             </ul>
         </div>
@@ -76,7 +76,7 @@
 </div>
 
 <div class = "card" style="width: 80%; margin: auto">
-    <div class="card-header text-center bg-info">
+    <div class="card-header text-center" style="background-color: #D3D3D3;">
         <b>Funcionários</b>
     </div>
     <div class="card-body">
@@ -102,14 +102,14 @@
                 <td th:text="${funcio.acesso.getAcesso()}"></td>
                 <td>
                     <a class="btn btn-primary btn-sm" th:target="_blank"
-                       th:href="@{/admFuncionarios/readMore/{id} (id=${funcio.id})}">+</a>
+                       th:href="@{/admin/admFuncionarios/readMore/{id} (id=${funcio.id})}">+</a>
                 </td>
                 <td>
                     <div class="btn-group" role="group">
                         <a class="btn btn-warning btn-sm"
-                           th:href="@{/admFuncionarios/edit/{id} (id=${funcio.id})}">Editar</a>
+                           th:href="@{/admin/admFuncionarios/edit/{id} (id=${funcio.id})}">Editar</a>
                         <a type="button" class="btn btn-danger btn-sm"
-                        th:href="@{/admFuncionarios/delete/{id} (id=${funcio.id})}">Excluir</a>
+                        th:href="@{/admin/admFuncionarios/delete/{id} (id=${funcio.id})}">Excluir</a>
                     </div>
                 </td>
             </tr>
@@ -125,7 +125,7 @@
 
 <footer>
     <nav class="navbar fixed-bottom navbar-light bg-light">
-        <a class="btn btn-sm btn-success" th:href="@{/admFuncionarios/register}" >Adicionar</a>
+        <a class="btn btn-sm btn-success" th:href="@{/admin/admFuncionarios/register}" >Adicionar</a>
     </nav>
 </footer>
 
