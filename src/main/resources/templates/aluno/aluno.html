@@ -24,9 +24,6 @@
         <li class="nav-item">
           <a class="btn btn-primary" th:href="@{/aluno/{id}/aprovacao/{id} (id = ${aluno.id})}"> APROVAÇÃO </a>
         </li>
-        <!--li class="nav navbar-nav navbar-right">
-          <a class="btn btn-primary" th:href="@{/}">SAIR</a>
-        </li-->
       </ul>
     </div>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -39,23 +36,22 @@
   </nav>
 </header>
   <!--End-Navbar-->
+<br/>
+<br/>
+<br/>
   <div class="container">
-    <b><br><legend>Dados Pessoais</legend></br></b>
-    <h5><br>Nome:</br>
-      <br>CPF:</br>
-      <br>RG:</br>
-      <br>Telefone:</br>
-      <br>Aniversário:</br>
-    </h5>
+    <div class="card">
+      <div class="card-header text-center" style="background-color: #D3D3D3;">
+        <b>Dados Pessoais</b>
+      </div>
+      <div class="card-body" th:object="${aluno}">
+        Nome:<h5 th:text="${aluno.nome}"/>
+        CPF:<h5 th:text="${aluno.cpf}"/>
+        RG: <h5 th:text="${aluno.rg}"/>
+        Telefone:<h5 th:text="${aluno.telefone}"/>
+        Aniversário:<h5 th:text="${aluno.data_nascimento}"/>
+      </div>
+    </div>
   </div>
-    <tr th:each="aluno : ${aluno}">
-    <td th:text="${aluno.nome}"></td>
-    <td th:text="${aluno.cpf}"></td>
-    <td th:text="${aluno.rg}"></td>
-    <td th:text="${aluno.telefone}"></td>
-    <td th:text="${aluno.data_nascimento}"></td>
-    <td>
-    </td>
-  </tr>
   </body>
 </html>
