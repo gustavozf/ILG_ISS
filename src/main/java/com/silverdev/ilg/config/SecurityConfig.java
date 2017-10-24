@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -39,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/admCursos","/admCursos/**").hasRole("ADMIN")
                     .antMatchers("/admTurmas","/admTurmas/**").hasRole("ADMIN")
                     .antMatchers("/aluno","/aluno/**").permitAll()
-                    .antMatchers("/ingresso", "ingresso/register").permitAll()
+                    .antMatchers("/ingresso", "/ingresso/**").permitAll()
                     .antMatchers("/ingressante").hasRole("INGRESSANTE")
                     .and()
                     .formLogin()
@@ -49,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .defaultSuccessUrl("/redirectTipoUsuario", true)
                     .permitAll();
             http
-                    .logout().logoutUrl("/logout").permitAll();
+                    .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout");
             http
                     .authorizeRequests()
                     .antMatchers("/register", "/js/**", "/css/**", "/img/**",
