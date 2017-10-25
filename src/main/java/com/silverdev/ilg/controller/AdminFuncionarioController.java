@@ -3,6 +3,7 @@ package com.silverdev.ilg.controller;
 import com.silverdev.ilg.model.Usuario;
 import com.silverdev.ilg.model.enums.Role;
 import com.silverdev.ilg.repository.UsuarioRepository;
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Bean;

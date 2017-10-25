@@ -26,6 +26,12 @@ public class Ingressante {
     @Column(name = "ingressante_media")
     private float media;
 
+    @Column(name = "ingressante_quantNotas")
+    private Integer quantNotas;
+
+    @Column(name = "notas")
+    private float notas;
+
     @Column(name = "ingressante_sit_entrega")
     private boolean sit_entrega;
 
@@ -100,6 +106,13 @@ public class Ingressante {
         this.sit_pagamento = sit_pagamento;
     }
 
+    public Integer getQuantNotas(){ return quantNotas;}
+
+    public void setQuantNotas(Integer quantNotas){this.quantNotas = quantNotas;}
+
+    public float getNotas(){return notas;}
+
+    public void setNotas(float notas){this.notas = notas;}
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -2,6 +2,7 @@ package com.silverdev.ilg.controller;
 
 import com.silverdev.ilg.model.Usuario;
 import com.silverdev.ilg.repository.UsuarioRepository;
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -73,6 +74,7 @@ public class IngressoController {
 
         return redirecionamento;
     }
+
 
     public PasswordEncoder pe() {
         return new BCryptPasswordEncoder();
