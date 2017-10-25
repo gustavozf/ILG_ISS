@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ILG - Admin</title>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand" th:href="@{/}">
+            <img th:src="@{/img/admin.png}" alt="ILG" />
+            <span>Administrador </span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="btn btn-primary" th:href="@{/admin/admTurmas}"> VOLTAR </a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="btn btn-primary" th:href="@{logout}"> Sair </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+</header>
+<br/>
+<br/>
+<br/>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 align-middle registro">
+            <div th:if="${erro}">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <span th:text="${erro}"></span>
+                </div>
+            </div>
+            <div class="card" style="width: 70%; margin: auto">
+                <div class="card-header text-center" style="background-color: #D3D3D3;">
+                    <b>ATUALIZAR TURMA</b>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title text-center">
+                        Entre com os dados para atualizar a turma!
+                    </h4>
+                    <form th:action="@{/admin/admTurmas/edit/{id} (id=${turma.id})}" th:object="${turma}" method="post">
+                        <div class="form-row">
+                            <div class="form-group col-12 col-lg-3">
+                                <label for="dias">Dias<span class="obrigatorio">*</span></label>
+                                <select class="custom-select" th:field="*{dias}">
+                                    <option value="Segunda/Terça">Segunda/Terça</option>
+                                    <option value="Terça/Quinta">Terça/Quinta</option>
+                                    <option value="Quarta/Sexta">Quarta/Sexta</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-12 col-lg-3">
+                                <label for="horarios">Horários<span class="obrigatorio">*</span></label>
+                                <select class="custom-select" th:field="*{horarios}">
+                                    <option value="13:30 às 15:10">13:30 às 15:10</option>
+                                    <option value="15:20 às 16:50">15:20 às 16:50</option>
+                                    <option value="17:50 às 19:20">17:50 às 19:20</option>
+                                    <option value="19:40 às 21:10">19:40 às 21:10</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-12 col-lg-4">
+                                <label>Professor<span class="obrigatorio">*</span></label>
+                                <div class="input-group">
+                                    <select class="custom-select" th:field="*{professor}">
+                                        <div th:each="professor : ${professores}">
+                                            <option th:value="${professor.nome} + ' ' + ${professor.sobrenome}" th:text="${professor.nome} + ' ' + ${professor.sobrenome}"></option>
+                                        </div>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-12 col-lg-3">
+                                <label>Curso<span class="obrigatorio">*</span></label>
+                                <div class="input-group">
+                                    <select class="custom-select" th:field="*{curso_id}">
+                                        <div th:each="curso : ${cursos}" >
+                                            <option th:value="${curso.id}" th:text="${curso.nome}"></option>
+                                        </div>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-12 col-lg-3">
+                                <label for="num_vagas" class="col-form-label">Nº Vagas<span class="obrigatorio">*</span></label>
+                                <div class="input-group">
+                                    <input id="num_vagas" name="num_vagas" type="text" class="form-control" placeholder="Insira um número de vagas" required="required"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-12 col-lg-3">
+                                <label>Disponibilidade<span class="obrigatorio">*</span></label>
+                                <div class="input-group">
+                                    <select class="custom-select" th:field="*{disponivel}">
+                                        <option  value="true"
+                                        >Disponível</option>
+                                        <option value="false"
+                                        >Indisponível</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button id="btn-subimit" style="float: right" type="submit" class="btn btn-primary">Atualizar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <script>
+                jQuery(function($){
+                    $('#preco').mask("000");
+                    $('#carga_horaria').mask("000");
+                });
+            </script>
+        </div>
+    </div>
+</div>
+
+<footer>
+
+</footer>
+</body>
+</html>

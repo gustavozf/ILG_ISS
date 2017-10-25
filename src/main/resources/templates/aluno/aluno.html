@@ -8,7 +8,7 @@
 <body>
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-    <a class="navbar-brand" th:href="@{/}">
+    <a class="navbar-brand" th:href="@{/aluno/{id} (id = ${aluno.id})}">
       <img th:src="@{/img/aluno.png}" alt="ILG" />
     </a>
 
@@ -19,35 +19,39 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="btn btn-primary" th:href="@{/aluno/visuaNotas}"> NOTAS </a>
+          <a class="btn btn-primary" th:href="@{/aluno/{id}/notas/{id} (id = ${aluno.id})}"> NOTAS </a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-primary" th:href="@{/aluno/visuaAprovacao}"> APROVAÇÃO </a>
+          <a class="btn btn-primary" th:href="@{/aluno/{id}/aprovacao/{id} (id = ${aluno.id})}"> APROVAÇÃO </a>
         </li>
-        <li class="nav navbar-nav navbar-right">
-          <a class="btn btn-primary" th:href="@{/}">SAIR</a>
+      </ul>
+    </div>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="btn btn-primary" th:href="@{/logout}"> Sair </a>
         </li>
       </ul>
     </div>
   </nav>
 </header>
   <!--End-Navbar-->
+<br/>
+<br/>
+<br/>
   <div class="container">
-    <b><br><legend>Dados Pessoais</legend></br></b>
-    <h5><br>Nome:</br>
-      <br>CPF:</br>
-      <br>RG:</br>
-      <br>Telefone:</br>
-      <br>Aniversário:</br>
-    </h5>
+    <div class="card">
+      <div class="card-header text-center" style="background-color: #D3D3D3;">
+        <b>Dados Pessoais</b>
+      </div>
+      <div class="card-body" th:object="${aluno}">
+        Nome: <h5 th:text="${aluno.nome}"/>
+        CPF:<h5 th:text="${aluno.cpf}"/>
+        RG: <h5 th:text="${aluno.rg}"/>
+        Telefone:<h5 th:text="${aluno.telefone}"/>
+        Aniversário:<h5 th:text="${aluno.data_nascimento}"/>
+      </div>
+    </div>
   </div>
-  <!-- <tr th:each="post : ${posts}">
-    <td th:text="${sala.id}"></td>
-    <td th:text="${sala.prova1}"></td>
-    <td th:text="${sala.prova_aux1}"></td>
-    <td th:text="${#dates.format(post.data, 'dd/MM/yyyy')}"></td>
-    <td>
-    </td>
-  </tr>-->
   </body>
 </html>

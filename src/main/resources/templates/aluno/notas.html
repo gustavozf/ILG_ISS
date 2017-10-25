@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ILG - Alunos</title>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand" th:href="@{/aluno/{id} (id = ${aluno.id})}">
+            <img th:src="@{/img/aluno.png}" alt="ILG" />
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="btn btn-primary" th:href="@{/aluno/{id}/notas/{id} (id = ${aluno.id})}"> NOTAS </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary" th:href="@{/aluno/{id}/aprovacao/{id} (id = ${aluno.id})}"> APROVAÇÃO </a>
+                </li>
+                <!--li class="nav navbar-nav navbar-right">
+                    <a class="btn btn-primary" th:href="@{/}">SAIR</a>
+                </li-->
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="btn btn-primary" th:href="@{/logout}"> Sair </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!--End-Navbar-->
+
+<br/>
+<br/>
+<br/>
+
+<div class = "card" style="width: 80%; margin: auto">
+    <div class="card-header text-center" style="background-color: #D3D3D3;">
+        <b>Notas</b>
+    </div>
+    <div class="card-body">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Curso</th>
+                <th>Nota 1-1</th>
+                <th>Nota 1-2</th>
+                <th>Nota 2-1</th>
+                <th>Nota 2-2</th>
+                <th>Média</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="notas: ${notas}">
+                <td th:text="${notas.nome_curso}"></td>
+                <td th:text="${notas.prova1}"></td>
+                <td th:text="${notas.prova_aux1}"></td>
+                <td th:text="${notas.prova2}"></td>
+                <td th:text="${notas.prova_aux2}"></td>
+                <td th:text="${notas.media}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

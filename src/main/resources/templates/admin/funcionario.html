@@ -7,7 +7,7 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-        <a class="navbar-brand" th:href="@{/}">
+        <a class="navbar-brand" th:href="@{/admin}">
             <img th:src="@{/img/admin.png}" alt="ILG" />
             <span>Administrador </span>
         </a>
@@ -19,13 +19,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="btn btn-primary" th:href="@{/admTurmas}"> TURMAS </a>
+                    <a class="btn btn-primary" th:href="@{/admin/admTurmas}"> TURMAS </a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-primary" th:href="@{/admCursos}"> CURSOS </a>
+                    <a class="btn btn-primary" th:href="@{/admin/admCursos}"> CURSOS </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="btn btn-primary active" th:href="@{/admFuncionarios}"> FUNCIONÁRIOS </a>
+                    <a class="btn btn-primary active" th:href="@{/admin/admFuncionarios}"> FUNCIONÁRIOS </a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="btn btn-primary" th:href="@{logout}"> Sair </a>
                 </li>
             </ul>
         </div>
@@ -37,8 +44,39 @@
 <br/>
 <br/>
 
+<div style="width: 80%; margin: auto">
+    <div th:if="${sucesso}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span th:text="${sucesso}"></span>
+        </div>
+    </div>
+</div>
+<div style="width: 80%; margin: auto">
+    <div th:if="${editado}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span th:text="${editado}"></span>
+        </div>
+    </div>
+</div>
+<div style="width: 80%; margin: auto">
+    <div th:if="${excluido}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span th:text="${excluido}"></span>
+        </div>
+    </div>
+</div>
+
 <div class = "card" style="width: 80%; margin: auto">
-    <div class="card-header text-center bg-info">
+    <div class="card-header text-center" style="background-color: #D3D3D3;">
         <b>Funcionários</b>
     </div>
     <div class="card-body">
@@ -53,49 +91,26 @@
                 <th>Tipo</th>
                 <th></th>
                 <th></th>
-                <th></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="funcio: ${funcionarios}">
                 <td th:text="${funcio.id}"></td>
-                <td th:text="${funcio.nome} ${funcio.sobrenome}"></td>
-                <td th:text="${funcio.nascimento}"></td>
+                <td th:text="${funcio.nome} +' '+${funcio.sobrenome}"></td>
+                <td th:text="${funcio.data_nascimento}"></td>
                 <td th:text="${funcio.cpf}"></td>
-                <td th:text="${funcio.acesso}"></td>
+                <td th:text="${funcio.acesso.getAcesso()}"></td>
                 <td>
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        +
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <p class="text-left" th:text="${funcio.sexo}">Sexo: </p>
-                                    <p class="text-left" th:text="${funcio.rg}">RG: </p>
-                                    <p class="text-left" th:text="${funcio.telefone}">Telefone: </p>
-
-                                </div>
-                            </div>
-                        </div>
+                    <a class="btn btn-primary btn-sm" th:target="_blank"
+                       th:href="@{/admin/admFuncionarios/readMore/{id} (id=${funcio.id})}">+</a>
+                </td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-warning btn-sm"
+                           th:href="@{/admin/admFuncionarios/edit/{id} (id=${funcio.id})}">Editar</a>
+                        <a type="button" class="btn btn-danger btn-sm"
+                        th:href="@{/admin/admFuncionarios/delete/{id} (id=${funcio.id})}">Excluir</a>
                     </div>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-warning btn-sm"
-                            th:href="@{/admin/funcionarios/edit/{id} (id=${funcio.id})}">Editar</button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-danger btn-sm"
-                            th:href="@{/admin/funcionarios/delete/{id} (id=${funcio.id})}">Excluir</button>
                 </td>
             </tr>
             </tbody>
@@ -104,10 +119,14 @@
     </div>
 </div>
 
-<footer style="position: absolute; bottom: 5%; left: 3%">
-    <div class="panel-footer">
-        <a class="btn btn-sm btn-success" th:href="@{/admFuncionarios/register}" >Adicionar</a>
-    </div>
+<br/>
+<br/>
+<br/>
+
+<footer>
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+        <a class="btn btn-sm btn-success" th:href="@{/admin/admFuncionarios/register}" >Adicionar</a>
+    </nav>
 </footer>
 
 </body>

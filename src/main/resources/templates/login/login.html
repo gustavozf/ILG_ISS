@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ILG - Login</title>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand" th:href="@{/}">
+            <img th:src="@{/img/favi.png}" alt="ILG" />
+            <span></span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="btn btn-primary" th:href="@{/}"> Voltar </a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+
+</header>
+<br/>
+<br/>
+<br/>
+<br/>
+<div class = "card" style="width: 30%; margin: auto">
+    <div th:if="${param.error}">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span>Usuário e/ou senha incorreto</span>
+        </div>
+    </div>
+    <div th:if="${param.logout}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span>Deslogado com sucesso</span>
+        </div>
+    </div>
+    <div th:if="${sucesso}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span th:text="${sucesso}"></span>
+        </div>
+    </div>
+    <div class="card-header text-center bg-info">
+        <b>Login</b>
+    </div>
+
+    <div class="card-body">
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label>Usuário</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Usuário"/>
+
+                <label>Senha</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Senha"/>
+                <br/>
+                <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            </div>
+        </form>
+    </div>
+    <div class="justify-content-middle">
+        <span class="btn-registro">Não tem conta? <a th:href="@{/ingresso/register}">Clique aqui</a></span>
+    </div>
+</div>
+<footer>
+</footer>
+
+</body>
+</html>

@@ -3,6 +3,7 @@ package com.silverdev.ilg.model;
 import com.silverdev.ilg.model.enums.Role;
 import com.silverdev.ilg.model.enums.Sexo;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -41,13 +42,29 @@ public class Usuario {
     @Column(name = "usuario_telefone")
     private String telefone;
 
-    @Temporal(TemporalType.DATE)
+    //@Temporal(TemporalType.DATE)
+    //@DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "usuario_data_nascimento")
-    private Date data_nascimento;
+    private String data_nascimento;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipo_acesso")
+    @Column(name = "usuario_tipo_acesso")
     private Role acesso;
+
+    @Column(name="usuario_ativo")
+    private boolean ativo = true;
+
+    public boolean isValid(){
+        return ativo;
+    }
+
+    public boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
 
     public String getUsername() {
         return username;
@@ -57,11 +74,11 @@ public class Usuario {
         this.username = username;
     }
 
-    public Date getData_nascimento() {
+    public String getData_nascimento() {
         return data_nascimento;
     }
 
-    public void setData_nascimento(Date data_nascimento) {
+    public void setData_nascimento(String data_nascimento) {
         this.data_nascimento = data_nascimento;
     }
 

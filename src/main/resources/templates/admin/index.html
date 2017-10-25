@@ -8,7 +8,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-            <a class="navbar-brand" th:href="@{/}">
+            <a class="navbar-brand" th:href="@{/admin}">
                 <img th:src="@{/img/admin.png}" alt="ILG" />
                 <span>Administrador </span>
             </a>
@@ -20,18 +20,42 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="btn btn-primary" th:href="@{/admin/turmas}"> TURMAS </a>
+                        <a class="btn btn-primary" th:href="@{/admin/admTurmas}"> TURMAS </a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-primary" th:href="@{/admin/cursos}"> CURSOS </a>
+                        <a class="btn btn-primary" th:href="@{/admin/admCursos}"> CURSOS </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="btn btn-primary" th:href="@{/admin/funcionarios}"> FUNCIONÁRIOS </a>
+                        <a class="btn btn-primary" th:href="@{/admin/admFuncionarios}"> FUNCIONÁRIOS </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="btn btn-primary" th:href="@{logout}"> Sair </a>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
+
+    <br/>
+    <br/>
+    <br/>
+
+    <div class="card" style="width: 70%; margin: auto">
+        <div class="card-header text-center" style="background-color: #D3D3D3;">
+            <b>BEM VINDO(A)!</b>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title text-center">
+                Esta é a área do administrador! Aque é possível manter o controle sobre os cursos,
+                turmas e funcionários presentes no Instituto de Línguas (ILG).
+            </h4>
+
+        </div>
+    </div>
 
 </body>
 </html>

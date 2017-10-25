@@ -1,8 +1,8 @@
 package com.silverdev.ilg.model.enums;
 
 public enum Role {
-    ROLE_SECRETARIA("Secretaria"),
-    ROLE_PROFESSOR("Professor"),
+    ROLE_SECRETARIA("Secretário(a)"),
+    ROLE_PROFESSOR("Professor(a)"),
     ROLE_INGRESSANTE("Ingressante"),
     ROLE_ALUNO("Aluno"),
     ROLE_ADMIN("Admin");
