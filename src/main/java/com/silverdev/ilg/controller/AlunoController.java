@@ -31,7 +31,9 @@ public class AlunoController {
     @GetMapping
     public String abreTelaAluno(@PathVariable("id") Integer id, Model model){
         Usuario usuario =  usuarioRepository.getOne(id);
-        Aluno aluno = alunoRepository.getOneByCpf(usuario.getCpf());
+        List<Aluno> alunoLista = alunoRepository.findByCpf(usuario.getCpf());
+
+        Aluno aluno = alunoLista.get(0);
 
         String posicao = aluno.getPosicao_uem().getPosicao_uem();
 
