@@ -27,10 +27,10 @@ public class Ingressante {
     private float media;
 
     @Column(name = "ingressante_sit_entrega")
-    private Boolean sit_entrega;
+    private boolean sit_entrega;
 
     @Column(name = "ingressante_sit_pagamento")
-    private Boolean sit_pagamento;
+    private boolean sit_pagamento;
 
     /*@Column(unique = true, name = "ingressante_rg")
     private String rg;
@@ -84,19 +84,19 @@ public class Ingressante {
         this.media = media;
     }
 
-    public Boolean getSit_entrega() {
+    public boolean getSit_entrega() {
         return sit_entrega;
     }
 
-    public void setSit_entrega(Boolean sit_entrega) {
+    public void setSit_entrega(boolean sit_entrega) {
         this.sit_entrega = sit_entrega;
     }
 
-    public Boolean getSit_pagamento() {
+    public boolean getSit_pagamento() {
         return sit_pagamento;
     }
 
-    public void setSit_pagamento(Boolean sit_pagamento) {
+    public void setSit_pagamento(boolean sit_pagamento) {
         this.sit_pagamento = sit_pagamento;
     }
 

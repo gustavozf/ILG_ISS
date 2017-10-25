@@ -1,6 +1,7 @@
 package com.silverdev.ilg.controller;
 
 import com.silverdev.ilg.model.Usuario;
+import com.silverdev.ilg.model.enums.Role;
 import com.silverdev.ilg.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 //@PreAuthorize("hasAuthority('ROLE_ADMIN')")
@@ -39,7 +41,10 @@ public class AdminFuncionarioController {
     //CRUDs em relacao ao funcionario!
     @GetMapping
     public String abreTelaFuncionarios(Model model){
-        model.addAttribute("funcionarios", usuarioRepository.findByAtivo(true));
+        List<Usuario> listaFuncionarios = usuarioRepository.findAllByAtivoAndAcesso(true,  Role.ROLE_SECRETARIA );
+        listaFuncionarios.addAll(usuarioRepository.findAllByAtivoAndAcesso(true, Role.ROLE_PROFESSOR));
+
+        model.addAttribute("funcionarios", listaFuncionarios);
 
         return "/admin/funcionario";
     }
