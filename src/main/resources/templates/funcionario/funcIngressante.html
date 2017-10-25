@@ -90,13 +90,13 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="ingre: ${ingressantes}">
+            <tr th:each="ingre: ${ingressante}">
                 <td th:text="${ingre.id}"></td>
                 <td th:text="${ingre.cpf}"></td>
-                <td th:text="${ingre.pos_uem.getPosicao_uem()}"></td>
+                <td th:text="${ingre.posUem.getPosicao_uem()}"></td>
                 <td th:text="${ingre.media}"></td>
-                <td th:text="${ingre.notas}"><</td>
-                <td th:text="${ingre.quant_notas}"></td>
+                <td th:text="${ingre.notas}"></td>
+                <td th:text="${ingre.quantNotas}"></td>
                 <td th:text="${ingre.sit_entrega}"></td>
                 <td>
                     <div class="btn-group" role="group">
