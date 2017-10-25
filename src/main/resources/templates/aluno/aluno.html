@@ -45,11 +45,20 @@
         <b>Dados Pessoais</b>
       </div>
       <div class="card-body" th:object="${aluno}">
-        Nome: <h5 th:text="${aluno.nome}+' '+ ${aluno.sobrenome}"/>
-        CPF:<h5 th:text="${aluno.cpf}"/>
-        RG: <h5 th:text="${aluno.rg}"/>
-        Telefone:<h5 th:text="${aluno.telefone}"/>
-        Aniversário:<h5 th:text="${aluno.data_nascimento}"/>
+        <div class="form-row">
+          <div class="form-group col-12 col-lg-4">
+            <label>Nome:</label> <p th:text="${aluno.nome}+' '+ ${aluno.sobrenome}"/></div>
+          <div class="form-group col-12 col-lg-4">
+            <label>CPF:</label><p th:text="${aluno.cpf}"/></div>
+          <div class="form-group col-12 col-lg-4">
+            <label>RG:</label><p th:text="${aluno.rg}"/></div>
+          <div class="form-group col-12 col-lg-4">
+            <label>Telefone:</label><p th:text="${aluno.telefone}"/></div>
+          <div class="form-group col-12 col-lg-4">
+            <label>Aniversário:</label><p th:text="${aluno.data_nascimento}"/></div>
+          <div class="form-group col-12 col-lg-6">
+            <label>Posição UEM:</label><p th:text="${posicao[0]}"/></div>
+        </div>
       </div>
     </div>
   </div>

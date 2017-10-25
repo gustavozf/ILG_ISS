@@ -3,6 +3,7 @@ package com.silverdev.ilg.controller;
 import com.silverdev.ilg.model.Aluno;
 import com.silverdev.ilg.model.Usuario;
 import com.silverdev.ilg.repository.AlunoRepository;
+import com.silverdev.ilg.repository.IngressanteRepository;
 import com.silverdev.ilg.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,7 +30,13 @@ public class AlunoController {
 
     @GetMapping
     public String abreTelaAluno(@PathVariable("id") Integer id, Model model){
-        model.addAttribute("aluno", usuarioRepository.getOne(id));
+        Usuario usuario =  usuarioRepository.getOne(id);
+        Aluno aluno = alunoRepository.getOneByCpf(usuario.getCpf());
+
+        String posicao = aluno.getPosicao_uem().getPosicao_uem();
+
+        model.addAttribute("aluno", usuario);
+        model.addAttribute("posicao", posicao);
 
         return "/aluno/aluno";
     }

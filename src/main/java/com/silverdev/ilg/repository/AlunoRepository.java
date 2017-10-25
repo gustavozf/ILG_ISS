@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface AlunoRepository extends JpaRepository<Aluno, Integer>{
     List<Aluno> findByCpf(String cpf);
+    Aluno getOneByCpf(String cpf);
 }
