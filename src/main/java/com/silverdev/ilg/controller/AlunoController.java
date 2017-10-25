@@ -54,8 +54,9 @@ public class AlunoController {
         List<Aluno> alunos = alunoRepository.findByCpf(cpf);
 
         for(Aluno x: alunos){
-            if((x.getFaltas()) <= 18 && (x.getMedia() >= 7.0)){
+            if((x.getMedia()) >= verificaFaltas(x.getFaltas())){
                 x.setAprovacao(true);
+                alunoRepository.saveAndFlush(x);
             }else{
                 x.setAprovacao(false);
             }
@@ -65,5 +66,17 @@ public class AlunoController {
         model.addAttribute("alunos", alunos);
 
         return  "/aluno/aprovacao";
+    }
+
+    private double verificaFaltas(Integer faltas){
+        if(faltas > 24){
+            return 100.0;
+        }else if(faltas >= 21){
+            return 9.0;
+        }else if(faltas >=17){
+            return 8.0;
+        }else{
+            return 7.0;
+        }
     }
 }
