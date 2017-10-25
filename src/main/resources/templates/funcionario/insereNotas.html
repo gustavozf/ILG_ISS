@@ -58,7 +58,7 @@
                     <h4 class="card-title text-center">
                         Digite a quantidade de notas do ingressante!
                     </h4>
-                    <form th:action="@{/funcionario/funcIngressante/insereNotas/{id} (id=${ingressante.notas})}" th:object="${ingressante}" method="post">
+                    <form th:action="@{/funcionario/funcIngressante/insereNotas/{notas} (id=${ingressante.notas})}" th:object="${ingressante}" method="post">
                         <div class="form-row">
                             <div class="form-group col-12 col-lg-6">
                                 <label for="Notas">Notas<span class="obrigatorio">*</span></label>

@@ -45,7 +45,7 @@ public class FuncIngressanteController {
 
         return "/funcionario/insereNotas";
     }
-/*
+
     @PostMapping("/insereQuantNotas/{id}")
     public String editaQuantNotasIngressante(@PathVariable("id") Integer id, @Valid Ingressante ingressante, RedirectAttributes ra){
         ingressanteRepository.saveAndFlush(ingressante);
@@ -53,7 +53,7 @@ public class FuncIngressanteController {
 
         return "redirect:/funcionario/insereNotas";
     }
-*/
+
     @GetMapping("/insereNotas/{id}")
     public String telaEditaNotasIngressante(@PathVariable("id") Integer id, Model model){
         model.addAttribute("ingressante", ingressanteRepository.findOne(id));
@@ -61,17 +61,16 @@ public class FuncIngressanteController {
         return "/funcionario/inserenotas";
     }
 
-  /*  @PostMapping("/insereNotas/{id}")
-    public String editaNotasIngressante(@PathVariable("id") Integer id, @Valid Ingressante ingressante, RedirectAttributes ra){
+    @PostMapping("/insereNotas/{notas}")
+    public String editaNotasIngressante(@PathVariable("notas") float notas, @Valid Ingressante ingressante, RedirectAttributes ra){
         ingressanteRepository.saveAndFlush(ingressante);
         ra.addFlashAttribute("editado", "editado com sucesso");
-        float notas;
 
-        notas = ingressante.getNotas() +
+        notas = ingressante.getNotas() + notas;
 
         return "redirect:/funcionario/insereNotas";
     }
-*/
+
     @GetMapping("/calculaMedia/{id}")
     public String telacalculaMedia(@PathVariable("id") Integer id, Model model) {
         model.addAttribute("ingressanet", usuarioRepository.findOne(id));
