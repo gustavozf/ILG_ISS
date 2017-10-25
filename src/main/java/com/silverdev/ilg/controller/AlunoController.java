@@ -1,5 +1,6 @@
 package com.silverdev.ilg.controller;
 
+import com.silverdev.ilg.model.Aluno;
 import com.silverdev.ilg.model.Usuario;
 import com.silverdev.ilg.repository.AlunoRepository;
 import com.silverdev.ilg.repository.UsuarioRepository;
@@ -9,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/aluno/{id}")
@@ -40,5 +43,27 @@ public class AlunoController {
         model.addAttribute("notas", alunoRepository.findByCpf(cpf));
 
         return  "/aluno/notas";
+    }
+
+    @GetMapping("/aprovacao/{id}")
+    public String visuaAprov(@PathVariable("id") Integer id, Model model){
+        Usuario aluno = usuarioRepository.getOne(id);
+
+        String cpf = aluno.getCpf();
+
+        List<Aluno> alunos = alunoRepository.findByCpf(cpf);
+
+        for(Aluno x: alunos){
+            if((x.getFaltas()) <= 18 && (x.getMedia() >= 7.0)){
+                x.setAprovacao(true);
+            }else{
+                x.setAprovacao(false);
+            }
+        }
+
+        model.addAttribute("aluno", aluno);
+        model.addAttribute("alunos", alunos);
+
+        return  "/aluno/aprovacao";
     }
 }

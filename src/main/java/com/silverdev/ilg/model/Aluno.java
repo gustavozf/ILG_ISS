@@ -44,6 +44,9 @@ public class Aluno {
     @Column(name = "aluno_aprovacao")
     private Boolean aprovacao;
 
+    @Column(name = "media")
+    private Float media;
+
     @Column(name = "aluno_faltas")
     private Integer faltas;
 
@@ -125,6 +128,14 @@ public class Aluno {
 
     public void setProva_aux2(float prova_aux2) {
         this.prova_aux2 = prova_aux2;
+    }
+
+    public Float getMedia() {
+        return media;
+    }
+
+    public void setMedia(Float media) {
+        this.media = media;
     }
 
     public Boolean getAprovacao() {
