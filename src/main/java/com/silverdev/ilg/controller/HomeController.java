@@ -33,7 +33,7 @@ public class HomeController {
 
         String retorno = "";
         if(acesso.equals(Role.ROLE_ADMIN.toString())){
-            retorno = "redirect:/admFuncionarios";
+            retorno = "redirect:/admin";
         } else if (acesso.equals(Role.ROLE_PROFESSOR.toString())){
             retorno = "redirect:/professor";
         } else if (acesso.equals(Role.ROLE_ALUNO.toString())){
@@ -41,6 +41,8 @@ public class HomeController {
             retorno = "redirect:/aluno/" + id;
         } else if (acesso.equals(Role.ROLE_INGRESSANTE.toString())){
             retorno = "redirect:/ingressante";
+        } else if (acesso.equals(Role.ROLE_SECRETARIA.toString())){
+            retorno = "redirect:/funcionario";
         }
 
         return retorno;
