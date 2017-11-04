@@ -1,5 +1,6 @@
 package com.silverdev.ilg.model;
 
+import com.silverdev.ilg.model.enums.Estado;
 import com.silverdev.ilg.model.enums.Role;
 import com.silverdev.ilg.model.enums.Sexo;
 import org.hibernate.validator.constraints.br.CPF;
@@ -54,11 +55,89 @@ public class Usuario {
     @Column(name="usuario_ativo")
     private boolean ativo = true;
 
-    public boolean isValid(){
+    @Column(name="usuario_email")
+    private String email;
+
+    @Column(name="usuario_CEP")
+    private String CEP;
+
+    @Column(name="usuario_rua")
+    private String rua;
+
+    @Column(name="usuario_numero")
+    private String numero;
+
+    @Column(name="usuario_bairro")
+    private String bairro;
+
+    @Column(name="usuario_cidade")
+    private String cidade;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="usuario_estado")
+    private Estado estado;
+
+    public String getCEP() {
+        return CEP;
+    }
+
+    public void setCEP(String CEP) {
+        this.CEP = CEP;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isAtivo() {
         return ativo;
     }
 
-    public boolean getAtivo() {
+    public boolean isValid(){
         return ativo;
     }
 
