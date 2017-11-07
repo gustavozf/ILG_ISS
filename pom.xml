@@ -23,6 +23,18 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
+	
+	<repositories>
+		<!-- Repositório JRimum -->
+		<repository>
+			<id>jrimum.org</id>
+			<url>http://jrimum.org/maven/content/groups/public/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+
+	</repositories>
 
 	<dependencies>
 		<dependency>
@@ -76,6 +88,12 @@
 			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
 			<version>3.0.2.RELEASE</version>
 		</dependency>
+		<!-- Bopepo -->
+		<dependency>
+			<groupId>org.jrimum</groupId>
+			<artifactId>jrimum-bopepo</artifactId>
+			<version>0.2.3-SNAPSHOT</version><!-- 0.2.3-DEV-SNAPSHOT em desenvolvimento -->
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -86,32 +104,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<!-- Repositórios além do default -->
-	<repositories>
-		...
-		<!-- Repositório JRimum -->
-		<repository>
-			<id>jrimum.org</id>
-			<url>http://jrimum.org/maven/content/groups/public/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-
-	</repositories>
-
-
-
-	<!-- Dependências -->
-	<dependencies>
-		...
-		<!-- Bopepo -->
-		<dependency>
-			<groupId>org.jrimum</groupId>
-			<artifactId>jrimum-bopepo</artifactId>
-			<version>0.2.3-SNAPSHOT</version><!-- 0.2.3-DEV-SNAPSHOT em desenvolvimento -->
-		</dependency>
-
-	</dependencies>
 </project>
