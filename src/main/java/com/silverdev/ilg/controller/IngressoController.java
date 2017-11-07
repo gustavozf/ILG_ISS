@@ -47,7 +47,7 @@ public class IngressoController {
         //Checa se existe um mesmo usuario inativo
         boolean condicao2 = false;
         if (condicao1){
-            condicao2 = usuarioRepository.getOneByCpf(usuario.getCpf()).getAtivo();
+            condicao2 = usuarioRepository.getOneByCpf(usuario.getCpf()).isAtivo();
         }
         //Checa se existe o username
         boolean condicao3 = existeUsername(usuario.getUsername());

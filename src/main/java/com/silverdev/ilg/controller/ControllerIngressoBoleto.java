@@ -1,3 +1,5 @@
+package com.silverdev.ilg.controller;
+
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -19,6 +21,9 @@ import org.jrimum.domkee.financeiro.banco.febraban.SacadorAvalista;
 import org.jrimum.domkee.financeiro.banco.febraban.TipoDeTitulo;
 import org.jrimum.domkee.financeiro.banco.febraban.Titulo;
 import org.jrimum.domkee.financeiro.banco.febraban.Titulo.Aceite;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * <p>
@@ -36,9 +41,12 @@ import org.jrimum.domkee.financeiro.banco.febraban.Titulo.Aceite;
  *
  * @version 0.2
  */
-public class MeuPrimeiroBoleto {
+@Controller
+@RequestMapping("/boleto")
+public class ControllerIngressoBoleto {
 
-    public static void main(String[] args) {
+    @GetMapping
+    public String geraBoleto() {
 
                 /*
                  * INFORMANDO DADOS SOBRE O CEDENTE.
@@ -129,17 +137,14 @@ public class MeuPrimeiroBoleto {
         // pasta do projeto. Outros exemplos:
         // WINDOWS: boletoViewer.getAsPDF("C:/Temp/MeuBoleto.pdf");
         // LINUX: boletoViewer.getAsPDF("/home/temp/MeuBoleto.pdf");
-        File arquivoPdf = boletoViewer.getPdfAsFile("MeuPrimeiroBoleto.pdf");
+        File arquivoPdf = boletoViewer.getPdfAsFile("src/main/resources/static/PDFs/MeuPrimeiroBoleto.pdf");
 
         // Mostrando o boleto gerado na tela.
-        mostreBoletoNaTela(arquivoPdf);
+        //mostreBoletoNaTela(arquivoPdf);
+
+        return "redirect:/";
     }
 
-    /**
-     * Exibe o arquivo na tela.
-     *
-     * @param arquivoBoleto
-     */
     private static void mostreBoletoNaTela(File arquivoBoleto) {
 
         java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
