@@ -87,5 +87,31 @@
 		</plugins>
 	</build>
 
+	<!-- Repositórios além do default -->
+	<repositories>
+		...
+		<!-- Repositório JRimum -->
+		<repository>
+			<id>jrimum.org</id>
+			<url>http://jrimum.org/maven/content/groups/public/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 
+	</repositories>
+
+
+
+	<!-- Dependências -->
+	<dependencies>
+		...
+		<!-- Bopepo -->
+		<dependency>
+			<groupId>org.jrimum</groupId>
+			<artifactId>jrimum-bopepo</artifactId>
+			<version>0.2.3-SNAPSHOT</version><!-- 0.2.3-DEV-SNAPSHOT em desenvolvimento -->
+		</dependency>
+
+	</dependencies>
 </project>
