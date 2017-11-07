@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.Calendar;
 
 @Controller
 @RequestMapping("/admin/admCursos")
@@ -27,7 +28,7 @@ public class AdminCursoController {
 
     @GetMapping
     public String abreTelaCursos(Model model){
-        model.addAttribute("cursos", cursoRepository.findAll());
+        model.addAttribute("cursos", cursoRepository.findByAtivo(true));
 
         return "/admin/curso";
     }
@@ -41,6 +42,7 @@ public class AdminCursoController {
 
     @PostMapping("/register")
     public String registroCurso(@Valid Curso curso, RedirectAttributes ra){
+        curso.setData_criacao(getMonthAndYear());
         cursoRepository.save(curso);
         ra.addFlashAttribute("sucesso", "Curso '"+curso.getNome()+"' criado com sucesso!");
 
@@ -66,9 +68,21 @@ public class AdminCursoController {
 
     @GetMapping("/delete/{id}")
     public String deletaCurso(@PathVariable("id") Integer id, RedirectAttributes ra){
-        cursoRepository.delete(id);
+        Curso curso = cursoRepository.getOne(id);
+        curso.setAtivo(false);
+        cursoRepository.saveAndFlush(curso);
         ra.addFlashAttribute("excluido", "Curso excluído com sucesso!");
 
         return "redirect:/admin/admCursos";
+    }
+
+    private String getMonthAndYear(){
+        Calendar cal = Calendar.getInstance();
+        int year, month;
+
+        year = cal.get(Calendar.YEAR);
+        month = cal.get(Calendar.MONTH) +1;
+
+        return month + "/" + year;
     }
 }

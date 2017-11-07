@@ -22,6 +22,28 @@ public class Curso {
     @Column(name = "curso_carga_horaria")
     private float carga_horaria;
 
+    @Column(name ="curso_ativo")
+    private boolean ativo = true;
+
+    @Column(name="curso_data_criacao")
+    private String data_criacao;
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public String getData_criacao() {
+        return data_criacao;
+    }
+
+    public void setData_criacao(String data_criacao) {
+        this.data_criacao = data_criacao;
+    }
+
     public Integer getId() {
         return id;
     }
