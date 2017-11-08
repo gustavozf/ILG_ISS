@@ -23,6 +23,13 @@ public class Ingressante {
     @Column(name = "ingressante_pos_uem")
     private PosicaoUEM posUem;
 
+
+    @Column(name = "ingressante_curso")
+    private Integer cod_curso;
+
+    @Column(name = "ingressante_nomecurso")
+    private String nome_curso;
+
     @Column(name = "ingressante_media")
     private float media;
 
@@ -111,6 +118,22 @@ public class Ingressante {
     public void setQuantNotas(Integer quantNotas){this.quantNotas = quantNotas;}
 
     public float getNotas(){return notas;}
+
+    public Integer getCod_curso() {
+        return cod_curso;
+    }
+
+    public void setCod_curso(Integer cod_curso) {
+        this.cod_curso = cod_curso;
+    }
+
+    public String getNome_curso() {
+        return nome_curso;
+    }
+
+    public void setNome_curso(String nome_curso) {
+        this.nome_curso = nome_curso;
+    }
 
     public void setNotas(float notas){this.notas = notas;}
     @Override

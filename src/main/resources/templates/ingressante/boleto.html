@@ -8,7 +8,7 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-        <a class="navbar-brand" th:href="@{/ingressante/{id} (id = ${ingressante.id})}">
+        <a class="navbar-brand" th:href="@{/ingressante/{id} (id = ${id})}">
             <img th:src="@{/img/aluno.png}" alt="ILG" />
             <span th:text="${ingressante.nome}"/>
         </a>
@@ -20,7 +20,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="btn btn-primary" th:href="@{/ingressante/{id}/boleto/{id} (id = ${ingressante.id})}"> BOLETO </a>
+                    <a class="btn btn-primary" th:href="@{/ingressante/{id}/boleto/{id} (id = ${id})}"> BOLETO </a>
                 </li>
             </ul>
         </div>
@@ -34,6 +34,41 @@
     </nav>
 </header>
 <!--End-Navbar-->
+<br/>
+<br/>
+<br/>
+
+<div class = "card" style="width: 80%; margin: auto">
+    <div class="card-header text-center" style="background-color: #D3D3D3;">
+        <b>Notas</b>
+    </div>
+    <div class="card-body">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Curso</th>
+                <th>Nota 1-1</th>
+                <th>Nota 1-2</th>
+                <th>Nota 2-1</th>
+                <th>Nota 2-2</th>
+                <th>Média</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="notas: ${notas}">
+                <td th:text="${notas.nome_curso}"></td>
+                <td th:text="${notas.prova1}"></td>
+                <td th:text="${notas.prova_aux1}"></td>
+                <td th:text="${notas.prova2}"></td>
+                <td th:text="${notas.prova_aux2}"></td>
+                <td th:text="${notas.media}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
 
 </body>
 </html>

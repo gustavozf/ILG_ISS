@@ -16,6 +16,13 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.jrimum:jrimum-bopepo:0.2.3-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jrimum:jrimum-domkee:0.2.3-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jrimum:jrimum-vallia:0.2.3-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jrimum:jrimum-utilix:0.2.3-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.4" level="project" />
+    <orderEntry type="library" name="Maven: log4j:log4j:1.2.15" level="project" />
+    <orderEntry type="library" name="Maven: com.lowagie:itext:2.0.8" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:1.5.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:1.5.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-logging:1.5.7.RELEASE" level="project" />

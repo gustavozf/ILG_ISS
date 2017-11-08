@@ -43,7 +43,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/boleto")
-public class ControllerIngressoBoleto {
+public class IngressoBoletoController {
 
     @GetMapping
     public String geraBoleto() {
@@ -51,7 +51,7 @@ public class ControllerIngressoBoleto {
                 /*
                  * INFORMANDO DADOS SOBRE O CEDENTE.
                  */
-        Cedente cedente = new Cedente("PROJETO JRimum", "00.000.208/0001-00");
+        Cedente cedente = new Cedente("Instituto de Línguas (ILG) - UEM", "00.000.208/0001-00");
 
                 /*
                  * INFORMANDO DADOS SOBRE O SACADO.
@@ -137,7 +137,7 @@ public class ControllerIngressoBoleto {
         // pasta do projeto. Outros exemplos:
         // WINDOWS: boletoViewer.getAsPDF("C:/Temp/MeuBoleto.pdf");
         // LINUX: boletoViewer.getAsPDF("/home/temp/MeuBoleto.pdf");
-        File arquivoPdf = boletoViewer.getPdfAsFile("src/main/resources/static/PDFs/MeuPrimeiroBoleto.pdf");
+        File arquivoPdf = boletoViewer.getPdfAsFile("src/main/resources/PDFs/MeuPrimeiroBoleto.pdf");
 
         // Mostrando o boleto gerado na tela.
         //mostreBoletoNaTela(arquivoPdf);
