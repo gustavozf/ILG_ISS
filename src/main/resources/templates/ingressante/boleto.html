@@ -20,7 +20,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="btn btn-primary" th:href="@{/ingressante/{id}/boleto/{id} (id = ${id})}"> BOLETO </a>
+                    <a class="btn btn-primary" th:href="@{/ingressante/{id}/boleto/{id} (id = ${id})}"> BOLETOS </a>
                 </li>
             </ul>
         </div>
@@ -40,7 +40,7 @@
 
 <div class = "card" style="width: 80%; margin: auto">
     <div class="card-header text-center" style="background-color: #D3D3D3;">
-        <b>Taxa de inscrições</b>
+        <b>Taxas de inscrições</b>
     </div>
     <div class="card-body">
 
@@ -48,16 +48,20 @@
             <thead>
             <tr>
                 <th>Curso</th>
-                <th> </th>
+                <th>Boleto</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="ingressante: ${ingressante}">
                 <td th:text="${ingressante.nome_curso}"></td>
-                <td>
+                <div th:if="${ingressante.sit_pagamento}">
+                    <a class="btn btn-warning btn-sm" disable="true" th:target="_blank"
+                       th:href="@{/boleto/{id} (id=${id})}">GERAR BOLETO</a>
+                </div>
+                <div th:unless="${ingressante.sit_pagamento}">
                     <a class="btn btn-warning btn-sm" th:target="_blank"
                        th:href="@{/boleto/{id} (id=${id})}">GERAR BOLETO</a>
-                </td>
+                </div>
             </tr>
             </tbody>
         </table>
