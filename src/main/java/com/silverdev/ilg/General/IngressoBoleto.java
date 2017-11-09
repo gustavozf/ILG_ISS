@@ -1,10 +1,13 @@
-package com.silverdev.ilg.controller;
+package com.silverdev.ilg.General;
 
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.silverdev.ilg.model.Usuario;
+import com.silverdev.ilg.repository.IngressanteRepository;
+import com.silverdev.ilg.repository.UsuarioRepository;
 import org.jrimum.bopepo.BancosSuportados;
 import org.jrimum.bopepo.Boleto;
 import org.jrimum.bopepo.view.BoletoViewer;
@@ -21,6 +24,7 @@ import org.jrimum.domkee.financeiro.banco.febraban.SacadorAvalista;
 import org.jrimum.domkee.financeiro.banco.febraban.TipoDeTitulo;
 import org.jrimum.domkee.financeiro.banco.febraban.Titulo;
 import org.jrimum.domkee.financeiro.banco.febraban.Titulo.Aceite;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,11 +45,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  * @version 0.2
  */
-@Controller
-@RequestMapping("/boleto")
-public class IngressoBoletoController {
 
-    @GetMapping
+public class IngressoBoleto {
+    private UsuarioRepository usuarioRepository;
+    private IngressanteRepository ingressanteRepository;
+
+    @Autowired
+    public IngressoBoleto(UsuarioRepository usuarioRepository,
+                          IngressanteRepository ingressanteRepository){
+        this.usuarioRepository = usuarioRepository;
+        this.ingressanteRepository = ingressanteRepository;
+    }
+
     public String geraBoleto() {
 
                 /*

@@ -62,7 +62,7 @@ public class FuncIngressanteController {
     }
 
     @PostMapping("/insereNotas/{notas}")
-    public String editaNotasIngressante(@PathVariable("notas") float notas, @Valid Ingressante ingressante, RedirectAttributes ra){
+    public String editaNotasIngressante(@PathVariable("notas") double notas, @Valid Ingressante ingressante, RedirectAttributes ra){
         ingressanteRepository.saveAndFlush(ingressante);
         ra.addFlashAttribute("editado", "editado com sucesso");
 
@@ -80,7 +80,7 @@ public class FuncIngressanteController {
 
     @PostMapping("/calculaMedia/{id}")
     public String calculaMediaIngressante(@PathVariable("id") Integer id, @Valid Ingressante ingressante, RedirectAttributes ra){
-        float media;
+        double media;
 
         media = ingressante.getNotas()/ingressante.getQuantNotas();
 

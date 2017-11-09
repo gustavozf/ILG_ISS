@@ -16,7 +16,7 @@ public class Ingressante {
     private Integer id;
 
     @CPF
-    @Column(unique = true, name = "ingressante_cpf")
+    @Column(name = "ingressante_cpf")
     private String cpf;
 
     @Enumerated(EnumType.STRING)
@@ -31,19 +31,19 @@ public class Ingressante {
     private String nome_curso;
 
     @Column(name = "ingressante_media")
-    private float media;
+    private double media = 0.0;
 
     @Column(name = "ingressante_quantNotas")
     private Integer quantNotas;
 
     @Column(name = "notas")
-    private float notas;
+    private double notas = 0.0;
 
     @Column(name = "ingressante_sit_entrega")
-    private boolean sit_entrega;
+    private boolean sit_entrega = false;
 
     @Column(name = "ingressante_sit_pagamento")
-    private boolean sit_pagamento;
+    private boolean sit_pagamento = false;
 
     /*@Column(unique = true, name = "ingressante_rg")
     private String rg;
@@ -89,11 +89,11 @@ public class Ingressante {
         this.posUem = posUem;
     }
 
-    public float getMedia() {
+    public double getMedia() {
         return media;
     }
 
-    public void setMedia(float media) {
+    public void setMedia(double media) {
         this.media = media;
     }
 
@@ -117,7 +117,7 @@ public class Ingressante {
 
     public void setQuantNotas(Integer quantNotas){this.quantNotas = quantNotas;}
 
-    public float getNotas(){return notas;}
+    public double getNotas(){return notas;}
 
     public Integer getCod_curso() {
         return cod_curso;
@@ -135,7 +135,7 @@ public class Ingressante {
         this.nome_curso = nome_curso;
     }
 
-    public void setNotas(float notas){this.notas = notas;}
+    public void setNotas(double notas){this.notas = notas;}
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
