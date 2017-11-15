@@ -47,6 +47,8 @@ public class IngressanteController {
     @GetMapping("/boleto/{id}")
     public String visualizaBoleto(@PathVariable("id") Integer id, Model model){
 
+
+
         List<Ingressante> ingressante = procuraIngressante(id);
 
         model.addAttribute("ingressante", ingressante);
