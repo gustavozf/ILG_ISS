@@ -112,6 +112,12 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group col-12 col-lg-3">
+                                <label for="data_criacao" class="col-form-label">Data de Criação</label>
+                                <div class="input-group">
+                                    <input id="data_criacao" name="data_criacao" type="text" th:value="${turma.data_criacao}" class="form-control" readonly="true"/>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <button id="btn-subimit" style="float: right" type="submit" class="btn btn-primary">Registrar</button>

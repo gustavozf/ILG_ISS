@@ -51,14 +51,17 @@ public class AdminTurmaController {
     public String telaRegistroTurma(Model model){
         model.addAttribute("professores", usuarioRepository.findAllByAtivoAndAcesso(true,Role.ROLE_PROFESSOR));
         model.addAttribute("cursos", cursoRepository.findAll());
-        model.addAttribute("turma", new Turma());
+        Turma turma = new Turma();
+        turma.setData_criacao(getMonthAndYear());
+
+        model.addAttribute("turma", turma);
 
         return "admin/registerTurma";
     }
 
     @PostMapping("/register")
     public String registroTurma(@Valid Turma turma, RedirectAttributes ra){
-        turma.setData_criacao(getMonthAndYear());
+        //turma.setData_criacao(getMonthAndYear());
         turmaRepository.save(turma);
         ra.addFlashAttribute("sucesso", "Turma registrada com sucesso!");
 
@@ -76,7 +79,7 @@ public class AdminTurmaController {
 
     @PostMapping("/edit/{id}")
     public String editaTurma(@PathVariable("id") Integer id, @Valid Turma turma, RedirectAttributes ra){
-        turma.setData_criacao(getMonthAndYear());
+        //turma.setData_criacao(getMonthAndYear());
         turmaRepository.saveAndFlush(turma);
         ra.addFlashAttribute("editado", "Turma atualizada com sucesso!");
 
