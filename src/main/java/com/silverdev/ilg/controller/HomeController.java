@@ -30,19 +30,19 @@ public class HomeController {
         String acesso = auth.getAuthorities().toString();
         acesso = acesso.replace("[", "");
         acesso = acesso.replace("]","");
+        Integer id = usuarioRepository.findUsuarioByUsername(auth.getName()).getId();
 
         String retorno = "";
         if(acesso.equals(Role.ROLE_ADMIN.toString())){
             retorno = "redirect:/admin";
         } else if (acesso.equals(Role.ROLE_PROFESSOR.toString())){
-            retorno = "redirect:/professor";
+            retorno = "redirect:/professor/"+ id;
         } else if (acesso.equals(Role.ROLE_ALUNO.toString())){
-            Integer id = usuarioRepository.findUsuarioByUsername(auth.getName()).getId();
             retorno = "redirect:/aluno/" + id;
         } else if (acesso.equals(Role.ROLE_INGRESSANTE.toString())){
-            retorno = "redirect:/ingressante";
+            retorno = "redirect:/ingressante/"+ id;
         } else if (acesso.equals(Role.ROLE_SECRETARIA.toString())){
-            retorno = "redirect:/funcionario";
+            retorno = "redirect:/funcionario/"+ id;
         }
 
         return retorno;

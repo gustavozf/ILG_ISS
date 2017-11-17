@@ -1,21 +1,23 @@
 package com.silverdev.ilg.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Disputa {
 
     @Id
-    @Column(name = "disputa_inscricao")
-    private Integer num_inscricao;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "disputa_id")
+    private Integer id;
+
+    @Column(name = "disputa_ingressante")
+    private Integer id_ingressante;
 
     @Column(name = "disputa_curso")
-    private Integer cod_curso;
+    private Integer id_curso;
 
     @Column(name = "disputa_turma")
-    private Integer cod_turma;
+    private Integer id_turma;
 
     @Column(name = "disputa_posicao")
     private Integer posicao;
@@ -23,43 +25,10 @@ public class Disputa {
     @Column(name = "disputa_media")
     private float media;
 
-    public Integer getNum_inscricao() {
-        return num_inscricao;
-    }
+    private boolean hapto;
 
-    public void setNum_inscricao(Integer num_inscricao) {
-        this.num_inscricao = num_inscricao;
-    }
+    private boolean aprovado;
 
-    public Integer getCurso() {
-        return cod_curso;
-    }
 
-    public void setCurso(Integer curso) {
-        this.cod_curso = cod_curso;
-    }
 
-    public Integer getTurma() {
-        return cod_turma;
-    }
-
-    public void setTurma(Integer turma) {
-        this.cod_turma = cod_turma;
-    }
-
-    public Integer getPosicao() {
-        return posicao;
-    }
-
-    public void setPosicao(Integer posicao) {
-        this.posicao = posicao;
-    }
-
-    public float getMedia() {
-        return media;
-    }
-
-    public void setMedia(float media) {
-        this.media = media;
-    }
 }

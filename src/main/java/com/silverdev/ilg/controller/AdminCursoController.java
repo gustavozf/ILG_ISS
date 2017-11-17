@@ -1,5 +1,6 @@
 package com.silverdev.ilg.controller;
 
+import com.silverdev.ilg.general.Calendario;
 import com.silverdev.ilg.model.Curso;
 import com.silverdev.ilg.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,9 @@ public class AdminCursoController {
 
     @PostMapping("/register")
     public String registroCurso(@Valid Curso curso, RedirectAttributes ra){
-        curso.setData_criacao(getMonthAndYear());
+        Calendario calendario = new Calendario();
+
+        curso.setData_criacao(calendario.getMonthAndYear());
         cursoRepository.save(curso);
         ra.addFlashAttribute("sucesso", "Curso '"+curso.getNome()+"' criado com sucesso!");
 
@@ -76,13 +79,4 @@ public class AdminCursoController {
         return "redirect:/admin/admCursos";
     }
 
-    private String getMonthAndYear(){
-        Calendar cal = Calendar.getInstance();
-        int year, month;
-
-        year = cal.get(Calendar.YEAR);
-        month = cal.get(Calendar.MONTH) +1;
-
-        return month + "/" + year;
-    }
 }

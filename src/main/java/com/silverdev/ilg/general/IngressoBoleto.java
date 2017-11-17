@@ -1,11 +1,10 @@
-package com.silverdev.ilg.General;
+package com.silverdev.ilg.general;
 
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import com.silverdev.ilg.model.Usuario;
 import com.silverdev.ilg.repository.IngressanteRepository;
 import com.silverdev.ilg.repository.UsuarioRepository;
 import org.jrimum.bopepo.BancosSuportados;
@@ -25,9 +24,6 @@ import org.jrimum.domkee.financeiro.banco.febraban.TipoDeTitulo;
 import org.jrimum.domkee.financeiro.banco.febraban.Titulo;
 import org.jrimum.domkee.financeiro.banco.febraban.Titulo.Aceite;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * <p>

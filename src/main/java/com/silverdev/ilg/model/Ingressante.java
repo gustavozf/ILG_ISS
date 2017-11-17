@@ -23,7 +23,6 @@ public class Ingressante {
     @Column(name = "ingressante_pos_uem")
     private PosicaoUEM posUem;
 
-
     @Column(name = "ingressante_curso")
     private Integer cod_curso;
 

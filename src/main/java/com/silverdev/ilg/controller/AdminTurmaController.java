@@ -1,5 +1,6 @@
 package com.silverdev.ilg.controller;
 
+import com.silverdev.ilg.general.Calendario;
 import com.silverdev.ilg.model.Curso;
 import com.silverdev.ilg.model.Turma;
 import com.silverdev.ilg.model.enums.Role;
@@ -49,10 +50,12 @@ public class AdminTurmaController {
 
     @GetMapping("/register")
     public String telaRegistroTurma(Model model){
+        Turma turma = new Turma();
+        Calendario calendario = new Calendario();
+
         model.addAttribute("professores", usuarioRepository.findAllByAtivoAndAcesso(true,Role.ROLE_PROFESSOR));
         model.addAttribute("cursos", cursoRepository.findAll());
-        Turma turma = new Turma();
-        turma.setData_criacao(getMonthAndYear());
+        turma.setData_criacao(calendario.getMonthAndYear());
 
         model.addAttribute("turma", turma);
 
@@ -96,13 +99,4 @@ public class AdminTurmaController {
         return "redirect:/admin/admTurmas";
     }
 
-    private String getMonthAndYear(){
-        Calendar cal = Calendar.getInstance();
-        int year, month;
-
-        year = cal.get(Calendar.YEAR);
-        month = cal.get(Calendar.MONTH) +1;
-
-        return month + "/" + year;
-    }
 }
