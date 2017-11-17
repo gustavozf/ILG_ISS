@@ -3,6 +3,7 @@ package com.silverdev.ilg.General;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 
 import com.silverdev.ilg.model.Usuario;
@@ -59,10 +60,13 @@ public class IngressoBoleto {
 
     public String geraBoleto() {
 
+        Date a = new Date();
+        a.setDate(a.getDate() + 12);
+
                 /*
                  * INFORMANDO DADOS SOBRE O CEDENTE.
                  */
-        Cedente cedente = new Cedente("Instituto de Línguas (ILG) - UEM", "00.000.208/0001-00");
+        Cedente cedente = new Cedente("Universidade estadual de Maringá", "00.000.208/0001-00");
 
                 /*
                  * INFORMANDO DADOS SOBRE O SACADO.
@@ -102,7 +106,7 @@ public class IngressoBoleto {
         ContaBancaria contaBancaria = new ContaBancaria(BancosSuportados.BANCO_BRADESCO.create());
         contaBancaria.setNumeroDaConta(new NumeroDaConta(123456, "0"));
         contaBancaria.setCarteira(new Carteira(30));
-        contaBancaria.setAgencia(new Agencia(1234, "1"));
+        contaBancaria.setAgencia(new Agencia(3178, "0"));
 
         Titulo titulo = new Titulo(contaBancaria, sacado, cedente, sacadorAvalista);
         titulo.setNumeroDoDocumento("123456");
@@ -110,7 +114,7 @@ public class IngressoBoleto {
         titulo.setDigitoDoNossoNumero("5");
         titulo.setValor(BigDecimal.valueOf(0.23));
         titulo.setDataDoDocumento(new Date());
-        titulo.setDataDoVencimento(new Date());
+        titulo.setDataDoVencimento(a);
         titulo.setTipoDeDocumento(TipoDeTitulo.DM_DUPLICATA_MERCANTIL);
         titulo.setAceite(Aceite.A);
         titulo.setDesconto(new BigDecimal(0.05));
@@ -128,14 +132,7 @@ public class IngressoBoleto {
                 "qualquer Banco até o Vencimento.");
         boleto.setInstrucaoAoSacado("Senhor sacado, sabemos sim que o valor " +
                 "cobrado não é o esperado, aproveite o DESCONTÃO!");
-        boleto.setInstrucao1("PARA PAGAMENTO 1 até Hoje não cobrar nada!");
-        boleto.setInstrucao2("PARA PAGAMENTO 2 até Amanhã Não cobre!");
-        boleto.setInstrucao3("PARA PAGAMENTO 3 até Depois de amanhã, OK, não cobre.");
-        boleto.setInstrucao4("PARA PAGAMENTO 4 até 04/xx/xxxx de 4 dias atrás COBRAR O VALOR DE: R$ 01,00");
-        boleto.setInstrucao5("PARA PAGAMENTO 5 até 05/xx/xxxx COBRAR O VALOR DE: R$ 02,00");
-        boleto.setInstrucao6("PARA PAGAMENTO 6 até 06/xx/xxxx COBRAR O VALOR DE: R$ 03,00");
-        boleto.setInstrucao7("PARA PAGAMENTO 7 até xx/xx/xxxx COBRAR O VALOR QUE VOCÊ QUISER!");
-        boleto.setInstrucao8("APÓS o Vencimento, Pagável Somente na Rede X.");
+        boleto.setInstrucao1("APÓS o Vencimento, Pagável Somente na Rede X.");
 
                 /*
                  * GERANDO O BOLETO BANCÁRIO.
