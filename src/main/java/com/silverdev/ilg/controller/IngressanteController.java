@@ -48,8 +48,8 @@ public class IngressanteController {
     public String visualizaBoleto(@PathVariable("id") Integer id, Model model){
 
 
-
         List<Ingressante> ingressante = procuraIngressante(id);
+
 
         model.addAttribute("ingressante", ingressante);
         model.addAttribute("id", id);
