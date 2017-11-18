@@ -52,17 +52,17 @@
             </tr>
             </thead>
             <tbody th:each="ingressante: ${ingressante}">
-                <td th:text="${ingressante.nome_curso}"></td>
-                <td>
-                    <div th:if="${ingressante.sit_pagamento}">
-                        <a class="btn btn-warning btn-sm" disable="true" th:target="_blank"
-                           th:href="@{/boleto/{id} (id=${id})}">GERAR BOLETO</a>
-                    </div>
-                    <div th:unless="${ingressante.sit_pagamento}">
-                        <a class="btn btn-warning btn-sm" th:target="_blank"
-                           th:href="@{/boleto/{id} (id=${id})}">GERAR BOLETO</a>
-                    </div>
-                </td>
+            <td th:text="${ingressante.nome_curso}"></td>
+            <td>
+                <div th:if="${ingressante.sit_pagamento}">
+                    <a class="btn btn-warning btn-sm" disable="true" th:target="_blank"
+                       th:href="@{/boleto/{id} (id=${id})}">GERAR BOLETO</a>
+                </div>
+                <div th:unless="${ingressante.sit_pagamento}">
+                    <a class="btn btn-warning btn-sm" th:target="_blank"
+                       th:href="@{/boleto/{id} (id=${id})}">GERAR BOLETO</a>
+                </div>
+            </td>
             </tbody>
         </table>
 

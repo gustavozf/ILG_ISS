@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ILG - Ingressante</title>
+    <title>ILG - Admin</title>
     <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
 </head>
-
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-        <a class="navbar-brand" th:href="@{/ingressante/{id} (id = ${ingressante.id})}">
-            <img th:src="@{/img/aluno.png}" alt="ILG" />
-            <span th:text="${ingressante.nome}"/>
+        <a class="navbar-brand" th:href="@{/admin}">
+            <img th:src="@{/img/admin.png}" alt="ILG" />
+            <span>Administrador</span>
         </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +19,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="btn btn-primary" th:href="@{/ingressante/{id}/boleto/{id} (id = ${ingressante.id})}"> BOLETO </a>
+                    <a class="btn btn-primary" th:href="@{/admin/admTurmas}"> TURMAS </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary active" th:href="@{/admin/admin/admCursos}"> CURSOS </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="btn btn-primary" th:href="@{/admin/admFuncionarios}"> FUNCIONÁRIOS </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="btn btn-primary" th:href="@{/admin/habilitaInscricao}"> HABILITA INSCRIÇÃO</a>
                 </li>
             </ul>
         </div>
@@ -33,7 +41,10 @@
         </div>
     </nav>
 </header>
-<!--End-Navbar-->
+
+<br/>
+<br/>
+<br/>
 
 </body>
 </html>

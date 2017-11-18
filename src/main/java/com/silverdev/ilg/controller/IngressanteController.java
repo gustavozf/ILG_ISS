@@ -27,7 +27,7 @@ public class IngressanteController {
 
     @Autowired
     public IngressanteController(IngressanteRepository ingressanteRepository,
-                           UsuarioRepository usuarioRepository){
+                                 UsuarioRepository usuarioRepository){
         this.ingressanteRepository = ingressanteRepository;
         this.usuarioRepository = usuarioRepository;
     }
