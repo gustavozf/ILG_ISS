@@ -138,7 +138,7 @@ public class IngressoBoleto {
         // pasta do projeto. Outros exemplos:
         // WINDOWS: boletoViewer.getAsPDF("C:/Temp/MeuBoleto.pdf");
         // LINUX: boletoViewer.getAsPDF("/home/temp/MeuBoleto.pdf");
-        File arquivoPdf = boletoViewer.getPdfAsFile("src/main/resources/PDFs/MeuPrimeiroBoleto.pdf");
+        File arquivoPdf = boletoViewer.getPdfAsFile("src/main/resources/PDFs/"+ingressante.getId() +".pdf");
 
         // Mostrando o boleto gerado na tela.
         //mostreBoletoNaTela(arquivoPdf);

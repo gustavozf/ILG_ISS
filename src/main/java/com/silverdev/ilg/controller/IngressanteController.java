@@ -1,5 +1,6 @@
 package com.silverdev.ilg.controller;
 
+import com.silverdev.ilg.general.IngressoBoleto;
 import com.silverdev.ilg.model.Aluno;
 import com.silverdev.ilg.model.Ingressante;
 import com.silverdev.ilg.model.Usuario;
@@ -35,7 +36,7 @@ public class IngressanteController {
     @GetMapping
     public String abreTelaIngressante(@PathVariable("id") Integer id, Model model){
 
-        procuraIngressante(id);
+        findIngressanteByUsuarioID(id);
 
         //Ingressante ingressante = ingressanteLista.get(0);
 
@@ -46,21 +47,28 @@ public class IngressanteController {
 
     @GetMapping("/boleto/{id}")
     public String visualizaBoleto(@PathVariable("id") Integer id, Model model){
+        Usuario usuario = usuarioRepository.getOne(id);
+        IngressoBoleto ingressoBoleto = null;
 
+        List<Ingressante> ingressantes = findIngressanteByUsuarioID(id);
 
-        List<Ingressante> ingressante = procuraIngressante(id);
+        for(Ingressante ing: ingressantes){
+            ingressoBoleto = new IngressoBoleto(ing, usuario);
+            ingressoBoleto.geraBoleto();
+        }
 
-
-        model.addAttribute("ingressante", ingressante);
+        model.addAttribute("ingressante", ingressantes);
         model.addAttribute("id", id);
 
         return  "/ingressante/boleto";
     }
 
-    private List<Ingressante> procuraIngressante(Integer id){
+    private List<Ingressante> findIngressanteByUsuarioID(Integer id){
         Usuario usuario =  usuarioRepository.getOne(id);
         List<Ingressante> ingressanteLista = ingressanteRepository.findByCpf(usuario.getCpf());
 
         return ingressanteLista;
     }
+
+
 }
