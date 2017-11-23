@@ -56,11 +56,11 @@
             <td>
                 <div th:if="${ingressante.sit_pagamento}">
                     <a class="btn btn-warning btn-sm" disable="true" th:target="_blank"
-                       th:href="@{/boleto/{id} (id=${id})}">GERAR BOLETO</a>
+                       th:href="@{/}">GERAR BOLETO</a>
                 </div>
                 <div th:unless="${ingressante.sit_pagamento}">
                     <a class="btn btn-warning btn-sm" th:target="_blank"
-                       th:href="@{/boleto/{id} (id=${id})}">GERAR BOLETO</a>
+                       th:href="@{/ingressante/{id}/gerarBoleto/{id_ingressante} (id=${id}, id_ingressante = ${ingressante.id})}">GERAR BOLETO</a>
                 </div>
             </td>
             </tbody>

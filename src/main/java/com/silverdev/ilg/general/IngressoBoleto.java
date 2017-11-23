@@ -6,6 +6,8 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.silverdev.ilg.model.Ingressante;
+import com.silverdev.ilg.model.Usuario;
 import com.silverdev.ilg.repository.IngressanteRepository;
 import com.silverdev.ilg.repository.UsuarioRepository;
 import org.jrimum.bopepo.BancosSuportados;
@@ -44,39 +46,34 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 
 public class IngressoBoleto {
-    private UsuarioRepository usuarioRepository;
-    private IngressanteRepository ingressanteRepository;
+    private final Ingressante ingressante;
+    private final Usuario usuario;
 
-    @Autowired
-    public IngressoBoleto(UsuarioRepository usuarioRepository,
-                          IngressanteRepository ingressanteRepository){
-        this.usuarioRepository = usuarioRepository;
-        this.ingressanteRepository = ingressanteRepository;
+    public IngressoBoleto(Ingressante ingressante, Usuario usuario){
+        this.ingressante = ingressante;
+        this.usuario = usuario;
     }
 
     public String geraBoleto() {
 
-        Date a = new Date();
-        a.setDate(a.getDate() + 12);
-
                 /*
                  * INFORMANDO DADOS SOBRE O CEDENTE.
                  */
-        Cedente cedente = new Cedente("Universidade estadual de Maringá", "00.000.208/0001-00");
+        Cedente cedente = new Cedente("Universidade Estadual de Maringá", "00.000.208/0001-00");
 
                 /*
                  * INFORMANDO DADOS SOBRE O SACADO.
                  */
-        Sacado sacado = new Sacado("JavaDeveloper Pronto Para Férias", "222.222.222-22");
+        Sacado sacado = new Sacado(usuario.getNome(), usuario.getCpf());
 
         // Informando o endereço do sacado.
         Endereco enderecoSac = new Endereco();
-        enderecoSac.setUF(UnidadeFederativa.RN);
-        enderecoSac.setLocalidade("Natal");
-        enderecoSac.setCep(new CEP("59064-120"));
-        enderecoSac.setBairro("Grande Centro");
-        enderecoSac.setLogradouro("Rua poeta dos programas");
-        enderecoSac.setNumero("1");
+        enderecoSac.setUF(UnidadeFederativa.PR);
+        enderecoSac.setLocalidade(usuario.getCidade());
+        enderecoSac.setCep(new CEP(usuario.getCEP()));
+        enderecoSac.setBairro(usuario.getBairro());
+        enderecoSac.setLogradouro(usuario.getRua());
+        enderecoSac.setNumero(usuario.getNumero());
         sacado.addEndereco(enderecoSac);
 
                 /*
@@ -110,7 +107,7 @@ public class IngressoBoleto {
         titulo.setDigitoDoNossoNumero("5");
         titulo.setValor(BigDecimal.valueOf(0.23));
         titulo.setDataDoDocumento(new Date());
-        titulo.setDataDoVencimento(a);
+        titulo.setDataDoVencimento(new Date());
         titulo.setTipoDeDocumento(TipoDeTitulo.DM_DUPLICATA_MERCANTIL);
         titulo.setAceite(Aceite.A);
         titulo.setDesconto(new BigDecimal(0.05));

@@ -31,7 +31,7 @@ public enum Estado {
 
     private String estado;
 
-    public String getEstado() {
+    public String getNomeEstado() {
         return estado;
     }
 
