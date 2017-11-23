@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface IngressanteRepository extends JpaRepository<Ingressante,Integer> {
     List<Ingressante> findByCpf(String cpf);
-    List<Ingressante> findByInscricao_id(Integer inscricao_id);
+    List<Ingressante> findAllByInscricao(Integer inscricao);
     Ingressante findById(Integer id);
 }
