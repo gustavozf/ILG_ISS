@@ -22,13 +22,13 @@
                     <a class="btn btn-primary" th:href="@{/admin/admTurmas}"> TURMAS </a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-primary active" th:href="@{/admin/admin/admCursos}"> CURSOS </a>
+                    <a class="btn btn-primary" th:href="@{/admin/admin/admCursos}"> CURSOS </a>
                 </li>
                 <li class="nav-item active">
                     <a class="btn btn-primary" th:href="@{/admin/admFuncionarios}"> FUNCIONÁRIOS </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="btn btn-primary" th:href="@{/admin/habilitaInscricao}"> HABILITA INSCRIÇÃO</a>
+                    <a class="btn btn-primary active" th:href="@{/admin/habilitaInscricao}"> HABILITA INSCRIÇÃO</a>
                 </li>
             </ul>
         </div>
@@ -45,6 +45,89 @@
 <br/>
 <br/>
 <br/>
+<div style="width: 80%; margin: auto">
+    <div th:if="${sucesso}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span th:text="${sucesso}"></span>
+        </div>
+    </div>
+</div>
+<div style="width: 80%; margin: auto">
+    <div th:if="${editado}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span th:text="${editado}"></span>
+        </div>
+    </div>
+</div>
+<div style="width: 80%; margin: auto">
+    <div th:if="${excluido}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span th:text="${excluido}"></span>
+        </div>
+    </div>
+</div>
+
+<div class = "card" style="width: 80%; margin: auto">
+    <div class="card-header text-center" style="background-color: #D3D3D3;">
+        <b>Inscrições</b>
+    </div>
+    <div class="card-body">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#Id</th>
+                <th>Inicio</th>
+                <th>Fim</th>
+                <th></th>
+                <th></th>
+                <th>Aprovados</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="inscricao: ${inscricoes}">
+                <td th:text="${inscricao.id}"></td>
+                <td th:text="${inscricao.data_ini}"></td>
+                <td th:text="${inscricao.data_fim}"></td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-warning btn-sm"
+                           th:href="@{/admin/habilitacao/edit/{id} (id=${inscricao.id})}">Editar</a>
+                        <a type="button" class="btn btn-danger btn-sm"
+                           th:href="@{/admin/habilitacao/delete/{id} (id=${inscricao.id})}">Excluir</a>
+                    </div>
+                </td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-warning btn-sm"
+                           th:href="@{/}">Ver Lista</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<br/>
+<br/>
+<br/>
+
+<footer>
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+        <a class="btn btn-sm btn-success" th:href="@{/admin/habilitacao/addPeriodo/}" >Adicionar</a>
+    </nav>
+</footer>
 
 </body>
 </html>
