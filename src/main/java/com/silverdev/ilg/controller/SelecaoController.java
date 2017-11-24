@@ -84,9 +84,9 @@ public class SelecaoController {
         turma = disputas.get(0).getIdTurma();
         calculaVagas(turma, vagasTotais, vagasUem, vagasFora);
         for (Disputa disputa: disputas) {
-            if (!disputa.getIdTurma().equals(turma)){
+           // if (!disputa.getIdTurma().equals(turma)){
 
-            }
+            //}
             ingre = ingressanteRepository.getOne(disputa.getIdIngressante());
 
 
