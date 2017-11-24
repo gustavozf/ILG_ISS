@@ -44,8 +44,8 @@ public class Ingressante {
     @Column(name = "ingressante_sit_pagamento")
     private boolean sit_pagamento = false;
 
-    @Column(name = "ingressante_inscricao_id")
-    private Integer inscricao_id;
+    @Column(name = "ingressante_inscricao")
+    private Integer inscricao;
 
     public Integer getId() {
         return id;
@@ -127,12 +127,12 @@ public class Ingressante {
         this.sit_pagamento = sit_pagamento;
     }
 
-    public Integer getInscricao_id() {
-        return inscricao_id;
+    public Integer getInscricao() {
+        return inscricao;
     }
 
-    public void setInscricao_id(Integer inscricao_id) {
-        this.inscricao_id = inscricao_id;
+    public void setInscricao(Integer inscricao) {
+        this.inscricao = inscricao;
     }
 
     @Override

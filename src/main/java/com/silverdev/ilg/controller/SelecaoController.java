@@ -42,7 +42,12 @@ public class SelecaoController {
 
         if (inscricao_id != 0){
             inscricao = inscricaoRepository.getOne(inscricao_id);
-            ingressantes = ingressanteRepository.findByInscricao_id(inscricao_id);
+            ingressantes = ingressanteRepository.findAllByInscricao(inscricao_id);
+
+            for(Ingressante x: ingressantes){
+
+            }
+
         } else {
             //erro, nenhuma inscricao gerada ainda
         }
