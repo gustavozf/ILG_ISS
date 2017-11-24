@@ -10,6 +10,7 @@ public class Inscricao {
     @Column(name = "inscricao_id")
     private Integer inscricao_id;
 
+    //Para exclusao logica
     @Column(name = "inscricao_ativo")
     private Boolean inscricao_ativa;
 

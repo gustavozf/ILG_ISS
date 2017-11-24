@@ -1,5 +1,6 @@
 package com.silverdev.ilg.controller;
 
+import com.silverdev.ilg.model.Disputa;
 import com.silverdev.ilg.model.Ingressante;
 import com.silverdev.ilg.model.Inscricao;
 import com.silverdev.ilg.repository.DisputaRepository;
@@ -31,29 +32,44 @@ public class SelecaoController {
     }
 
     public String RealizaSelecao(){
+        Integer inscricao_id = getInscricaoId();
+        List<Ingressante> ingressantes = ingressanteRepository.findAllByInscricao(inscricao_id);
+
+        if(BuscaHaptos(inscricao_id, ingressantes)){
+
+        }
 
         return "redirect:/admin";
     }
 
-    private List<Ingressante> BuscaHaptos(){
-        List<Ingressante> ingressantes = null;
-        Inscricao inscricao;
-        Integer inscricao_id = getInscricaoId();
+    private boolean BuscaHaptos(Integer inscricao_id, List<Ingressante> ingressantes){
+        Disputa disputa_aux = null;
 
         if (inscricao_id != 0){
-            inscricao = inscricaoRepository.getOne(inscricao_id);
-            ingressantes = ingressanteRepository.findAllByInscricao(inscricao_id);
-
             for(Ingressante x: ingressantes){
+                disputa_aux = new Disputa();
+                disputa_aux.setId_ingressante(x.getId());
+                disputa_aux.setId_curso(x.getCod_curso());
+                disputa_aux.setId_turma(x.getTurma());
+                disputa_aux.setMedia(x.getMedia());
+                disputa_aux.setPosicao(0);
+                disputa_aux.setInscricao(inscricao_id);
 
+                if (x.isSit_entrega() && x.isSit_pagamento() && x.getMedia() > 0.0){
+                    disputa_aux.setApto(true);
+                    disputa_aux.setMensagem("Lista de Espera");
+                } else {
+                    disputa_aux.setApto(false);
+                    disputa_aux.setMensagem("Não apto");
+                }
+                disputaRepository.save(disputa_aux);
             }
 
+            return true;
         } else {
             //erro, nenhuma inscricao gerada ainda
+            return false;
         }
-
-
-        return ingressantes;
     }
 
     private void OrdenaMelhores(){

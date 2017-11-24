@@ -95,7 +95,9 @@
                                 <div class="form-group col-12 col-lg-4">
                                     <label for="cpf" class="col-form-label">CPF<span class="obrigatorio">*</span></label>
                                     <input id="cpf" class="form-control"  type="text" placeholder="Insira seu CPF "
-                                           th:field="*{cpf}" onblur="validaCPF()" required="required"/>
+                                           th:field="*{cpf}" onblur="validaCPF()" th:readonly="${update} == true ? 'readonly' : false" required="required" th:classappend="${#fields.hasErrors('cpf')} ? 'is-invalid'"/>
+                                    <div th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}" class="invalid-feedback"></div>
+                                    <span id="CPFerror" class="invalid-feedback" role="alert"></span>
                                 </div>
                                 <div class="form-group col-12 col-lg-4">
                                     <label for="rg" class="col-form-label">RG<span class="obrigatorio">*</span></label>
@@ -133,8 +135,33 @@
                             </div>
                         </form>
                         <script>
-                            /* <![CDATA[ */
                             $(document).ready(function () {
+                                $('#cpf').mask('000.000.000-00');
+                                $('#nascimento').mask('00/00/0000', {placeholder: "__/__/____"});
+                                $('#telefone').mask('(00) 0000-00000').keyup(function () {
+                                    var size = $(this).val().length;
+                                    if(size > 14)
+                                        $(this).mask('(00) 00000-0000')
+                                });
+                            });
+                            $('#nascimento').datepicker({
+                                format: 'dd/mm/yyyy',
+                                autoclose: true,
+                                language: 'pt-BR'
+                            });
+                            $('#cpf').focusout(function () {
+                                var cpf = validaCPF();
+                                if(cpf) {
+                                    $(this).removeClass('is-invalid');
+                                    $('#btn-subimit').attr('disabled', false);
+                                } else {
+                                    $(this).addClass('is-invalid');
+                                    $('#CPFerror').text("CPF Inválido");
+                                    $('#btn-subimit').attr('disabled',true);
+                                }
+                            });
+                            /* <![CDATA[ */
+                            /*$(document).ready(function () {
                                 $('#cpf').mask('000.000.000-00');
                                 $('#data_nascimento').mask('00/00/0000', {placeholder: "__/__/____"});
                                 $('#telefone').mask('(00) 0000-00000').keyup(function () {
@@ -142,10 +169,10 @@
                                     if(size > 14)
                                         $(this).mask('(00) 00000-0000')
                                 });
-                            });
+                            });*/
                             /* ]]> */
 
-                            function validaCPF() {
+                            /*function validaCPF() {
                                 var cpf = document.getElementById("cpf");
                                 cpf.addEventListener("input", function (event) {
                                     if (TestaCPF(cpf)) {
@@ -154,7 +181,7 @@
                                         cpf.setCustomValidity("CPF não válido!");
                                     }
                                 });
-                            }
+                            }*/
 
                         </script>
                     </div>

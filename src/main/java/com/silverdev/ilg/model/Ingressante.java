@@ -29,6 +29,9 @@ public class Ingressante {
     @Column(name = "ingressante_nomecurso")
     private String nome_curso;
 
+    @Column(name="ingressante_turma_id")
+    private Integer turma;
+
     @Column(name = "ingressante_media")
     private double media = 0.0;
 
@@ -125,6 +128,14 @@ public class Ingressante {
 
     public void setSit_pagamento(boolean sit_pagamento) {
         this.sit_pagamento = sit_pagamento;
+    }
+
+    public Integer getTurma() {
+        return turma;
+    }
+
+    public void setTurma(Integer turma) {
+        this.turma = turma;
     }
 
     public Integer getInscricao() {

@@ -19,15 +19,22 @@ public class Disputa {
     @Column(name = "disputa_turma")
     private Integer id_turma;
 
+    @Column(name="disputa_inscricao")
+    private Integer Inscricao;
+
     @Column(name = "disputa_posicao")
     private Integer posicao;
 
     @Column(name = "disputa_media")
-    private float media;
+    private double media;
 
-    //Se possui meida >= 7.0, pagou o boleto e mandou os documentos
-    @Column(name = "disputa_hapto")
-    private boolean hapto;
+    //Mensagem que aparece ao lado do status
+    @Column(name = "disputa_mensagem")
+    private String mensagem;
+
+    //Se possui media >= 7.0, pagou o boleto e mandou os documentos
+    @Column(name = "disputa_apto")
+    private boolean apto;
 
     //se foi um dos selecionados
     @Column(name = "disputa_aprovado")
@@ -77,20 +84,20 @@ public class Disputa {
         this.posicao = posicao;
     }
 
-    public float getMedia() {
+    public double getMedia() {
         return media;
     }
 
-    public void setMedia(float media) {
+    public void setMedia(double media) {
         this.media = media;
     }
 
-    public boolean isHapto() {
-        return hapto;
+    public boolean isApto() {
+        return apto;
     }
 
-    public void setHapto(boolean hapto) {
-        this.hapto = hapto;
+    public void setApto(boolean apto) {
+        this.apto = apto;
     }
 
     public boolean isAprovado() {
@@ -107,6 +114,22 @@ public class Disputa {
 
     public void setMatriculado(boolean matriculado) {
         this.matriculado = matriculado;
+    }
+
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
+
+    public Integer getInscricao() {
+        return Inscricao;
+    }
+
+    public void setInscricao(Integer inscricao) {
+        Inscricao = inscricao;
     }
 
     @Override
