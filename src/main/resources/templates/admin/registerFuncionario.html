@@ -95,9 +95,9 @@
                                 <div class="form-group col-12 col-lg-4">
                                     <label for="cpf" class="col-form-label">CPF<span class="obrigatorio">*</span></label>
                                     <input id="cpf" class="form-control"  type="text" placeholder="Insira seu CPF "
-                                           th:field="*{cpf}" onblur="validaCPF()" th:readonly="${update} == true ? 'readonly' : false" required="required" th:classappend="${#fields.hasErrors('cpf')} ? 'is-invalid'"/>
-                                    <div th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}" class="invalid-feedback"></div>
-                                    <span id="CPFerror" class="invalid-feedback" role="alert"></span>
+                                           th:field="*{cpf}"  required="required"/>
+                                    <!--div th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}" class="invalid-feedback"></div>
+                                    <span id="CPFerror" class="invalid-feedback" role="alert"></span-->
                                 </div>
                                 <div class="form-group col-12 col-lg-4">
                                     <label for="rg" class="col-form-label">RG<span class="obrigatorio">*</span></label>
@@ -131,7 +131,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button id="btn-subimit" style="float: right" type="submit" class="btn btn-primary">Cadastrar</button>
+                                <button id="btn-subimit" style="float: right" type="submit"  class="btn btn-primary">Cadastrar</button>
                             </div>
                         </form>
                         <script>
@@ -149,7 +149,12 @@
                                 autoclose: true,
                                 language: 'pt-BR'
                             });
-                            $('#cpf').focusout(function () {
+                            $("#cpf").on('change',function () {
+                                if (!TestaCPF($('#cpf').val())){
+                                    alert("CPF não válido!");
+                                }
+                            });
+                            /*$('#cpf').focusout(function () {
                                 var cpf = validaCPF();
                                 if(cpf) {
                                     $(this).removeClass('is-invalid');
@@ -159,7 +164,7 @@
                                     $('#CPFerror').text("CPF Inválido");
                                     $('#btn-subimit').attr('disabled',true);
                                 }
-                            });
+                            });*/
                             /* <![CDATA[ */
                             /*$(document).ready(function () {
                                 $('#cpf').mask('000.000.000-00');
@@ -171,18 +176,6 @@
                                 });
                             });*/
                             /* ]]> */
-
-                            /*function validaCPF() {
-                                var cpf = document.getElementById("cpf");
-                                cpf.addEventListener("input", function (event) {
-                                    if (TestaCPF(cpf)) {
-                                        cpf.setCustomValidity("");
-                                    } else {
-                                        cpf.setCustomValidity("CPF não válido!");
-                                    }
-                                });
-                            }*/
-
                         </script>
                     </div>
                 </div>

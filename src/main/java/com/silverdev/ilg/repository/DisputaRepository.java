@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface DisputaRepository extends JpaRepository<Disputa,Integer> {
-    List<Disputa> findAllByIdAndAptoOrderById_turmaAscMediaAsc(Integer id, boolean apto);
+    List<Disputa> findAllByIdAndAptoOrderByIdTurmaAscMediaDesc(Integer id, boolean apto);
 }

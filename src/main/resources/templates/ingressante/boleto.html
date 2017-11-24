@@ -60,7 +60,7 @@
                 </div>
                 <div th:unless="${ingressante.sit_pagamento}">
                     <a class="btn btn-warning btn-sm" th:target="_blank"
-                       th:href="@{PDFs/{id}.pdf (id=${ingressante.id})}">GERAR BOLETO</a>
+                       th:href="@{'/PDFs/Ingressante/'+${ingressante.id}+'.pdf'}">GERAR BOLETO</a>
                 </div>
             </td>
             </tbody>

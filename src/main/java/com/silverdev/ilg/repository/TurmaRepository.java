@@ -8,4 +8,5 @@ import java.util.List;
 public interface TurmaRepository extends JpaRepository<Turma, Integer> {
     List<Turma> findByAtivo(boolean ativo);
     List<Turma> findByDisponivel(boolean disponivel);
+    Turma findById(Integer id);
 }

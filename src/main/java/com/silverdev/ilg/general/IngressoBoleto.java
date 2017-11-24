@@ -1,32 +1,20 @@
 package com.silverdev.ilg.general;
 
-import java.io.File;
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.Date;
-
 import com.silverdev.ilg.model.Ingressante;
 import com.silverdev.ilg.model.Usuario;
-import com.silverdev.ilg.repository.IngressanteRepository;
-import com.silverdev.ilg.repository.UsuarioRepository;
 import org.jrimum.bopepo.BancosSuportados;
 import org.jrimum.bopepo.Boleto;
 import org.jrimum.bopepo.view.BoletoViewer;
 import org.jrimum.domkee.comum.pessoa.endereco.CEP;
 import org.jrimum.domkee.comum.pessoa.endereco.Endereco;
 import org.jrimum.domkee.comum.pessoa.endereco.UnidadeFederativa;
-import org.jrimum.domkee.financeiro.banco.febraban.Agencia;
-import org.jrimum.domkee.financeiro.banco.febraban.Carteira;
-import org.jrimum.domkee.financeiro.banco.febraban.Cedente;
-import org.jrimum.domkee.financeiro.banco.febraban.ContaBancaria;
-import org.jrimum.domkee.financeiro.banco.febraban.NumeroDaConta;
-import org.jrimum.domkee.financeiro.banco.febraban.Sacado;
-import org.jrimum.domkee.financeiro.banco.febraban.SacadorAvalista;
-import org.jrimum.domkee.financeiro.banco.febraban.TipoDeTitulo;
-import org.jrimum.domkee.financeiro.banco.febraban.Titulo;
+import org.jrimum.domkee.financeiro.banco.febraban.*;
 import org.jrimum.domkee.financeiro.banco.febraban.Titulo.Aceite;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import java.io.File;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * <p>
@@ -55,7 +43,6 @@ public class IngressoBoleto {
     }
 
     public String geraBoleto() {
-
                 /*
                  * INFORMANDO DADOS SOBRE O CEDENTE.
                  */
@@ -138,7 +125,8 @@ public class IngressoBoleto {
         // pasta do projeto. Outros exemplos:
         // WINDOWS: boletoViewer.getAsPDF("C:/Temp/MeuBoleto.pdf");
         // LINUX: boletoViewer.getAsPDF("/home/temp/MeuBoleto.pdf");
-        File arquivoPdf = boletoViewer.getPdfAsFile("src/main/resources/PDFs/"+ingressante.getId() +".pdf");
+        File arquivoPdf = boletoViewer.getPdfAsFile("src/main/resources/static/PDFs/Ingressante/"+ingressante.getId() +".pdf");
+        boletoViewer.getPdfAsFile("target/classes/static/PDFs/Ingressante/"+ingressante.getId() +".pdf");
 
         // Mostrando o boleto gerado na tela.
         //mostreBoletoNaTela(arquivoPdf);

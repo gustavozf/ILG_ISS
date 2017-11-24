@@ -11,13 +11,13 @@ public class Disputa {
     private Integer id;
 
     @Column(name = "disputa_ingressante")
-    private Integer id_ingressante;
+    private Integer idIngressante;
 
     @Column(name = "disputa_curso")
-    private Integer id_curso;
+    private Integer idCurso;
 
     @Column(name = "disputa_turma")
-    private Integer id_turma;
+    private Integer idTurma;
 
     @Column(name="disputa_inscricao")
     private Integer Inscricao;
@@ -52,28 +52,36 @@ public class Disputa {
         this.id = id;
     }
 
-    public Integer getId_ingressante() {
-        return id_ingressante;
+    public Integer getIdIngressante() {
+        return idIngressante;
     }
 
-    public void setId_ingressante(Integer id_ingressante) {
-        this.id_ingressante = id_ingressante;
+    public void setIdIngressante(Integer idIngressante) {
+        this.idIngressante = idIngressante;
     }
 
-    public Integer getId_curso() {
-        return id_curso;
+    public Integer getIdCurso() {
+        return idCurso;
     }
 
-    public void setId_curso(Integer id_curso) {
-        this.id_curso = id_curso;
+    public void setIdCurso(Integer idCurso) {
+        this.idCurso = idCurso;
     }
 
-    public Integer getId_turma() {
-        return id_turma;
+    public Integer getIdTurma() {
+        return idTurma;
     }
 
-    public void setId_turma(Integer id_turma) {
-        this.id_turma = id_turma;
+    public void setIdTurma(Integer idTurma) {
+        this.idTurma = idTurma;
+    }
+
+    public Integer getInscricao() {
+        return Inscricao;
+    }
+
+    public void setInscricao(Integer inscricao) {
+        Inscricao = inscricao;
     }
 
     public Integer getPosicao() {
@@ -90,6 +98,14 @@ public class Disputa {
 
     public void setMedia(double media) {
         this.media = media;
+    }
+
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
     }
 
     public boolean isApto() {
@@ -114,22 +130,6 @@ public class Disputa {
 
     public void setMatriculado(boolean matriculado) {
         this.matriculado = matriculado;
-    }
-
-    public String getMensagem() {
-        return mensagem;
-    }
-
-    public void setMensagem(String mensagem) {
-        this.mensagem = mensagem;
-    }
-
-    public Integer getInscricao() {
-        return Inscricao;
-    }
-
-    public void setInscricao(Integer inscricao) {
-        Inscricao = inscricao;
     }
 
     @Override

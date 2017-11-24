@@ -1,6 +1,7 @@
 package com.silverdev.ilg.model.enums;
 
 public enum PosicaoUEM {
+    DESC_00("Não possui vínculo à UEM", "-", 0.00),
     DESC_01("Servidor da UEM matriculado em curso de pós-graduação",
             "Declaração ou cópia do R.A.", 0.55),
     DESC_02("Acadêmico de pós-graduação STRICTU SENSU na UEM",

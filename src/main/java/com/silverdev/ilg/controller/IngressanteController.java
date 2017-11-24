@@ -35,11 +35,7 @@ public class IngressanteController {
 
     @GetMapping
     public String abreTelaIngressante(@PathVariable("id") Integer id, Model model){
-
         findIngressanteByUsuarioID(id);
-
-        //Ingressante ingressante = ingressanteLista.get(0);
-
         model.addAttribute("ingressante", usuarioRepository.getOne(id));
 
         return "/ingressante/ingressante";
@@ -56,6 +52,8 @@ public class IngressanteController {
             ingressoBoleto = new IngressoBoleto(ing, usuario);
             ingressoBoleto.geraBoleto();
         }
+
+
 
         model.addAttribute("ingressante", ingressantes);
         model.addAttribute("id", id);
