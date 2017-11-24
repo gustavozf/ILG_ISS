@@ -8,9 +8,9 @@ public class Inscricao {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     @Column(name = "inscricao_id")
-    private Integer inscricao_id;
+    private Integer id;
 
-    //Para exclusao logica
+    //Exclusao logica
     @Column(name = "inscricao_ativo")
     private Boolean inscricao_ativa;
 
@@ -28,20 +28,20 @@ public class Inscricao {
 
         Inscricao inscricao = (Inscricao) o;
 
-        return inscricao_id != null ? inscricao_id.equals(inscricao.inscricao_id) : inscricao.inscricao_id == null;
+        return id != null ? id.equals(inscricao.id) : inscricao.id == null;
     }
 
     @Override
     public int hashCode() {
-        return inscricao_id != null ? inscricao_id.hashCode() : 0;
+        return id != null ? id.hashCode() : 0;
     }
 
     public Integer getInscricao_id() {
-        return inscricao_id;
+        return id;
     }
 
     public void setInscricao_id(Integer inscricao_id) {
-        this.inscricao_id = inscricao_id;
+        this.id = inscricao_id;
     }
 
     public Boolean getInscricao_ativa() {

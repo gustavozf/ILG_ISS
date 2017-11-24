@@ -1,4 +1,4 @@
-package com.silverdev.ilg.controller;
+/*package com.silverdev.ilg.controller;
 
 import com.silverdev.ilg.model.Ingressante;
 import com.silverdev.ilg.repository.IngressanteRepository;
@@ -73,7 +73,7 @@ public class FuncIngressanteController {
 
     @GetMapping("/calculaMedia/{id}")
     public String telacalculaMedia(@PathVariable("id") Integer id, Model model) {
-        model.addAttribute("ingressanet", usuarioRepository.findOne(id));
+        model.addAttribute("ingressante", usuarioRepository.findOne(id));
 
         return "/funcionario/funcIngressante";
     }
@@ -89,3 +89,4 @@ public class FuncIngressanteController {
         return "redirect:/funcionario/funcIngressante";
     }
 }
+*/
