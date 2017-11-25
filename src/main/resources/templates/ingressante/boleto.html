@@ -55,7 +55,7 @@
             <td th:text="${ingressante.nome_curso}"></td>
             <td>
                 <div th:if="${ingressante.sit_pagamento}">
-                    <a class="btn btn-warning btn-sm" disable="true" th:target="_blank"
+                    <a class="btn btn-warning btn-sm disabled" th:target="_blank"
                        th:href="@{/}">GERAR BOLETO</a>
                 </div>
                 <div th:unless="${ingressante.sit_pagamento}">
