@@ -20,7 +20,7 @@ public class Disputa {
     private Integer idTurma;
 
     @Column(name="disputa_inscricao")
-    private Integer Inscricao;
+    private Integer inscricao;
 
     @Column(name = "disputa_posicao")
     private Integer posicao;
@@ -77,11 +77,11 @@ public class Disputa {
     }
 
     public Integer getInscricao() {
-        return Inscricao;
+        return inscricao;
     }
 
     public void setInscricao(Integer inscricao) {
-        Inscricao = inscricao;
+        inscricao = inscricao;
     }
 
     public Integer getPosicao() {

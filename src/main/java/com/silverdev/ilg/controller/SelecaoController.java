@@ -40,6 +40,7 @@ public class SelecaoController {
         List<Ingressante> ingressantes = ingressanteRepository.findAllByInscricao(inscricao_id);
 
         BuscaHaptos(inscricao_id, ingressantes);
+        OrdenaMelhores(inscricao_id);
 
 
         return "redirect:/admin";
@@ -74,22 +75,39 @@ public class SelecaoController {
         Integer cont1, cont2;
         Ingressante ingre;
 
-        vagasFora = 0;
-        vagasTotais = 0;
-        vagasUem = 0;
-        cont1 = 0;
-        cont2 = 0;
+        vagasFora = 0; //vagas dos alunos nao vinculados a uem
+        vagasTotais = 0; //vagas da turma
+        vagasUem = 0; // vagas dos alunos
+        cont1 = 1; //contador da vaga dos vinculados a uem
+        cont2 = 1; //contador da vaga dos nao vinculados a uem
 
-        disputas = disputaRepository.findAllByIdAndAptoOrderByIdTurmaAscMediaDesc(inscricao_id, true);
-        turma = disputas.get(0).getIdTurma();
-        calculaVagas(turma, vagasTotais, vagasUem, vagasFora);
+        disputas = disputaRepository.findAllByInscricaoAndAptoOrderByIdTurmaAscMediaDesc(inscricao_id, true);
+        turma = disputas.get(0).getIdTurma(); // pega o primeiro elemento da lista
+        calculaVagas(turma, vagasTotais, vagasUem, vagasFora); // calcula o valor das vagas
         for (Disputa disputa: disputas) {
-           // if (!disputa.getIdTurma().equals(turma)){
-
-            //}
+           if (!disputa.getIdTurma().equals(turma)){
+                turma = disputa.getIdTurma();
+                calculaVagas(turma, vagasTotais, vagasUem, vagasFora);
+                cont1 = 1;
+                cont2 = 1;
+           }
             ingre = ingressanteRepository.getOne(disputa.getIdIngressante());
-
-
+            if (isMembroUem(ingre.getId())){
+                if(cont1 <=  vagasUem){
+                    disputa.setAprovado(true);
+                    disputa.setMensagem("Aprovado");
+                }
+                disputa.setPosicao(cont1);
+                cont1 +=1;
+            } else {
+                if(cont2 <= vagasFora){
+                    disputa.setAprovado(true);
+                    disputa.setMensagem("Aprovado");
+                }
+                disputa.setPosicao(cont2);
+                cont2 +=1;
+            }
+            disputaRepository.saveAndFlush(disputa);
         }
 
 
