@@ -38,6 +38,27 @@ public class IngressanteController {
         findIngressanteByUsuarioID(id);
         model.addAttribute("ingressante", usuarioRepository.getOne(id));
 
+        return "/ingressante/pessoal";
+    }
+
+    @GetMapping("pessoal/{id}")
+    public String infoPessoal(@PathVariable("id") Integer id, Model model){
+        model.addAttribute("ingressante", usuarioRepository.getOne(id));
+
+        return"/ingressante/pessoal";
+    }
+
+    @GetMapping("matricula/{id}")
+    public String infoMatricula(@PathVariable("id") Integer id, Model model){
+        model.addAttribute("ingressante", usuarioRepository.getOne(id));
+
+        return"/ingressante/matricula";
+    }
+
+    @GetMapping("/ingressante/{id}")
+    public String telaReadMore(@PathVariable("id") Integer id, Model model){
+        model.addAttribute("ingressante", usuarioRepository.getOne(id));
+
         return "/ingressante/ingressante";
     }
 

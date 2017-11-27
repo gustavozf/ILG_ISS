@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ILG - Ingressante</title>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand" th:href="@{/ingressante/{id} (id = ${ingressante.id})}">
+            <img th:src="@{/img/aluno.png}" alt="ILG" />
+            <span th:text="${ingressante.nome}"/>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="btn btn-primary" th:href="@{/ingressante/{id}/boleto/{id} (id = ${ingressante.id})}"> BOLETO </a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="btn btn-primary" th:href="@{/logout}"> Sair </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!--End-Navbar-->
+<br/>
+<br/>
+<br/>
+
+<div class="container" style="max-width: 60%;margin:auto;">
+</div>
+<div class="card text-center">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/ingressante/{id}/pessoal/{id} (id = ${ingressante.id})}"> Pessoal </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/ingressante/{id}/matricula/{id} (id = ${ingressante.id})}"> Matricula </a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <div class="card" th:objetc="${ingressante}" id="card1">
+            <div class="card-header text-center" style="background-color: #D3D3D3;">
+                <b th:text="'Informaçoes de Matricula de ' + ${ingressante.nome}"></b>
+            </div>
+            <div class="card-body">
+                <div class="form-row">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
