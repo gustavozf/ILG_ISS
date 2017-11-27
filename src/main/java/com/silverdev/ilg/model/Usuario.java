@@ -240,6 +240,14 @@ public class Usuario {
         this.acesso = acesso;
     }
 
+    public PosicaoUEM getPosUEM() {
+        return posUEM;
+    }
+
+    public void setPosUEM(PosicaoUEM posUEM) {
+        this.posUEM = posUEM;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -263,6 +271,7 @@ public class Usuario {
                 ", complemento='" + numero + '\'' +
                 ", bairro='" + bairro + '\'' +
                 ", localidade='" + estado + '\'' +
+
                 '}';
     }
 }

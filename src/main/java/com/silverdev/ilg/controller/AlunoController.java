@@ -35,7 +35,7 @@ public class AlunoController {
 
         Aluno aluno = alunoLista.get(0);
 
-        String posicao = aluno.getPosicao_uem().getPosicao_uem();
+        String posicao = aluno.getPosicao_uem().getPosicaoUem();
 
         model.addAttribute("aluno", usuario);
         model.addAttribute("posicao", posicao);

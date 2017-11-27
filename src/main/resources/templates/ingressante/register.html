@@ -119,7 +119,7 @@
                                 <select class="form-control" th:field="*{estado}">
                                     <option th:each="pos : ${T(com.silverdev.ilg.model.enums.PosicaoUEM).values()}"
                                             th:value="${pos}"
-                                            th:text="${pos.posicao_uem}"></option>
+                                            th:text="${pos.getPosicaoUem()}"></option>
                                 </select>
                             </div>
 
@@ -131,6 +131,14 @@
                             <div class="form-group col-12 col-lg-2">
                                 <label for="CEP">CEP<span class="obrigatorio">*</span></label>
                                 <input id = "cep" class="form-control" type="text" th:field="*{CEP}" placeholder="Insira seu CEP " required="required"/>
+                            </div>
+                            <div class="form-group col-12 col-lg-2">
+                                <label class="col-form-label">Estado<span class="obrigatorio">*</span></label>
+                                <select class="form-control" th:field="*{estado}">
+                                    <option th:each="sigla : ${T(com.silverdev.ilg.model.enums.Estado).values()}"
+                                            th:value="${sigla}"
+                                            th:text="${sigla.getNomeEstado()}"></option>
+                                </select>
                             </div>
                             <div class="form-group col-12 col-lg-4">
                                 <label for="bairro">Bairro<span class="obrigatorio">*</span></label>
@@ -150,14 +158,7 @@
                                 <input class="form-control" type="text" th:field="*{numero}" placeholder="Numero da residencia " required="required"/>
                             </div>
 
-                            <!--div class="form-group col-12 col-lg-4">
-                                <label class="col-form-label">Estado<span class="obrigatorio">*</span></label>
-                                <select class="form-control" th:field="*{estado}">
-                                    <option th:each="sigla : ${T(com.silverdev.ilg.model.enums.Estado).values()}"
-                                            th:value="${sigla}"
-                                            th:text="${sigla.estado}"></option>
-                                </select>
-                            </div-->
+
                             <!--div class="form-group col-12 col-lg-4">
                                 <label for="posUem">Estado<span class="obrigatorio">*</span></label><br/>
                                 <select class="form-control" id="estado">

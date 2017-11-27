@@ -12,8 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -62,6 +65,27 @@ public class IngressanteController {
         return "/ingressante/ingressante";
     }
 
+    @PostMapping("/registro/{id}")
+    public String registraFuncionario(@PathVariable("id") Integer id, @Valid Ingressante usuario, RedirectAttributes ra) {
+        String redirecionamento = "redirect:/";
+        Usuario user = usuarioRepository.findUsuarioById(id);
+
+        //Checa se existe o CPF no BD
+        boolean condicao1 = existeCpf(usuario.getCpf());
+        //Checa se existe um mesmo usuario inativo
+        boolean condicao2 = false;
+        if (condicao1){
+            condicao2 = usuarioRepository.getOneByCpf(usuario.getCpf()).isAtivo();
+        }
+
+        usuario.setId(id);
+        usuario.setCpf(user.getCpf());
+        if(condicao1 && !condicao2) {
+            ra.addFlashAttribute("sucesso", "Ingressante registrado com sucesso!");
+        }
+        return redirecionamento;
+    }
+
     @GetMapping("/boleto/{id}")
     public String visualizaBoleto(@PathVariable("id") Integer id, Model model){
         Usuario usuario = usuarioRepository.getOne(id);
@@ -88,6 +112,12 @@ public class IngressanteController {
 
         return ingressanteLista;
     }
+    private boolean existeCpf(String cpf){
+        return usuarioRepository.findByCpf(cpf).isPresent();
+    }
 
+    private boolean existeUsername(String username){
+        return usuarioRepository.findByUsername(username).isPresent();
+    }
 
 }

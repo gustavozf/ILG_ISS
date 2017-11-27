@@ -29,18 +29,18 @@ public enum PosicaoUEM {
     DESC_13("Dependente de servidor da UEM aposentado",
             "Desnecessário", 0.38);
 
-    private final String posicao_uem;
+    private final String posicaoUem;
     private final String documentacao;
     private final Double Desconto;
 
     PosicaoUEM(String posicao_uem, String documentacao, Double desconto) {
-        this.posicao_uem = posicao_uem;
+        this.posicaoUem = posicao_uem;
         this.documentacao = documentacao;
         this.Desconto = desconto;
     }
 
-    public String getPosicao_uem() {
-        return posicao_uem;
+    public String getPosicaoUem() {
+        return posicaoUem;
     }
 
     public String getDocumentacao() {
