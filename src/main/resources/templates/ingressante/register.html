@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>ILG - Inscriçao</title>
     <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
@@ -104,6 +104,7 @@
                                     </label>
                                 </div>
                             </div>
+
                             <div class="form-group col-12 col-lg-4">
                                 <label for="username">Username<span class="obrigatorio">*</span></label>
                                 <input class="form-control" type="text" th:field="*{username}" placeholder="Insira um Username" required="required"/>
@@ -113,6 +114,61 @@
                                 <label for="password">Password<span class="obrigatorio">*</span></label>
                                 <input class="form-control" type="password" th:field="*{password}" placeholder="Insira uma Senha " required="required"/>
                             </div>
+                            <div class="form-group col-12 col-lg-4">
+                                <label class="col-form-label">Vinculo a UEM<span class="obrigatorio">*</span></label>
+                                <select class="form-control" th:field="*{estado}">
+                                    <option th:each="pos : ${T(com.silverdev.ilg.model.enums.PosicaoUEM).values()}"
+                                            th:value="${pos}"
+                                            th:text="${pos.posicao_uem}"></option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-12 col-lg-4">
+                                <label for="email">Email<span class="obrigatorio">*</span></label>
+                                <input class="form-control" type="text" th:field="*{email}" placeholder="ex: usuario@mail.com " required="required"/>
+                            </div>
+                            <br/>
+                            <div class="form-group col-12 col-lg-2">
+                                <label for="CEP">CEP<span class="obrigatorio">*</span></label>
+                                <input id = "cep" class="form-control" type="text" th:field="*{CEP}" placeholder="Insira seu CEP " required="required"/>
+                            </div>
+                            <div class="form-group col-12 col-lg-4">
+                                <label for="bairro">Bairro<span class="obrigatorio">*</span></label>
+                                <input class="form-control" type="text" th:field="*{bairro}" placeholder="Bairro " required="required"/>
+                            </div>
+                            <div class="form-group col-12 col-lg-3">
+                                <label for="cidade">Cidade<span class="obrigatorio">*</span></label>
+                                <input class="form-control" type="text" th:field="*{cidade}" placeholder="Cidade " required="required"/>
+                            </div>
+
+                            <div class="form-group col-12 col-lg-4">
+                                <label for="rua">Rua<span class="obrigatorio">*</span></label>
+                                <input class="form-control" type="text" th:field="*{rua}" placeholder="Nome da Rua " required="required"/>
+                            </div>
+                            <div class="form-group col-12 col-lg-2">
+                                <label for="numero">Numero<span class="obrigatorio">*</span></label>
+                                <input class="form-control" type="text" th:field="*{numero}" placeholder="Numero da residencia " required="required"/>
+                            </div>
+
+                            <!--div class="form-group col-12 col-lg-4">
+                                <label class="col-form-label">Estado<span class="obrigatorio">*</span></label>
+                                <select class="form-control" th:field="*{estado}">
+                                    <option th:each="sigla : ${T(com.silverdev.ilg.model.enums.Estado).values()}"
+                                            th:value="${sigla}"
+                                            th:text="${sigla.estado}"></option>
+                                </select>
+                            </div-->
+                            <!--div class="form-group col-12 col-lg-4">
+                                <label for="posUem">Estado<span class="obrigatorio">*</span></label><br/>
+                                <select class="form-control" id="estado">
+                                    <div th:each="rl : ${T(com.silverdev.ilg.model.enums.Estado).values()}" class="form-check form-check-inline">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="estado" th:value="${rl}" th:text="${rl.estado}"/>
+                                        </label>
+                                    </div>
+                                </select>
+                            </div-->
+
                         </div>
                         <div class="form-group">
                             <button id="btn-subimit" style="float: right" type="submit" class="btn btn-primary">Cadastrar</button>
@@ -129,6 +185,7 @@
                                     $(this).mask('(00) 00000-0000')
                             });
                             $('#rg').mask('00.000.000-0');
+                            $('#cep').mask('00000-000');
                         });
                         /* ]]> */
                     </script>

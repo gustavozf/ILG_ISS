@@ -1,6 +1,7 @@
 package com.silverdev.ilg.model;
 
 import com.silverdev.ilg.model.enums.Estado;
+import com.silverdev.ilg.model.enums.PosicaoUEM;
 import com.silverdev.ilg.model.enums.Role;
 import com.silverdev.ilg.model.enums.Sexo;
 import org.hibernate.validator.constraints.br.CPF;
@@ -76,6 +77,12 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     @Column(name="usuario_estado")
     private Estado estado;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="usuario_PosUem")
+    private PosicaoUEM posUEM;
+
+
 
     public String getCEP() {
         return CEP;
@@ -246,5 +253,16 @@ public class Usuario {
     @Override
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Endereco{" +
+                "cep='" + CEP + '\'' +
+                ", logradouro='" + rua + '\'' +
+                ", complemento='" + numero + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", localidade='" + estado + '\'' +
+                '}';
     }
 }
