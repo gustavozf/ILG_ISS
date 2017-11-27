@@ -65,9 +65,17 @@ public class IngressanteController {
         return "/ingressante/ingressante";
     }
 
+    @GetMapping("/registro/{id}")
+    public String getRegistraFuncionario(@PathVariable("id") Integer id, Model model){
+        model.addAttribute("ingressante", new Ingressante(id));
+        Usuario user = usuarioRepository.findUsuarioById(id);
+
+        return "/ingressante/registroCurso";
+    }
+
     @PostMapping("/registro/{id}")
     public String registraFuncionario(@PathVariable("id") Integer id, @Valid Ingressante usuario, RedirectAttributes ra) {
-        String redirecionamento = "redirect:/";
+        String redirecionamento = "redirect:/ingressante/{id}";
         Usuario user = usuarioRepository.findUsuarioById(id);
 
         //Checa se existe o CPF no BD
@@ -78,8 +86,9 @@ public class IngressanteController {
             condicao2 = usuarioRepository.getOneByCpf(usuario.getCpf()).isAtivo();
         }
 
-        usuario.setId(id);
+        usuario.setId(user.getId());
         usuario.setCpf(user.getCpf());
+        usuario.setPosUem(user.getPosUEM());
         if(condicao1 && !condicao2) {
             ra.addFlashAttribute("sucesso", "Ingressante registrado com sucesso!");
         }

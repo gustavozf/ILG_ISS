@@ -30,7 +30,7 @@ public class IngressoController {
     @GetMapping
     public String registro(Model model){
         model.addAttribute("ingresso", usuarioRepository.findAll());
-        return "/ingressante/register";
+        return "redirect:/ingresso/register";
     }
     @GetMapping("/register")
     public String telaRegistroFuncionario(Model model){

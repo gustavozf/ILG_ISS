@@ -8,7 +8,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
         <a class="navbar-brand" th:href="@{/}">
-            <img th:src="@{/img/favi.png}" alt="ILG" />
+            <img th:src="@{/img/aluno.png}" alt="ILG" />
         </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,7 +18,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="btn btn-primary" th:href="@{/}"> Voltar </a>
+                    <a class="btn btn-primary" th:href="@{/ingressante/{id} (id = ${ingressante.id})}"> VOLTAR </a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="btn btn-primary" th:href="@{/logout}"> Sair </a>
                 </li>
             </ul>
         </div>
@@ -49,21 +56,20 @@
             </div>
             <div class="card">
                 <div class="card-header text-center" style="background-color: #D3D3D3;">
-                    <b>Ingresso</b>
+                    <b th:text="'Aqui voce pode se matricular em novo cursos no ILG!'"></b>
                 </div>
                 <div class="card-body">
                     <h4 class="card-title text-center">
-                        Entre com os dados para se registrar!
                     </h4>
-                    <form th:action="@{/ingressante/{id}/registro/{id} (id = ${ingressante.id})" th:object="${ingressante}" method="post">
+                    <form th:action="@{/ingressante/{id}/registro/{id} (id = ${ingressante.id})}" th:object="${ingressante}" method="post">
                         <div class="form-row">
                             <div class="form-group col-12 col-lg-6">
-                                <label for="nome">Nome<span class="obrigatorio">*</span></label>
-                                <input class="form-control" type="text" th:field="*{nome}" placeholder="Insira seu Nome " required="required"/>
+                                <label for="cod_curso">Codigo<span class="obrigatorio">*</span></label>
+                                <input class="form-control" type="text" th:field="*{cod_curso}" placeholder="Codigo curso " required="required"/>
                             </div>
                             <div class="form-group col-12 col-lg-6">
-                                <label for="sobrenome">Sobrenome<span class="obrigatorio">*</span></label>
-                                <input class="form-control" type="text" th:field="*{sobrenome}" placeholder="Insira seu Sobrenome " required="required"/>
+                                <label for="nome_curso">Nome do Curso<span class="obrigatorio">*</span></label>
+                                <input class="form-control" type="text" th:field="*{nome_curso}" placeholder="Nome Curso " required="required"/>
                             </div>
 
                         </div>
