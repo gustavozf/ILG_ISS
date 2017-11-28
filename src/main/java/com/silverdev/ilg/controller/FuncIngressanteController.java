@@ -27,7 +27,7 @@ public class FuncIngressanteController {
     }
 
     @GetMapping
-    public String telaFuncionario(){ return "/funcionario/index"; }
+    public String telaFuncionario(){ return "/funcionario/index";}
 
     //Cruds do funcionario
 
