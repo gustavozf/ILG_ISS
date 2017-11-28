@@ -1,9 +1,8 @@
-/*package com.silverdev.ilg.controller;
+package com.silverdev.ilg.controller;
 
 import com.silverdev.ilg.model.Ingressante;
 import com.silverdev.ilg.repository.IngressanteRepository;
 import com.silverdev.ilg.repository.UsuarioRepository;
-import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -89,4 +88,3 @@ public class FuncIngressanteController {
         return "redirect:/funcionario/funcIngressante";
     }
 }
-*/
