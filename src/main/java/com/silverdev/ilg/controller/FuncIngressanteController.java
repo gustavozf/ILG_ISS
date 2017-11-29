@@ -16,7 +16,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/funcionario")
-public class FuncIngressanteController {
+public class FuncIngressanteController{
     private final UsuarioRepository usuarioRepository;
     private final IngressanteRepository ingressanteRepository;
 
