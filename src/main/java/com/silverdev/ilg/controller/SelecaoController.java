@@ -39,14 +39,14 @@ public class SelecaoController {
     public String RealizaSelecao(@PathVariable("id") Integer inscricao_id){
         List<Ingressante> ingressantes = ingressanteRepository.findAllByInscricao(inscricao_id);
 
-        BuscaHaptos(inscricao_id, ingressantes);
+        BuscaAptos(inscricao_id, ingressantes);
         OrdenaMelhores(inscricao_id);
 
 
         return "redirect:/admin";
     }
 
-    private void BuscaHaptos(Integer inscricao_id, List<Ingressante> ingressantes){
+    private void BuscaAptos(Integer inscricao_id, List<Ingressante> ingressantes){
         Disputa disputa_aux = null;
 
         for(Ingressante x: ingressantes){
@@ -58,7 +58,7 @@ public class SelecaoController {
             disputa_aux.setPosicao(0);
             disputa_aux.setInscricao(inscricao_id);
 
-            if (x.isSit_entrega() && x.isSit_pagamento() && x.getMedia() > 0.0){
+            if (x.isSit_entrega() && x.isSit_pagamento() && x.getMedia() > 7.0){
                 disputa_aux.setApto(true);
                 disputa_aux.setMensagem("Lista de Espera");
             } else {
