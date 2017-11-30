@@ -47,8 +47,9 @@ public class AdminHabilitaController {
     public String registerInscricao(Model model){
         model.addAttribute("inscricao", new Inscricao());
 
-        return "/admin/habilitacao/register";
+        return "/admin/registerInscricao";
     }
+
 
 
 
