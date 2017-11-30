@@ -33,13 +33,21 @@ public class IngressoController {
         return "redirect:/ingresso/register";
     }
     @GetMapping("/register")
-    public String telaRegistroFuncionario(Model model){
+    public String telaRegistroIngressante(Model model){
         model.addAttribute("usuario", new Usuario());
 
         return "/ingressante/register";
     }
+
+    @GetMapping("/cep")
+    public String cep(Model model){
+        //model.addAttribute("usuario", new Usuario());
+
+        return "/ingressante/testeCep";
+    }
+
     @PostMapping("/register")
-    public String registraFuncionario(@Valid Usuario usuario, RedirectAttributes ra) {
+    public String registraIngressante(@Valid Usuario usuario, RedirectAttributes ra) {
         String redirecionamento = "redirect:/";
 
         //Checa se existe o CPF no BD
