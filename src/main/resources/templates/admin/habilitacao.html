@@ -97,26 +97,25 @@
                 <th>Inicio</th>
                 <th>Fim</th>
                 <th></th>
-                <th></th>
                 <th>Aprovados</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="inscricao: ${inscricoes}">
+            <tr th:each="inscricao: ${inscricao}">
                 <td th:text="${inscricao.id}"></td>
                 <td th:text="${inscricao.data_ini}"></td>
                 <td th:text="${inscricao.data_fim}"></td>
                 <td>
                     <div class="btn-group" role="group">
                         <a class="btn btn-warning btn-sm"
-                           th:href="@{/admin/habilitacao/edit/{id} (id=${inscricao.id})}">Editar</a>
+                           th:href="@{/admin/habilitaInscricao/edit/{id} (id=${inscricao.id})}">Editar</a>
                         <a type="button" class="btn btn-danger btn-sm"
-                           th:href="@{/admin/habilitacao/delete/{id} (id=${inscricao.id})}">Excluir</a>
+                           th:href="@{/admin/habilitaInscricao/delete/{id} (id=${inscricao.id})}">Excluir</a>
                     </div>
                 </td>
                 <td>
                     <div class="btn-group" role="group">
-                        <a class="btn btn-warning btn-sm"
+                        <a class="btn btn-primary btn-sm"
                            th:href="@{/}">Ver Lista</a>
                     </div>
                 </td>
