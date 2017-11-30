@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface DisputaRepository extends JpaRepository<Disputa,Integer> {
     List<Disputa> findAllByInscricaoAndAptoOrderByIdTurmaAscMediaDesc(Integer inscricao, boolean apto);
+    List<Disputa> findAllByInscricaoOrderByIdTurmaAscPosicaoAsc(Integer inscricao);
 }

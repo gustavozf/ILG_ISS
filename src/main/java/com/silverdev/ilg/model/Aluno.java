@@ -30,22 +30,22 @@ public class Aluno {
     private Integer cod_turma;
 
     @Column(name = "aluno_prova1")
-    private float prova1;
+    private double prova1;
 
     @Column(name = "aluno_aux1")
-    private float prova_aux1;
+    private double prova_aux1;
 
     @Column(name = "aluno_prova2")
-    private float prova2;
+    private double prova2;
 
     @Column(name = "aluno_aux2")
-    private float prova_aux2;
+    private double prova_aux2;
 
     @Column(name = "aluno_aprovacao")
-    private Boolean aprovacao;
+    private boolean aprovacao;
 
     @Column(name = "media")
-    private Float media;
+    private double media;
 
     @Column(name = "aluno_faltas")
     private Integer faltas;
@@ -56,14 +56,6 @@ public class Aluno {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getNome_curso() {
-        return nome_curso;
-    }
-
-    public void setNome_curso(String nome_curso) {
-        this.nome_curso = nome_curso;
     }
 
     public String getCpf() {
@@ -90,6 +82,14 @@ public class Aluno {
         this.cod_curso = cod_curso;
     }
 
+    public String getNome_curso() {
+        return nome_curso;
+    }
+
+    public void setNome_curso(String nome_curso) {
+        this.nome_curso = nome_curso;
+    }
+
     public Integer getCod_turma() {
         return cod_turma;
     }
@@ -98,52 +98,52 @@ public class Aluno {
         this.cod_turma = cod_turma;
     }
 
-    public float getProva1() {
+    public double getProva1() {
         return prova1;
     }
 
-    public void setProva1(float prova1) {
+    public void setProva1(double prova1) {
         this.prova1 = prova1;
     }
 
-    public float getProva_aux1() {
+    public double getProva_aux1() {
         return prova_aux1;
     }
 
-    public void setProva_aux1(float prova_aux1) {
+    public void setProva_aux1(double prova_aux1) {
         this.prova_aux1 = prova_aux1;
     }
 
-    public float getProva2() {
+    public double getProva2() {
         return prova2;
     }
 
-    public void setProva2(float prova2) {
+    public void setProva2(double prova2) {
         this.prova2 = prova2;
     }
 
-    public float getProva_aux2() {
+    public double getProva_aux2() {
         return prova_aux2;
     }
 
-    public void setProva_aux2(float prova_aux2) {
+    public void setProva_aux2(double prova_aux2) {
         this.prova_aux2 = prova_aux2;
     }
 
-    public Float getMedia() {
-        return media;
-    }
-
-    public void setMedia(Float media) {
-        this.media = media;
-    }
-
-    public Boolean getAprovacao() {
+    public boolean isAprovacao() {
         return aprovacao;
     }
 
-    public void setAprovacao(Boolean aprovacao) {
+    public void setAprovacao(boolean aprovacao) {
         this.aprovacao = aprovacao;
+    }
+
+    public double getMedia() {
+        return media;
+    }
+
+    public void setMedia(double media) {
+        this.media = media;
     }
 
     public Integer getFaltas() {

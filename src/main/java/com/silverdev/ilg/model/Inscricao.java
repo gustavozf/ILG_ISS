@@ -12,7 +12,7 @@ public class Inscricao {
 
     //Exclusao logica
     @Column(name = "inscricao_ativo")
-    private Boolean inscricao_ativa = true;
+    private boolean inscricao_ativa = true;
 
     @Column(name = "inscricao_data_inicio")
     private String data_ini;
@@ -20,6 +20,13 @@ public class Inscricao {
     @Column(name = "inscricao_data_fim")
     private String data_fim;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -36,19 +43,11 @@ public class Inscricao {
         return id != null ? id.hashCode() : 0;
     }
 
-    public Integer getInscricao_id() {
-        return id;
-    }
-
-    public void setInscricao_id(Integer inscricao_id) {
-        this.id = inscricao_id;
-    }
-
-    public Boolean getInscricao_ativa() {
+    public boolean isInscricao_ativa() {
         return inscricao_ativa;
     }
 
-    public void setInscricao_ativa(Boolean inscricao_ativa) {
+    public void setInscricao_ativa(boolean inscricao_ativa) {
         this.inscricao_ativa = inscricao_ativa;
     }
 

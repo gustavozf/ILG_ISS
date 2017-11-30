@@ -38,9 +38,19 @@ public class SelecaoController {
 
     public String RealizaSelecao(@PathVariable("id") Integer inscricao_id){
         List<Ingressante> ingressantes = ingressanteRepository.findAllByInscricao(inscricao_id);
+        List<Disputa> disputas;
+        Integer turma, vagasUem, vagasTotais, vagasFora;
 
+        //acha os aptos de uma determinada inscricao
         BuscaAptos(inscricao_id, ingressantes);
-        OrdenaMelhores(inscricao_id);
+
+        vagasFora = 0; //vagas dos alunos nao vinculados a uem
+        vagasTotais = 0; //vagas da turma
+        vagasUem = 0; // vagas dos alunos
+        disputas = disputaRepository.findAllByInscricaoAndAptoOrderByIdTurmaAscMediaDesc(inscricao_id, true);
+        turma = disputas.get(0).getIdTurma(); // pega o primeiro elemento da lista
+        calculaVagas(turma, vagasTotais, vagasUem, vagasFora); // calcula o valor das vagas
+        OrdenaMelhores(inscricao_id, disputas, vagasFora, vagasUem, vagasTotais, turma);
 
 
         return "redirect:/admin";
@@ -69,21 +79,19 @@ public class SelecaoController {
         }
     }
 
-    private void OrdenaMelhores(Integer inscricao_id){
-        List<Disputa> disputas;
-        Integer turma, vagasTotais, vagasUem, vagasFora;
+    private void OrdenaMelhores(Integer inscricao_id,
+                                List<Disputa> disputas,
+                                Integer vagasFora,
+                                Integer vagasUem,
+                                Integer vagasTotais,
+                                Integer turma){
         Integer cont1, cont2;
         Ingressante ingre;
 
-        vagasFora = 0; //vagas dos alunos nao vinculados a uem
-        vagasTotais = 0; //vagas da turma
-        vagasUem = 0; // vagas dos alunos
         cont1 = 1; //contador da vaga dos vinculados a uem
         cont2 = 1; //contador da vaga dos nao vinculados a uem
 
-        disputas = disputaRepository.findAllByInscricaoAndAptoOrderByIdTurmaAscMediaDesc(inscricao_id, true);
-        turma = disputas.get(0).getIdTurma(); // pega o primeiro elemento da lista
-        calculaVagas(turma, vagasTotais, vagasUem, vagasFora); // calcula o valor das vagas
+
         for (Disputa disputa: disputas) {
            if (!disputa.getIdTurma().equals(turma)){
                 turma = disputa.getIdTurma();

@@ -62,6 +62,15 @@ public class AlunoController {
 
         List<Aluno> alunos = alunoRepository.findByCpf(cpf);
 
+        encontraAprovacao(alunos);
+
+        model.addAttribute("aluno", aluno);
+        model.addAttribute("alunos", alunos);
+
+        return  "/aluno/aprovacao";
+    }
+
+    public void encontraAprovacao(List<Aluno> alunos){
         for(Aluno x: alunos){
             if((x.getMedia()) >= verificaFaltas(x.getFaltas())){
                 x.setAprovacao(true);
@@ -70,11 +79,6 @@ public class AlunoController {
                 x.setAprovacao(false);
             }
         }
-
-        model.addAttribute("aluno", aluno);
-        model.addAttribute("alunos", alunos);
-
-        return  "/aluno/aprovacao";
     }
 
     private double verificaFaltas(Integer faltas){
