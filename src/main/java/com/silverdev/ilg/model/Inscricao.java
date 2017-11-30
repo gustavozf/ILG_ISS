@@ -12,7 +12,7 @@ public class Inscricao {
 
     //Exclusao logica
     @Column(name = "inscricao_ativo")
-    private Boolean inscricao_ativa;
+    private Boolean inscricao_ativa = true;
 
     @Column(name = "inscricao_data_inicio")
     private String data_ini;

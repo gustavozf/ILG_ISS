@@ -18,7 +18,7 @@ public class Calendario {
         Calendar cal = Calendar.getInstance();
         int day, year, month;
 
-        day = cal.get(Calendar.DAY_OF_WEEK);
+        day = cal.get(Calendar.DAY_OF_MONTH);
         year = cal.get(Calendar.YEAR);
         month = cal.get(Calendar.MONTH) +1;
 

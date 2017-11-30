@@ -41,20 +41,20 @@
 <div class="container">
     <div class="row">
         <div class="col-12 align-middle registro">
-            <div th:if="${error_cpf}">
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <div th:if="${falha}">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <span th:text="${error_cpf}"></span>
+                    <span th:text="${falha}"></span>
                 </div>
             </div>
-            <div th:if="${error_user}">
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <div th:if="${sucesso}">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <span th:text="${error_user}"></span>
+                    <span th:text="${sucesso}"></span>
                 </div>
             </div>
             <div class="card">
@@ -65,7 +65,7 @@
                     <h4 class="card-title text-center">
                         Insira novas datas para a inscrição!
                     </h4>
-                    <form th:action="@{/admin/habilitacao/register}" th:object="${inscricao}" method="post">
+                    <form th:action="@{/admin/habilitaInscricao/register}" th:object="${inscricao}" method="post">
                         <div class="form-row">
                             <div class="form-group col-12 col-lg-3">
                                 <label for="data_ini" class="col-form-label">Data de início<span class="obrigatorio">*</span></label>
@@ -98,5 +98,6 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>
