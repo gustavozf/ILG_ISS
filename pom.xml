@@ -99,6 +99,12 @@
             <artifactId>demo</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+		<!-- https://mvnrepository.com/artifact/org.webjars.bower/sweetalert2 -->
+		<dependency>
+			<groupId>org.webjars.bower</groupId>
+			<artifactId>sweetalert2</artifactId>
+			<version>6.2.1</version>
+		</dependency>
     </dependencies>
 
 	<build>

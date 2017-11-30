@@ -34,6 +34,14 @@
         </div>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
+                <a class="btn btn-primary" onclick="swal(
+                                                          'Precisa de Ajuda?',
+                                                          'Aqui o administrador pode controlar os funcionários presentes no ILG! ' +
+                                                           'Para inserir um novo funcionário, clique no botão (adicionar) na barra inferior da tela, preencha as ' +
+                                                            'informações necessárias e clique em cadastrar! Após, o funcionário pode ser editado ou excluído, ' +
+                                                             'apertando-se o botões em amarelo/vermelho respectivamente, na linha onde o mesmo se encontra.',
+                                                          'question'
+                                                        )"> Ajuda </a>
                 <li class="nav-item">
                     <a class="btn btn-primary" th:href="@{/logout}"> Sair </a>
                 </li>

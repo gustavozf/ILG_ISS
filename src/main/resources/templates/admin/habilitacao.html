@@ -22,7 +22,7 @@
                     <a class="btn btn-primary" th:href="@{/admin/admTurmas}"> TURMAS </a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-primary" th:href="@{/admin/admin/admCursos}"> CURSOS </a>
+                    <a class="btn btn-primary" th:href="@{/admin/admCursos}"> CURSOS </a>
                 </li>
                 <li class="nav-item active">
                     <a class="btn btn-primary" th:href="@{/admin/admFuncionarios}"> FUNCIONÁRIOS </a>
@@ -34,6 +34,14 @@
         </div>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
+                <a class="btn btn-primary" onclick="swal(
+                                                          'Precisa de Ajuda?',
+                                                          'Aqui o administrador pode agendar as inscrições presentes no ILG! ' +
+                                                           'Para inserir uma nova inscrição, clique no botão (adicionar) na barra inferior da tela, preencha as ' +
+                                                            'informações necessárias e clique em cadastrar! Após, a inscrição pode ser editada ou excluída, ' +
+                                                             'apertando-se o botões em amarelo/vermelho respectivamente, na linha onde a mesma se encontra.',
+                                                          'question'
+                                                        )"> Ajuda </a>
                 <li class="nav-item">
                     <a class="btn btn-primary" th:href="@{/logout}"> Sair </a>
                 </li>
