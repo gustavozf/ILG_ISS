@@ -25,10 +25,10 @@
                     <a class="btn btn-primary" th:href="@{/admin/admCursos}"> CURSOS </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="btn btn-primary active" th:href="@{/admin/admFuncionarios}"> FUNCIONÁRIOS </a>
+                    <a class="btn btn-primary" th:href="@{/admin/admFuncionarios}"> FUNCIONÁRIOS </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="btn btn-primary" th:href="@{/admin/habilitaInscricao}"> INSCRIÇÃO</a>
+                    <a class="btn btn-primary active" th:href="@{/admin/habilitaInscricao}"> INSCRIÇÃO</a>
                 </li>
             </ul>
         </div>
@@ -52,40 +52,9 @@
 <br/>
 <br/>
 
-<div style="width: 80%; margin: auto">
-    <div th:if="${sucesso}">
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <span th:text="${sucesso}"></span>
-        </div>
-    </div>
-</div>
-<div style="width: 80%; margin: auto">
-    <div th:if="${editado}">
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <span th:text="${editado}"></span>
-        </div>
-    </div>
-</div>
-<div style="width: 80%; margin: auto">
-    <div th:if="${excluido}">
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <span th:text="${excluido}"></span>
-        </div>
-    </div>
-</div>
-
 <div class = "card" style="width: 80%; margin: auto">
     <div class="card-header text-center" style="background-color: #D3D3D3;">
-        <b>Funcionários</b>
+        <b>Aprovados</b>
     </div>
     <div class="card-body">
 
@@ -122,3 +91,4 @@
 <br/>
 
 </body>
+</html>

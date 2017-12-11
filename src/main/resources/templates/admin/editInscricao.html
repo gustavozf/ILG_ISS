@@ -7,9 +7,9 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-        <a class="navbar-brand" th:href="@{/admin}">
+        <a class="navbar-brand" th:href="@{/}">
             <img th:src="@{/img/admin.png}" alt="ILG" />
-            <span>Administrador </span>
+            <span>Administrador</span>
         </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="btn btn-primary" th:href="@{/logout}"> Sair </a>
+                    <a class="btn btn-primary" th:href="@{logout}"> Sair </a>
                 </li>
             </ul>
         </div>
@@ -37,34 +37,38 @@
 <br/>
 <br/>
 
-
 <div class="container">
     <div class="row">
         <div class="col-12 align-middle registro">
+            <div th:if="${erro}">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <span th:text="${erro}"></span>
+                </div>
+            </div>
             <div class="card">
                 <div class="card-header text-center" style="background-color: #D3D3D3;">
-                    <b>NOVA INSCRIÇÃO</b>
+                    <b>ATUALIZAR INSCRICAO</b>
                 </div>
                 <div class="card-body">
                     <h4 class="card-title text-center">
-                        Insira novas datas para a inscrição!
+                        Entre com os dados para atualizar a inscrição!
                     </h4>
-                    <form th:action="@{/admin/habilitaInscricao/register}" th:object="${inscricao}" method="post">
+                    <form th:action="@{/admin/habilitaInscricao/edit/{id} (id=${inscricao.id})}" th:object="${inscricao}" method="post">
                         <div class="form-row">
-                            <div class="form-group col-12 col-lg-5">
-                                <label for="data_ini" class="col-form-label">Data de início<span class="obrigatorio">*</span></label>
-                                <input id="data_ini" name="data_ini" placeholder="Insira a Data de Início " type="text" class="form-control"
-                                       required="required"/>
+                            <div class="form-group col-12 col-lg-6">
+                                <label for="data_ini">Data Início:<span class="obrigatorio">*</span></label>
+                                <input class="form-control" th:value="${inscricao.data_ini}" type="text" id="data_ini" name="data_ini" required="required"/>
                             </div>
-                            <div class="form-group col-12 col-lg-5">
-                                <label for="data_fim" class="col-form-label">Data de fim<span class="obrigatorio">*</span></label>
-                                <input id="data_fim" name="data_fim" placeholder="Insira a Data de Fim " type="text" class="form-control"
-                                       required="required"/>
+                            <div class="form-group col-12 col-lg-6">
+                                <label for="data_fim">Data Fim:<span class="obrigatorio">*</span></label>
+                                <input class="form-control"  th:value="${inscricao.data_fim}" type="text" name="data_fim" id="data_fim" required="required"/>
                             </div>
-
                         </div>
                         <div class="form-group">
-                            <button id="btn-subimit" style="float: right" type="submit"  class="btn btn-primary">Cadastrar</button>
+                            <button id="btn-subimit" style="float: right" type="submit" class="btn btn-primary">Atualizar</button>
                         </div>
                     </form>
                     <script>
@@ -90,6 +94,7 @@
         </div>
     </div>
 </div>
-
+<footer>
+</footer>
 </body>
 </html>
