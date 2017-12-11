@@ -13,8 +13,17 @@ public class Disputa {
     @Column(name = "disputa_ingressante")
     private Integer idIngressante;
 
+    @Column(name = "disputa_nome_ingressante")
+    private String nomeIngressante;
+
+    @Column(name = "disputa_cpf_ingressante")
+    private String cpfIngressante;
+
     @Column(name = "disputa_curso")
     private Integer idCurso;
+
+    @Column(name = "disputa_nome_curso")
+    private String nomeCurso;
 
     @Column(name = "disputa_turma")
     private Integer idTurma;
@@ -130,6 +139,30 @@ public class Disputa {
 
     public void setMatriculado(boolean matriculado) {
         this.matriculado = matriculado;
+    }
+
+    public String getNomeIngressante() {
+        return nomeIngressante;
+    }
+
+    public void setNomeIngressante(String nomeIngressante) {
+        this.nomeIngressante = nomeIngressante;
+    }
+
+    public String getNomeCurso() {
+        return nomeCurso;
+    }
+
+    public void setNomeCurso(String nomeCurso) {
+        this.nomeCurso = nomeCurso;
+    }
+
+    public String getCpfIngressante() {
+        return cpfIngressante;
+    }
+
+    public void setCpfIngressante(String cpfIngressante) {
+        this.cpfIngressante = cpfIngressante;
     }
 
     @Override

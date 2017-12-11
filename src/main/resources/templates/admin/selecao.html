@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ILG - Admin</title>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand" th:href="@{/admin}">
+            <img th:src="@{/img/admin.png}" alt="ILG" />
+            <span>Administrador </span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="btn btn-primary" th:href="@{/admin/admTurmas}"> TURMAS </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary" th:href="@{/admin/admCursos}"> CURSOS </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="btn btn-primary active" th:href="@{/admin/admFuncionarios}"> FUNCIONÁRIOS </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="btn btn-primary" th:href="@{/admin/habilitaInscricao}"> INSCRIÇÃO</a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <a class="btn btn-primary" onclick="swal(
+                                                          'Precisa de Ajuda?',
+                                                          'Aqui o administrador visualiza os candidatos aprovados pela Seleção do ILG!',
+                                                          'question'
+                                                        )"> Ajuda </a>
+                <li class="nav-item">
+                    <a class="btn btn-primary" th:href="@{/logout}"> Sair </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+</header>
+
+<br/>
+<br/>
+<br/>
+
+<div style="width: 80%; margin: auto">
+    <div th:if="${sucesso}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span th:text="${sucesso}"></span>
+        </div>
+    </div>
+</div>
+<div style="width: 80%; margin: auto">
+    <div th:if="${editado}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span th:text="${editado}"></span>
+        </div>
+    </div>
+</div>
+<div style="width: 80%; margin: auto">
+    <div th:if="${excluido}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span th:text="${excluido}"></span>
+        </div>
+    </div>
+</div>
+
+<div class = "card" style="width: 80%; margin: auto">
+    <div class="card-header text-center" style="background-color: #D3D3D3;">
+        <b>Funcionários</b>
+    </div>
+    <div class="card-body">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Curso</th>
+                <th>Turma</th>
+                <th>Posição</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Média</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="disputa: ${disputas}">
+                <td th:text="${disputa.nomeCurso}"></td>
+                <td th:text="${disputa.idTurma}"></td>
+                <td th:text="${disputa.posicao}"></td>
+                <td th:text="${disputa.nomeIngressante}"></td>
+                <td th:text="${disputa.cpf}"></td>
+                <td th:text="${disputa.media}"></td>
+                <td th:text="${disputa.mensagem}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<br/>
+<br/>
+<br/>
+
+</body>

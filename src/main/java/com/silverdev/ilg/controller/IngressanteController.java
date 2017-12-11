@@ -67,7 +67,7 @@ public class IngressanteController {
 
     @GetMapping("/registro/{id}")
     public String getRegistraFuncionario(@PathVariable("id") Integer id, Model model){
-        model.addAttribute("ingressante", new Ingressante(id));
+        model.addAttribute("ingressante", new Ingressante());
         Usuario user = usuarioRepository.findUsuarioById(id);
 
         return "/ingressante/registroCurso";

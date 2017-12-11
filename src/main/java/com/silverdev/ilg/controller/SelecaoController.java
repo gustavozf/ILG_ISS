@@ -1,20 +1,19 @@
 package com.silverdev.ilg.controller;
 
-import com.silverdev.ilg.model.Disputa;
-import com.silverdev.ilg.model.Ingressante;
-import com.silverdev.ilg.model.Inscricao;
-import com.silverdev.ilg.model.Turma;
+import com.silverdev.ilg.model.*;
 import com.silverdev.ilg.model.enums.PosicaoUEM;
 import com.silverdev.ilg.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin/selecao/{id}")
+@RequestMapping("/admin/selecao/")
 public class SelecaoController {
 
     private final UsuarioRepository usuarioRepository;
@@ -36,13 +35,20 @@ public class SelecaoController {
         this.turmaRepository = turmaRepository;
     }
 
-    public String RealizaSelecao(@PathVariable("id") Integer inscricao_id){
+    @GetMapping("/admin/selecao/visualizacao/{id}")
+    public String visualizaSelecao(@PathVariable("id") Integer inscricao_id){
+
+        return "admin/selecao";
+    }
+
+    @GetMapping("{id}")
+    public String realizaSelecao(@PathVariable("id") Integer inscricao_id){
         List<Ingressante> ingressantes = ingressanteRepository.findAllByInscricao(inscricao_id);
         List<Disputa> disputas;
         Integer turma, vagasUem, vagasTotais, vagasFora;
 
         //acha os aptos de uma determinada inscricao
-        BuscaAptos(inscricao_id, ingressantes);
+        buscaAptos(inscricao_id, ingressantes);
 
         vagasFora = 0; //vagas dos alunos nao vinculados a uem
         vagasTotais = 0; //vagas da turma
@@ -50,23 +56,29 @@ public class SelecaoController {
         disputas = disputaRepository.findAllByInscricaoAndAptoOrderByIdTurmaAscMediaDesc(inscricao_id, true);
         turma = disputas.get(0).getIdTurma(); // pega o primeiro elemento da lista
         calculaVagas(turma, vagasTotais, vagasUem, vagasFora); // calcula o valor das vagas
-        OrdenaMelhores(inscricao_id, disputas, vagasFora, vagasUem, vagasTotais, turma);
+        ordenaMelhores(disputas, vagasFora, vagasUem, vagasTotais, turma);
 
 
         return "redirect:/admin";
     }
 
-    private void BuscaAptos(Integer inscricao_id, List<Ingressante> ingressantes){
+    private void buscaAptos(Integer inscricao_id, List<Ingressante> ingressantes){
         Disputa disputa_aux = null;
+        Usuario usuario_aux = null;
 
         for(Ingressante x: ingressantes){
             disputa_aux = new Disputa();
+            usuario_aux =  usuarioRepository.getOneByCpf(x.getCpf());
+
             disputa_aux.setIdIngressante(x.getId());
             disputa_aux.setIdCurso(x.getCod_curso());
             disputa_aux.setIdTurma(x.getTurma());
             disputa_aux.setMedia(x.getMedia());
             disputa_aux.setPosicao(0);
             disputa_aux.setInscricao(inscricao_id);
+            disputa_aux.setNomeCurso(x.getNome_curso());
+            disputa_aux.setCpfIngressante(x.getCpf());
+            disputa_aux.setNomeIngressante(usuario_aux.getNome() +" " + usuario_aux.getSobrenome());
 
             if (x.isSit_entrega() && x.isSit_pagamento() && x.getMedia() > 7.0){
                 disputa_aux.setApto(true);
@@ -79,8 +91,7 @@ public class SelecaoController {
         }
     }
 
-    private void OrdenaMelhores(Integer inscricao_id,
-                                List<Disputa> disputas,
+    private void ordenaMelhores(List<Disputa> disputas,
                                 Integer vagasFora,
                                 Integer vagasUem,
                                 Integer vagasTotais,

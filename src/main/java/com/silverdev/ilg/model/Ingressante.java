@@ -11,10 +11,6 @@ import javax.persistence.*;
 @Entity
 public class Ingressante {
 
-    public Ingressante(Integer id){
-        setId(id);
-    }
-
     @Id
     @Column(name= "ingressante_id")
     private Integer id;
