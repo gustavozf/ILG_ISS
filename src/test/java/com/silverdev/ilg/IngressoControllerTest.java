@@ -16,8 +16,8 @@ public class IngressoControllerTest {
     @Autowired
     private IngressoController controller;
 
-    @Test
-    public void caso1() throws Exception{
+    //@Test
+    /*public void caso1() throws Exception{
         Usuario user = new Usuario();
         RedirectAttributes ra = null;
 
@@ -57,5 +57,5 @@ public class IngressoControllerTest {
         user.setRua("Rua managua");
 
         controller.registraIngressante(user, new RedirectAttributesModelMap());
-    }
+    }*/
 }

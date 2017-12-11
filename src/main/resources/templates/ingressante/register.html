@@ -114,14 +114,6 @@
                                 <label for="password">Password<span class="obrigatorio">*</span></label>
                                 <input class="form-control" type="password" th:field="*{password}" placeholder="Insira uma Senha " required="required"/>
                             </div>
-                            <div class="form-group col-12 col-lg-4">
-                                <label class="col-form-label">Vinculo a UEM<span class="obrigatorio">*</span></label>
-                                <select class="form-control" th:field="*{estado}">
-                                    <option th:each="pos : ${T(com.silverdev.ilg.model.enums.PosicaoUEM).values()}"
-                                            th:value="${pos}"
-                                            th:text="${pos.getPosicaoUem()}"></option>
-                                </select>
-                            </div>
 
                             <div class="form-group col-12 col-lg-4">
                                 <label for="email">Email<span class="obrigatorio">*</span></label>
@@ -217,10 +209,10 @@
                             $.getJSON(url, function(dadosRetorno){
                                 try{
                                     // Preenche os campos de acordo com o retorno da pesquisa
-                                    $("#endereco").val(dadosRetorno.logradouro);
+                                    $("#rua").val(dadosRetorno.logradouro);
                                     $("#bairro").val(dadosRetorno.bairro);
                                     $("#cidade").val(dadosRetorno.localidade);
-                                    $("#uf").val(dadosRetorno.uf);
+                                    $("#estado").val(dadosRetorno.uf);
                                 }catch(ex){}
                             });
                         });

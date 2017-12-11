@@ -882,10 +882,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Maven: org.webjars.bower:sweetalert2:6.2.1" level="project" />
-    <orderEntry type="library" name="Maven: org.webjars.bower:es6-promise:4.1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.webjars.bower:sweetalert2:6.2.1" level="project" />
-    <orderEntry type="library" name="Maven: org.webjars.bower:es6-promise:4.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:1.5.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:1.5.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-logging:1.5.7.RELEASE" level="project" />
@@ -979,5 +975,9 @@
     <orderEntry type="library" name="Maven: com.lowagie:itext:2.0.8" level="project" />
     <orderEntry type="library" name="Maven: org.webjars.bower:sweetalert2:6.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars.bower:es6-promise:4.1.1" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:itextpdf:5.0.6" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bcmail-jdk14:1.38" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk14:1.38" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bctsp-jdk14:1.38" level="project" />
   </component>
 </module>
