@@ -54,9 +54,14 @@
     <div class="intro-message">
       <ul class="list-inline intro-social-buttons" style="position: absolute; bottom: 1%; left: 40%">
         <li class="list-inline-item">
-          <a th:href="@{/ingresso/register}" class="btn btn-light btn-lg">
-            <span class="network-name">INSCREVA-SE</span>
-          </a>
+          <div th:if="${ativo}">
+            <a class="btn btn-light btn-lg" th:target="_blank"
+               th:href="@{/ingresso/register}">INSCREVA-SE</a>
+          </div>
+          <div th:unless="${ativo}">
+            <a class="btn btn-light btn-lg disabled"
+               th:href="@{/}">INSCREVA-SE</a>
+          </div>
         </li>
         <li class="list-inline-item">
           <a th:href="@{/login}" class="btn btn-light btn-lg">

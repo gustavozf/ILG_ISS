@@ -81,7 +81,7 @@ public class AlunoController {
         }
     }
 
-    private double verificaFaltas(Integer faltas){
+    public double verificaFaltas(Integer faltas){
         if(faltas > 24){
             return 100.0;
         }else if(faltas >= 21){
