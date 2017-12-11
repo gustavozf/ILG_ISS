@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -35,14 +36,16 @@ public class SelecaoController {
         this.turmaRepository = turmaRepository;
     }
 
-    @GetMapping("/admin/selecao/visualizacao/{id}")
-    public String visualizaSelecao(@PathVariable("id") Integer inscricao_id){
+    @GetMapping("/visualizacao/{id}")
+    public String visualizaSelecao(@PathVariable("id") Integer inscricao_id, Model model){
+        model.addAttribute("disputas", disputaRepository
+                .findAllByInscricaoOrderByIdTurmaAscPosicaoAsc(inscricao_id));
 
         return "admin/selecao";
     }
 
     @GetMapping("{id}")
-    public String realizaSelecao(@PathVariable("id") Integer inscricao_id){
+    public String realizaSelecao(@PathVariable("id") Integer inscricao_id, RedirectAttributes ra){
         List<Ingressante> ingressantes = ingressanteRepository.findAllByInscricao(inscricao_id);
         List<Disputa> disputas;
         Integer turma, vagasUem, vagasTotais, vagasFora;
@@ -53,13 +56,16 @@ public class SelecaoController {
         vagasFora = 0; //vagas dos alunos nao vinculados a uem
         vagasTotais = 0; //vagas da turma
         vagasUem = 0; // vagas dos alunos
-        disputas = disputaRepository.findAllByInscricaoAndAptoOrderByIdTurmaAscMediaDesc(inscricao_id, true);
-        turma = disputas.get(0).getIdTurma(); // pega o primeiro elemento da lista
-        calculaVagas(turma, vagasTotais, vagasUem, vagasFora); // calcula o valor das vagas
-        ordenaMelhores(disputas, vagasFora, vagasUem, vagasTotais, turma);
-
-
-        return "redirect:/admin";
+        try {
+            disputas = disputaRepository.findAllByInscricaoAndAptoOrderByIdTurmaAscMediaDesc(inscricao_id, true);
+            turma = disputas.get(0).getIdTurma(); // pega o primeiro elemento da lista
+            calculaVagas(turma, vagasTotais, vagasUem, vagasFora); // calcula o valor das vagas
+            ordenaMelhores(disputas, vagasFora, vagasUem, vagasTotais, turma);
+        }catch (IndexOutOfBoundsException e){
+            ra.addFlashAttribute("erro", "Erro ao realizar a seleção!");
+        } finally {
+            return "redirect:/admin/habilitaInscricao";
+        }
     }
 
     private void buscaAptos(Integer inscricao_id, List<Ingressante> ingressantes){

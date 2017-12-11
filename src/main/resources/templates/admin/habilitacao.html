@@ -83,6 +83,16 @@
         </div>
     </div>
 </div>
+<div style="width: 80%; margin: auto">
+    <div th:if="${erro}">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span th:text="${erro}"></span>
+        </div>
+    </div>
+</div>
 
 <div class = "card" style="width: 80%; margin: auto">
     <div class="card-header text-center" style="background-color: #D3D3D3;">
@@ -97,6 +107,7 @@
                 <th>Inicio</th>
                 <th>Fim</th>
                 <th></th>
+                <th>Selecionar</th>
                 <th>Aprovados</th>
             </tr>
             </thead>
@@ -116,7 +127,13 @@
                 <td>
                     <div class="btn-group" role="group">
                         <a class="btn btn-primary btn-sm"
-                           th:href="@{/}">Ver Lista</a>
+                           th:href="@{/admin/selecao/{id} (id=${inscricao.id})}">Selecionar</a>
+                    </div>
+                </td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-primary btn-sm"
+                           th:href="@{/admin/selecao/visualizacao/{id} (id=${inscricao.id})}">Ver Lista</a>
                     </div>
                 </td>
             </tr>
